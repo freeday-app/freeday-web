@@ -1,0 +1,20 @@
+/* styles for support panel dialog */
+.bp3-dialog.support-dialog {
+    padding-bottom: 0;
+    width: 40vw;
+}
+
+.bp3-dialog.support-dialog .bp3-tabs .bp3-tab-panel {
+    height: 40vh;
+    overflow-y: auto;
+    padding-right: 10px;
+}
+
+.support-tab {
+    width: 100%;
+}
+
+.support-panel p {
+    display: block;
+    margin-bottom: 10px;
+}

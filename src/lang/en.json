@@ -1,0 +1,287 @@
+{
+	"date": {
+		"format": "YY-MM-DD",
+		"formatFull": "dddd MMMM Do YYYY",
+		"firstDayOfWeek": 0,
+		"invalid": "Invalid date"
+	},
+	"app": {
+		"error": {
+			"language": "error while changing language",
+			"theme": "error while changing theme"
+		}
+	},
+	"button": {
+		"add": "add",
+		"cancel": "cancel",
+		"back": "back",
+		"create": "create",
+		"confirm": "confirm",
+		"csv": "CSV export",
+		"delete": "delete",
+		"edit": "edit",
+		"reset": "reset",
+		"save": "save",
+		"today": "today",
+		"clear": "clear",
+		"start": "start"
+	},
+	"dayoff": {
+		"noData": "no days off",
+		"button": {
+			"create": "create a day off"
+		},
+		"dialog": {
+			"form": {
+				"title": "day off creation",
+				"editTitle": "day off edition",
+				"endEmpty": "leave end date empty to take only one day off"
+			},
+			"delete": {
+				"title": "deletion confirmation",
+				"text": "are you sure you want to delete this day off"
+			},
+            "cancel": {
+              "title": "cancellation confirmation",
+              "text": "reason"
+            },
+			"conflict": {
+				"title": "conflict management",
+				"text": "conflicts have been detected, chose a dayoff to be confirmed"
+			}
+		},
+		"field": {
+			"slackUser": "slack user",
+			"user": "user",
+			"type": "type",
+			"start": "start",
+			"end": "end",
+			"count": "days",
+			"status": "status",
+			"actions": "actions",
+			"comment": "comment",
+			"important": "important"
+		},
+		"status": {
+			"confirmed": "confirmed",
+			"canceled": "canceled",
+			"pending": "to confirm"
+		},
+		"error": {
+			"action": "error while taking action on dayoff",
+			"list": "error while listing daysoff",
+			"get": "error while getting dayoff data",
+			"slackUsers": "error while listing Slack users",
+			"dayoffTypes": "error while listing dayoff types",
+			"create": "error while creating dayoff",
+			"edit": "error while editing dayoff",
+			"delete": "error while deleting dayoff",
+			"endBeforeStart": "end date must be greater than or equal to start date",
+			"noWorkDays": "no work days in dayoff",
+			"conflict": "conflict with existing dayoff"
+		},
+		"warning": {
+			"notifyReferrer": "the Freeday bot could not send a notification to the Slack referrer channel. Please check the general settings and choose a Slack channel in which the Freeday bot is invited.",
+			"notifyUser": "the Freeday bot could not send a notification to the Slack user"
+		}
+	},
+	"schedule": {},
+	"summary": {
+		"column": {
+			"daysoff": "days off",
+			"sickLeaves": "sick leaves",
+			"total": "day off total",
+			"workedDays": "worked days",
+			"workDays": "work days",
+			"rate": "attendance rate",
+			"rateHelper": "worked days / work days"
+		},
+		"csvHelper": "only 'displayed' dayoff types will be included in the CSV export"
+	},
+	"settings": {
+		"form": {
+			"brandingName": "company name",
+			"brandingNameHelper": "max. length 50 characters",
+			"brandingLogo": "company logo",
+			"brandingLogoHelper": "max. 600px x 600px",
+			"slackReferrer": "slack referrer",
+			"slackReferrerHelper": "slack channel in which notifications will be displayed. Available channels are public and private channels in which Freeday bot has been invited. Newly created channels may take up to 10 seconds to sychronize.",
+			"slackReferrerNoResult": "Slack channel not found",
+			"monthlyRecap": "monthly recap",
+			"monthlyRecapHelper": "at the end of the month, each user will be sent a recap of their daysoff for the current month on Slack"
+		},
+		"success": {
+			"save": "configuration saved"
+		},
+		"error": {
+			"get": "error while getting configuration",
+			"file": "error while processing file",
+			"fileSize": "file size is too big (max. 500Ko)",
+			"fileDimensions": "image dimensions are too big (max. 600px x 600px)",
+			"save": "error while saving configuration",
+			"slackReferrer": "Freeday bot must be invited in the Slack referrer channel",
+			"currentReferrer": "Freeday bot was not invited in the current Slack referrer channel"
+		}
+	},
+	"admin": {
+		"create": "create an administrator",
+		"new": "new administrator",
+		"edit": "edit",
+		"self": "it's you!",
+		"form": {
+			"username": "username",
+			"password": "password",
+			"passwordConfirm": "confirm password",
+			"passwordDontMatch": "passwords do not match",
+			"passwordEmpty": "won't be modified if empty",
+			"securityRule": "min. 6 characters"
+		},
+		"dialog": {
+			"delete": {
+				"title": "deletion confirmation",
+				"text": "are you sure you want to delete"
+			}
+		},
+		"success": {
+			"create": "user created",
+			"edit": "user edited"
+		},
+		"error": {
+			"list": "error while listing administrators",
+			"get": "error while getting administrator data",
+			"create": "error while creating administrator",
+			"edit": "error while editing administrator",
+			"delete": "error while deleting administrator",
+			"username": "username already taken"
+		}
+	},
+	"dayoffType": {
+		"create": "create a dayoff type",
+		"new": "new dayoff type",
+		"edit": "edit type",
+		"form": {
+			"name": "name",
+			"emoji": "emoji",
+			"enabled": "enabled",
+			"displayed": "displayed",
+			"important": "important",
+			"nameHelp": "max. 75 characters",
+			"enabledHelp": "daysoff can be created with this type",
+			"disabledHelp": "daysoff cannot be created with this type",
+			"displayedHelp": "this type will be displayed in filters and data",
+			"notDisplayedHelp": "this type won't be displayed in filters and data",
+			"importantHelp": "daysoff with this type will be highlighted",
+			"notImportantHelp": "daysoff with this type won't be highlighted"
+		},
+		"dialog": {
+			"delete": {
+				"title": "deletion confirmation",
+				"text": "are you sure you want to delete dayoff type"
+			}
+		},
+		"success": {
+			"create": "dayoff type created",
+			"edit": "dayoff type edited"
+		},
+		"error": {
+			"list": "error while listing dayoff types",
+			"get": "error while getting dayoff type data",
+			"create": "error while creating dayoff type",
+			"edit": "error while editing dayoff type",
+			"delete": "error while deleting dayoff type",
+			"conflict": "this dayoff type name is already taken"
+		}
+	},
+	"filter": {
+		"start": "start",
+		"end": "end",
+		"month": "month",
+		"year": "year",
+		"slackUsers": "slack users",
+		"users": "users",
+		"type": "type",
+		"status": "status",
+		"all": "display all",
+		"noResult": "no result"
+	},
+	"welcome": {
+		"intro": "welcome to Freeday",
+		"selectLanguage": "select your language",
+		"createUser": "create your first user"
+	},
+	"error": {
+		"generic": "oops! Something went wrong"
+	},
+	"login": {
+		"submit": "login",
+		"error": {
+			"credentials": "invalid credentials"
+		}
+	},
+	"nav": {
+		"daysoff": "days off",
+		"schedule": "schedule",
+		"summary": "summary",
+		"types": "dayoff types",
+		"settings": "general settings",
+		"admins": "administrators",
+		"config": "administration",
+		"language": "language",
+		"theme": "theme",
+		"slack": "install Slack app",
+		"logout": "logout",
+		"notFound": "page not found",
+		"support": "support"
+	},
+	"theme": {
+		"dark": "dark",
+		"light": "light"
+	},
+	"emojiPicker": {
+		"none": "none",
+		"clear": "clear"
+	},
+	"month": {
+		"1": "january",
+		"2": "february",
+		"3": "march",
+		"4": "april",
+		"5": "may",
+		"6": "june",
+		"7": "july",
+		"8": "august",
+		"9": "september",
+		"10": "october",
+		"11": "november",
+		"12": "december"
+	},
+	"day": {
+		"1": "monday",
+		"2": "tuesday",
+		"3": "wednesday",
+		"4": "thursday",
+		"5": "friday",
+		"6": "saturday",
+		"7": "sunday"
+	},
+	"period": {
+		"am": "morning",
+		"pm": "afternoon",
+		"short": {
+			"am": "AM",
+			"pm": "PM"
+		}
+	},
+	"slack": {
+		"registering": "registering Slack app",
+		"registered": "slack app registered",
+		"error": {
+			"getAuth": "error while getting Slack auth information",
+			"register": "error while registering Slack app"
+		}
+	},
+	"footer": {
+		"text": "Powered by %s",
+		"brand": "Coddity®"
+	}
+}

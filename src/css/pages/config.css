@@ -1,0 +1,101 @@
+.config-top {
+    align-items: center;
+    display: flex;
+    flex: 0 0 auto;
+    flex-direction: column;
+}
+
+.config-tabs {
+    flex-grow: 1;
+}
+
+.config-buttons {
+    text-align: center;
+}
+
+.config-button {
+    margin: 10px;
+}
+
+.config-list {
+    flex: 1 1 auto;
+    min-width: 500px;
+    overflow-y: auto;
+    width: auto;
+}
+
+#config-list-table {
+    width: 100%;
+}
+
+#config-list-table th,
+#config-list-table td {
+    text-align: center;
+}
+
+#config-list-table th:first-child,
+#config-list-table td:first-child {
+    padding-right: 20px;
+    text-align: left;
+}
+
+h3.config-form-title {
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.config-form {
+    width: 300px;
+}
+
+.config-form-buttons {
+    display: flex;
+    flex-direction: row;
+    margin-top: 20px;
+}
+
+.config-form-buttons button {
+    flex: 1 1 0;
+}
+
+.config-form-buttons button:not(:first-child) {
+    margin-left: 10px;
+}
+
+.settings-brandingLogo-container {
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 15px;
+    margin-top: -10px;
+    width: 100%;
+}
+
+.settings-brandingLogo-image {
+    max-height: 75px;
+    max-width: 100px;
+}
+
+.settings-brandingLogo-icon {
+    cursor: pointer;
+    margin-left: 10px;
+}
+
+.settings-slackReferrer-container .bp3-form-content,
+.settings-monthlyRecap-container .bp3-form-content {
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.settings-slackReferrer-error {
+    color: var(--palette-red);
+    font-size: 12px;
+    margin-top: 5px;
+}
+
+.settings-slackReferrer-select,
+.setting-monthlyRecap-switch {
+    flex-grow: 1;
+}

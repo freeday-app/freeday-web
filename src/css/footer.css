@@ -1,0 +1,20 @@
+#footer {
+    height: 20px;
+    margin: 0;
+    padding: 0;
+}
+
+#footer .footer-content {
+    font-size: 0.75rem;
+    font-style: italic;
+    height: 20px;
+    margin: 0;
+    padding: 0 10px;
+    text-align: right;
+    width: 100%;
+}
+
+#footer .footer-link {
+    color: inherit;
+    text-decoration: inherit;
+}

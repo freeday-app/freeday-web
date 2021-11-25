@@ -1,0 +1,119 @@
+[
+    {
+        "slackUserId": "UDU2K2QSC",
+        "start": "2019-10-07",
+        "end": "2019-10-11",
+        "startPeriod": "am",
+        "endPeriod": "pm",
+        "count": "5",
+        "comment": "test"
+    },
+    {
+        "slackUserId": "UDU2K2QSC",
+        "start": "2019-10-24",
+        "end": "2019-10-24",
+        "startPeriod": "am",
+        "endPeriod": "pm",
+        "count": "1",
+        "comment": "test"
+    },
+    {
+        "slackUserId": "UDU2K2QSC",
+        "start": "2019-10-18",
+        "end": "2019-10-20",
+        "startPeriod": "am",
+        "endPeriod": "am",
+        "count": "1",
+        "comment": "test"
+    },
+    {
+        "slackUserId": "UDU2K2QSC",
+        "start": "2019-11-25",
+        "end": "2019-11-26",
+        "startPeriod": "am",
+        "endPeriod": "am",
+        "count": "1.5",
+        "comment": "test"
+    },
+    {
+        "slackUserId": "UDU2K2QSC",
+        "start": "2019-11-26",
+        "end": "2019-11-28",
+        "startPeriod": "pm",
+        "endPeriod": "am",
+        "count": "2",
+        "comment": "The aperture was black with a darkness almost@ material. That tenebrousness was indeed a positive quality; for it obscured such parts of the inner walls as ought to have been revealed, and actually burst forth like smoke from its aeon-long imprisonment,"
+    },
+    {
+        "slackUserId": "UDU2K2QSC",
+        "start": "2019-12-16",
+        "end": "2019-12-24",
+        "startPeriod": "am",
+        "endPeriod": "pm",
+        "count": "7",
+        "comment": "I now felt gnawing at my vitals that dark terror@ which will never leave me till I, too, am at rest; “accidentally” or otherwise."
+    },
+    {
+        "slackUserId": "U2W4J6XRD",
+        "start": "2019-11-04",
+        "end": "2019-11-04",
+        "startPeriod": "am",
+        "endPeriod": "pm",
+        "count": "1",
+        "comment": "test"
+    },
+    {
+        "slackUserId": "U2W4J6XRD",
+        "start": "2019-11-29",
+        "end": "2019-12-02",
+        "startPeriod": "am",
+        "endPeriod": "pm",
+        "count": "2",
+        "comment": "test"
+    },
+    {
+        "slackUserId": "U2W4J6XRD",
+        "start": "2019-12-20",
+        "end": "2019-12-24",
+        "startPeriod": "pm",
+        "endPeriod": "pm",
+        "count": "2.5",
+        "comment": "test"
+    },
+    {
+        "slackUserId": "U2V3J6XNG",
+        "start": "2019-10-01",
+        "end": "2019-10-11",
+        "startPeriod": "am",
+        "endPeriod": "pm",
+        "count": "9",
+        "comment": "test"
+    },
+    {
+        "slackUserId": "U2V3J6XNG",
+        "start": "2019-12-19",
+        "end": "2019-12-19",
+        "startPeriod": "am",
+        "endPeriod": "pm",
+        "count": "1",
+        "comment": "test"
+    },
+    {
+        "slackUserId": "U20UBC268",
+        "start": "2019-11-07",
+        "end": "2019-11-13",
+        "startPeriod": "am",
+        "endPeriod": "pm",
+        "count": "4",
+        "comment": "test"
+    },
+    {
+        "slackUserId": "U20UBC268",
+        "start": "2020-11-02",
+        "end": "2020-11-02",
+        "startPeriod": "am",
+        "endPeriod": "pm",
+        "count": "1",
+        "comment": "test sort"
+    }
+]

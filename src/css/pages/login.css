@@ -1,0 +1,37 @@
+.login-header {
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.login-header .login-header-logo {
+    margin-right: 15px;
+    max-height: 50px;
+    max-width: 50px;
+}
+
+.login-header-logo .emoji-mart-emoji,
+.login-header-logo img {
+    max-height: 50px;
+    max-width: 50px;
+}
+
+.login-header h1 {
+    text-align: left;
+}
+
+.login-form {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    justify-content: center;
+    padding-bottom: 15vh;
+    width: 100%;
+}
+
+.login-form > * {
+    margin-bottom: 10px;
+    width: 300px;
+}

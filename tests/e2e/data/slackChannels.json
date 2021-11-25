@@ -1,0 +1,41 @@
+[{
+    "slackId": "TGJ7ACX3Y",
+    "name": "Random channel",
+    "isChannel": true,
+    "isGroup": false,
+    "isIm": false,
+    "isMpIm": false,
+    "isMember": true,
+    "isPrivate": true,
+    "archived": false
+}, {
+    "slackId": "TCG6ARX53",
+    "name": "Lambda channel",
+    "isChannel": true,
+    "isGroup": false,
+    "isIm": false,
+    "isMpIm": false,
+    "isMember": true,
+    "isPrivate": false,
+    "archived": false
+}, {
+    "slackId": "TOHA2EFF6",
+    "name": "Another channel",
+    "isChannel": false,
+    "isGroup": true,
+    "isIm": false,
+    "isMpIm": false,
+    "isMember": false,
+    "isPrivate": false,
+    "archived": false
+}, {
+    "slackId": "TOHOIIDX9",
+    "name": "Referrer test",
+    "isChannel": true,
+    "isGroup": false,
+    "isIm": false,
+    "isMpIm": false,
+    "isMember": true,
+    "isPrivate": false,
+    "archived": false
+}]

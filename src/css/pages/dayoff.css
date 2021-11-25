@@ -1,0 +1,72 @@
+.dayoff-buttons {
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    width: 100%;
+}
+
+.dayoff-button {
+    margin: 0 10px;
+    width: 200px;
+}
+
+.dayoff-filter {
+    width: 100%;
+}
+
+.dayoff-table {
+    margin: 0;
+    position: relative;
+    white-space: nowrap;
+    width: 100%;
+}
+
+#dayoff-table thead {
+    position: sticky;
+    top: 0;
+    z-index: 1;
+}
+
+#dayoff-table th,
+#dayoff-table td {
+    text-align: center;
+    vertical-align: middle;
+}
+
+#dayoff-table th.left,
+#dayoff-table td.left {
+    text-align: left;
+}
+
+#dayoff-table td.dayoff-name .avatar {
+    margin-right: 5px;
+}
+
+#dayoff-table td .emoji-mart-emoji {
+    vertical-align: middle;
+}
+
+#dayoff-table td.dayoff-type .emoji-mart-emoji {
+    margin-right: 5px;
+}
+
+.dayoff-table .dayoff-status {
+    width: 150px;
+}
+
+.dayoff-table .dayoff-action {
+    width: 120px;
+}
+
+.dayoff-table .dayoff-status .dayoff-status-icon {
+    margin-right: 5px;
+}
+
+.dayoff-comment {
+    max-width: 200px;
+}
+
+.dayoff-truncated-comment {
+    word-break: break-word;
+}

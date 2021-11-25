@@ -1,0 +1,133 @@
+{
+	"support": {
+		"contact": {
+			"title": "contact",
+			"text": "contactez-nous à l'adresse %s",
+			"email": "team-freeday@coddity.com"
+		},
+		"cgu": {
+			"title": "CGU",
+			"titleLong": "Conditions Générales d'Utilisation",
+			"texts": [
+				{
+					"bodies": [
+						"Freeday offre un service d'abonnement permettant à ses clients de gérer les demandes de d’absence de ses collaborateurs. Les présentes Conditions régissent votre utilisation de notre service."
+					]
+				},
+				{
+					"title": "1. Abonnement",
+					"bodies": [
+						"1.1 Votre abonnement à Freeday se poursuit jusqu'à sa résiliation. Pour utiliser le service Freeday, vous devez avoir un accès à Internet et a minima un navigateur web et vous devez nous fournir un ou plusieurs Moyens de paiement. Un « Moyen de paiement » désigne un moyen de paiement actuel, valide, accepté, pouvant être mis à jour de temps à autre et pouvant inclure le paiement via votre compte avec un tiers. À moins que vous ne résiliez votre abonnement avant votre date de facturation, vous nous autorisez à vous facturer les frais d'abonnement pour le cycle de facturation suivant via votre Moyen de paiement.",
+						"1.2 Les détails spécifiques de votre abonnement Freeday sont disponibles sur votre contrat d’utilisation."
+					]
+				}, {
+					"title": "2. Essai gratuit",
+					"bodies": [
+						"2.1 Votre abonnement à Freeday débute par un essai gratuit. La durée de la période d'essai gratuit est spécifiée lors de l'inscription.",
+						"2.2 Nous facturons les frais d'abonnement pour le cycle de facturation suivant via votre Moyen de paiement au terme de la période d'essai gratuit, sauf si vous résiliez votre abonnement avant la fin de cette période d'essai gratuit.",
+						"2.3 Les détails spécifiques de vos frais d'abonnement et la date de fin de votre période d'essai gratuit sont disponible sur votre contrat d’utilisation."
+					]
+				}, {
+					"title": "3. Facturation et résiliation",
+					"bodies": [
+						"3.1 Cycle de facturation. Les frais d'abonnement au service Freeday seront facturés via votre Moyen de paiement à la date de facturation spécifique indiquée sur votre contrat.",
+						"3.2 Changement de date de facturation. Dans certains cas, votre date de facturation peut changer, par exemple, si votre Moyen de paiement n'a pas fonctionné ou si votre abonnement payant a commencé un jour ne figurant pas dans un mois donné.",
+						"3.3 Moyens de paiement. Pour utiliser le service Freeday, vous devez nous fournir un ou plusieurs Moyens de paiement. Vous nous autorisez à prélever votre compte via tout Moyen de paiement associé à votre compte au cas où votre Moyen de paiement principal serait décliné ou ne serait plus à notre disposition pour le paiement de vos frais d'abonnement. Vous êtes redevable de tout montant non prélevé. Si le règlement d'un paiement échoue en raison de l'expiration de la carte, de solde insuffisant ou pour tout autre motif, et que vous ne résiliez pas votre compte, nous pouvons suspendre votre accès à notre service jusqu'à ce que nous ayons réussi à prélever votre compte via un Moyen de paiement valide.",
+						"3.4 Mise à jour de vos Moyens de paiement. Vous pouvez mettre à jour vos Moyens de paiement à tout moment en prenant contact avec nos services à l’adresse support@freeday-app.com. Après toute mise à jour, vous nous autorisez à continuer à prélever votre compte via le ou les Moyens de paiement concernés.",
+						"3.5 Résiliation. Vous pouvez résilier votre abonnement Freeday à tout moment et vous continuerez à avoir accès au service jusqu'à la fin de votre période de facturation. Les paiements sont non remboursables. Pour résilier votre abonnement, prenez contact avec nos services à l’adresse support@freeday-app.com. Si vous résiliez votre abonnement, votre compte sera automatiquement suspendu à l'issue de votre période de facturation en cours.",
+						"3.6 Modifications du prix et des abonnements. Nous pouvons modifier nos abonnements ainsi que le prix de notre service à tout moment. Toutefois, toutes modifications de tarification ou de vos abonnements ne seront applicables qu'après un délai minimum de 2 mois suivant la réception d'une notification de notre part."
+					]
+				}, {
+					"title": "4. Propriété intellectuelle",
+					"bodies": [
+						"Vous vous engagez à ne pas archiver, reproduire, distribuer, modifier, afficher, exécuter, publier, concéder, créer des œuvres dérivées, vendre ou utiliser le contenu et les informations du service Freeday. Nous nous réservons le droit de résilier ou de restreindre votre utilisation de notre service si vous enfreignez les présentes Conditions d'utilisation ou faites une utilisation illégale ou illégitime du service."
+					]
+				}, {
+					"title": "5. Mots de passe et accès au compte",
+					"bodies": [
+						"L'utilisateur ayant créé le compte Freeday et se voyant facturer des frais d'abonnement via le Moyen de paiement choisi (le « Titulaire du compte ») détient l'accès au compte Freeday et a le contrôle sur ce dernier et les appareils compatibles avec Freeday utilisés pour accéder à notre service. Cet utilisateur est responsable de toute activité se produisant via son compte Freeday. Afin de garder le contrôle du compte et d'empêcher quiconque d'y accéder, le Titulaire du compte doit garder le contrôle des appareils compatibles avec Freeday qui sont utilisés pour accéder au service et ne doit communiquer à personne son mot de passe ni les détails relatifs au Moyen de paiement associé au compte. Le titulaire est responsable de la mise à jour et du maintien d'informations exactes relatives au compte. Nous pouvons résilier ou suspendre le compte du Titulaire afin de le protéger, ainsi que pour protéger Freeday ou ses partenaires, contre toute usurpation d'identité ou toute autre activité frauduleuse."
+					]
+				}, {
+					"title": "6. Divers",
+					"bodies": [
+						"6.1 Droit applicable. Les présentes Conditions d'utilisation sont régies et interprétées selon le droit français.",
+						"6.2 Assistance clientèle. Pour obtenir plus d'informations sur notre service et ses fonctionnalités ou si vous avez besoin d'aide pour l'utilisation de votre compte, veuillez prendre contact avec notre équipe support à l’adresse support@freeday-app.com.",
+						"6.3 Nullité - Invalidité. Si une ou plusieurs dispositions dans les présentes Conditions d'utilisation devaient s'avérer invalides, illégales ou inexécutables, les dispositions restantes demeureraient pleinement applicables et conserveraient leurs effets.",
+						"6.4 Modification des Conditions d'utilisation. L’équipe Freeday peut, de temps à autre, modifier les présentes Conditions d'utilisation. Nous vous informerons au moins 1 mois avant que de telles modifications ne deviennent applicables.",
+						"6.5 Communications électroniques. Nous vous enverrons des informations relatives à votre compte (par exemple, les autorisations de paiement, les factures, les changements de mot de passe ou de Moyen de paiement, les messages de confirmation, les notifications) uniquement par voie électronique."
+					]
+				}
+			]
+		},
+		"legal": {
+			"title": "Mentions légales",
+			"texts": [
+				{
+					"title": "Freeday est un produit de Coddity",
+					"bodies": [
+						"Société À Responsabilité Limitée",
+						"Au capital de 10 000 €",
+						"Immatriculée au RCS de Paris sous le n° 820 018 315",
+						"Dont le siège social est situé 37bis rue de Montreuil, 75011 Paris - France",
+						"Numéro de TVA intracommunautaire : FR 30 820018315",
+						"Téléphone : 01 88 33 48 54",
+						"Email : contact@coddity.com",
+						"Directeur de la publication : Matthieu Moreau"
+					]
+				},
+				{
+					"title": "L’interface d’administration Freeday est hébergée chez OVH",
+					"bodies": [
+						"Société par Actions Simplifiée",
+						"Dont le siège social est situé 2 rue Kellermann, 59100 Roubaix - France",
+						"Téléphone : 10 07"
+					]
+				}
+			]
+		},
+		"data": {
+			"title": "Données personnelles",
+			"texts": [
+				{
+					"title": "Données collectées",
+					"bodies": [
+						"Pour être en mesure de fournir le service Freeday, l’application doit collecter données personnelles.",
+						"En utilisant le service Freeday, vous consentez à ce que l’application traite ces données - et celles-ci uniquement. Les informations collectées sont les suivantes :",
+						[
+							"Identifiant Slack des collaborateurs du groupe Slack sur lequel Freeday est lié ;",
+							"Dates, durées, types, commentaires des demandes d’absences soumises ;",
+							"Éventuel justificatif d’annulation de demande d’absence."
+						]
+					]
+				},
+				{
+					"title": "Utilisation des données",
+					"bodies": [
+						"Ces données ne sont utilisées que dans le cadre de la fourniture du service Freeday :",
+						[
+							"Affichage et traitement des demandes d’absence par l’administrateur de l’application ;",
+							"Affichage consolidé sur un calendrier des absences de l’équipe ;",
+							"Export consolidé des demandes sur une période donnée."
+						],
+						"Ces données sont conservées pendant la durée d’exécution du service.",
+						"A résiliation du contrat, selon décision du Titulaire du contrat, ces données pourront être :",
+						[
+							"définitivement supprimées ;",
+							"archivées sur une base sécurisée pour utilisation ultérieure par le Titulaire du contrat (réouverture du service à une date ultérieure)."
+						],
+						"Les données collectées par le service ne seront jamais communiquées à des tiers."
+					]
+				},
+				{
+					"title": "Données collectées",
+					"bodies": [
+						"Tout utilisateur du service peut demander l'accès, la modification ou la suppression de ses données personnelles, sous réserve de validation de la part du Titulaire du contrat de service Freeday.",
+						"Tout Titulaire de contrat de service Freeday peut demander à tout moment la suppression définitive de son compte client, incluant la suppression de toutes les données collectées par l’application depuis l’ouverture du service.",
+						"Pour émettre de telles demandes, ou pour toute question concernant nos pratiques en matière de confidentialité, notre Délégué à la Protection des Données est disponible à l'adresse suivante : christopher@coddity.com.",
+						"En cas de manquement à nos devoirs de confidentialité, ou pour toute suspicion d’exploitation frauduleuse ou illicite de vos données personnelles, vous avez le droit d'introduire une réclamation auprès de la Cnil."
+					]
+				}
+			]
+		}
+	}	
+}

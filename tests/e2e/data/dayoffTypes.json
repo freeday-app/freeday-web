@@ -1,0 +1,16 @@
+[
+    {
+		"name": "Sick / Maladie$ Long& Very-Long@ Ultra-Super-Mega-Long",
+		"emoji": "scream",
+		"enabled": true,
+		"displayed": true,
+		"important": true
+    },
+    {
+		"name": "Dayoff / Congé$ Long& Very-Long@ Ultra-Super-Mega-Long",
+		"emoji": "face_with_symbols_on_mouth",
+		"enabled": true,
+		"displayed": true,
+		"important": false
+    }
+]

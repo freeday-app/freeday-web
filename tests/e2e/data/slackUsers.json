@@ -1,0 +1,50 @@
+[
+    {
+        "slackId" : "UDU2K2QSC",
+        "name" : "Sadie Adler",
+        "avatar" : "http://www.gravatar.com/avatar",
+        "locale": "en",
+        "forcedLocale": "fr",
+        "deleted": false
+    },
+    {
+        "slackId" : "U2W4J6XRD",
+        "name" : "Arthur Morgan",
+        "avatar" : "http://www.gravatar.com/avatar",
+        "locale": "en",
+        "forcedLocale": "fr",
+        "deleted": false
+    },
+    {
+        "slackId" : "U2V3J6XNG",
+        "name" : "John Marston",
+        "avatar" : "http://www.gravatar.com/avatar",
+        "locale": "en",
+        "forcedLocale": "en",
+        "deleted": false
+    },
+    {
+        "slackId" : "U20UBC268",
+        "name" : "Abigail Marston",
+        "avatar" : "http://www.gravatar.com/avatar",
+        "locale": "en",
+        "forcedLocale": "en",
+        "deleted": false
+    },
+    {
+        "slackId" : "U8CONJ5ZE",
+        "name" : "[deleted] Tom",
+        "avatar" : "http://www.gravatar.com/avatar",
+        "locale": "fr",
+        "forcedLocale": "en",
+        "deleted": true
+    },
+    {
+        "slackId" : "U9A5E7GN4",
+        "name" : "[deleted] Liza",
+        "avatar" : "http://www.gravatar.com/avatar",
+        "locale": "fr",
+        "forcedLocale": "en",
+        "deleted": true
+    }
+]

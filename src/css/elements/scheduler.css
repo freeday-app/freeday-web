@@ -1,0 +1,90 @@
+.scheduler {
+    /* padding: 0 20px; */
+    text-align: center;
+}
+
+.scheduler-table {
+    border-collapse: collapse;
+    margin: auto;
+    white-space: nowrap;
+    width: auto;
+}
+
+.scheduler-table th,
+.scheduler-table td {
+    padding: 10px 5px;
+}
+
+.scheduler-table thead.scheduler-table-head-fixed {
+    position: sticky;
+    top: 0;
+}
+
+.scheduler-table-head-month {
+    font-weight: bold;
+    text-align: center;
+}
+
+.scheduler-table-head-day {
+    font-weight: normal;
+    text-align: center;
+}
+
+td.scheduler-table-body-ressource {
+    padding-right: 20px;
+    text-align: left;
+}
+
+.scheduler-table-body-day {
+    text-align: center;
+    white-space: nowrap;
+}
+
+.scheduler-table-head-day,
+.scheduler-table-body-day {
+    width: 35px;
+}
+
+.scheduler-table-body-event {
+    border-radius: 50%;
+    height: 20px;
+    margin: auto;
+    width: 20px;
+}
+
+.scheduler-table-body-half-event {
+    height: 20px;
+    margin: 0;
+    width: 10px;
+}
+
+.scheduler-table-body-half-event.am {
+    border-bottom-left-radius: 10px;
+    border-top-left-radius: 10px;
+}
+
+.scheduler-table-body-half-event.pm {
+    border-bottom-right-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+.scheduler-table-body-half-event.am.split {
+    border-right: 1px solid;
+}
+
+.scheduler-table-body-half-event.pm.split {
+    border-left: 1px solid;
+}
+
+.scheduler-table-body-half-event-wrapper {
+    display: inline-block;
+}
+
+.schedule-tooltip {
+    text-align: center;
+}
+
+.schedule-tooltip .emoji-mart-emoji {
+    margin-right: 5px;
+    vertical-align: sub;
+}

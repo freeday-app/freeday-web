@@ -1,0 +1,24 @@
+.dayoff-form-body {
+    text-align: left;
+    width: 100%;
+}
+
+.dayoff-form-body-row {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+}
+
+.dayoff-form-body-row > .dayoff-form-body-col {
+    flex-basis: 0;
+    flex-grow: 1;
+    padding: 10px;
+}
+
+.dayoff-form-body-row > .dayoff-form-body-col-half {
+    flex-grow: 2;
+}
+
+.dayoff-form-body-row > .dayoff-form-body-col-quarter {
+    flex-grow: 1;
+}

@@ -1,0 +1,51 @@
+{
+    "parser": "@babel/eslint-parser",
+    "parserOptions": {
+        "requireConfigFile": false,
+        "babelOptions": {
+            "presets": [
+                "@babel/preset-react"
+            ]
+        }
+    },
+    "plugins": [
+        "chai-friendly"
+    ],
+    "extends": [
+        "airbnb",
+        "plugin:react/recommended",
+        "plugin:chai-friendly/recommended"
+    ],
+    "env": {
+        "browser": true
+    },
+    "ignorePatterns": [
+        "node_modules/",
+        "build/"
+    ],
+    "rules": {
+        "comma-dangle": ["error", "never"],
+        "import/extensions": ["error", "always"],
+        "indent": ["error", 4, {
+            "SwitchCase": 1
+        }],
+        "no-console": "off",
+        "no-param-reassign": ["error", {
+            "props": false
+        }],
+        "no-restricted-syntax": ["error", "LabeledStatement", "WithStatement"],
+        "no-underscore-dangle": ["error", {
+            "allow": ["_id"]
+        }],
+        "react/function-component-definition": [2, {
+            "namedComponents": "arrow-function"
+        }],
+        "react/jsx-filename-extension": ["error", {
+            "extensions": [".js"]
+        }],
+        "react/jsx-indent": ["error", 4],
+        "react/jsx-indent-props": ["error", 4],
+        "react/jsx-props-no-spreading": "off",
+        "react/prop-types": "off"
+    }
+}

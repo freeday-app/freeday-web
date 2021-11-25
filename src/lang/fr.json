@@ -1,0 +1,287 @@
+{
+	"date": {
+		"format": "DD.MM.YY",
+		"formatFull": "dddd D MMMM YYYY",
+		"firstDayOfWeek": 1,
+		"invalid": "Date invalide"
+	},
+	"app": {
+		"error": {
+			"language": "erreur lors du changement de langue",
+			"theme": "erreur lors du changement de thème"
+		}
+	},
+	"button": {
+		"add": "ajouter",
+		"cancel": "annuler",
+		"back": "retour",
+		"create": "créer",
+		"confirm": "confirmer",
+		"csv": "export CSV",
+		"delete": "supprimer",
+		"edit": "modifier",
+		"reset": "réinitialiser",
+		"save": "sauvegarder",
+		"today": "aujourd'hui",
+		"clear": "effacer",
+		"start": "commencer"
+	},
+	"dayoff": {
+		"noData": "aucune absence",
+		"button": {
+			"create": "créer une absence"
+		},
+		"dialog": {
+			"form": {
+				"title": "création d'une absence",
+				"editTitle": "édition d'une absence",
+				"endEmpty": "laissez la date de fin vide pour ne saisir qu'une seule journée"
+			},
+			"delete": {
+				"title": "confirmation de suppression",
+				"text": "êtes-vous sûr de supprimer cette absence"
+			},
+            "cancel": {
+                "title": "confirmation d'annulation",
+                "text": "raison"
+			},
+			"conflict": {
+				"title": "gestion des conflits",
+				"text": "des conflits ont été détectés, choisissez l'absence à confirmer"
+			}
+		},
+		"field": {
+			"slackUser": "utilisateur Slack",
+			"user": "utilisateur",
+			"type": "type",
+			"start": "début",
+			"end": "fin",
+			"count": "jours",
+			"status": "statut",
+			"actions": "actions",
+			"comment": "commentaire",
+			"important": "important"
+		},
+		"status": {
+			"confirmed": "confirmé",
+			"canceled": "annulé",
+			"pending": "a valider"
+		},
+		"error": {
+			"action": "erreur lors de l'opération sur l'absence",
+			"list": "erreur de récupération des absences",
+			"get": "erreur de récupération des données de l'absence",
+			"slackUsers": "erreur de récupération des utilisateurs Slack",
+			"dayoffTypes": "erreur de récupération des types d'absence",
+			"create": "erreur lors de la création de l'absence",
+			"edit": "erreur lors de l'édition de l'absence",
+			"delete": "erreur lors de la suppression de l'absence",
+			"endBeforeStart": "la date de fin doit être supérieure ou égale à la date de début",
+			"noWorkDays": "aucun jour ouvré dans l'absence",
+			"conflict": "conflit avec une absence existante"
+		},
+		"warning": {
+			"notifyReferrer": "le bot Freeday n'a pas pu notifier le channel référent Slack. Veuillez vérifiez que le bot Freeday est bien invité au sein du channel Slack référent choisi dans les paramètres généraux.",
+			"notifyUser": "le bot Freeday n'a pas pu notifier l'utilisateur Slack."
+		}
+	},
+	"schedule": {},
+	"summary": {
+		"column": {
+			"daysoff": "congés",
+			"sickLeaves": "arrêts maladie",
+			"total": "total absences",
+			"workedDays": "jours travaillés",
+			"workDays": "jours de travail",
+			"rate": "taux de présence",
+			"rateHelper": "jours travaillés / jours de travail"
+		},
+		"csvHelper": "seuls les types d'absence 'affichés' seront inclus dans l'export CSV"
+	},
+	"settings": {
+		"form": {
+			"brandingName": "nom de la société",
+			"brandingNameHelper": "max. 50 caractères",
+			"brandingLogo": "logo de la société",
+			"brandingLogoHelper": "max. 600px x 600px",
+			"slackReferrer": "référent Slack",
+			"slackReferrerHelper": "channel Slack dans lequel seront diffusées les notifications. Sont proposés les channels privés et publics dans lesquels le bot Freeday a été invité. Les channels nouvellement créés peuvent mettre jusqu'à 10 secondes à se synchroniser.",
+			"slackReferrerNoResult": "channel Slack non trouvé",
+			"monthlyRecap": "récapitulatif mensuel",
+			"monthlyRecapHelper": "à la fin du mois, chaque utilisateur recevra un récapitulatif de ses absences sur Slack"
+		},
+		"success": {
+			"save": "configuration sauvegardée"
+		},
+		"error": {
+			"get": "erreur de récupération de la configuration",
+			"file": "erreur lors de la prise en charge du fichier",
+			"fileSize": "la taille du fichier est trop grande (max. 500Ko)",
+			"fileDimensions": "les dimensions de l'image sont trop grandes (max. 600px x 600px)",
+			"save": "erreur lors de la sauvegarde de la configuration",
+			"slackReferrer": "le bot Freeday doit avoir été invité dans le channel référent",
+			"currentReferrer" : "le bot Freeday n'a pas été invité dans le channel référent actuel"
+		}
+	},
+	"admin": {
+		"create": "créer un administrateur",
+		"new": "nouvel administrateur",
+		"edit": "modification de",
+		"self": "c'est vous!",
+		"form": {
+			"username": "nom d'utilisateur",
+			"password": "mot de passe",
+			"passwordConfirm": "confirmation du mot de passe",
+			"passwordDontMatch": "les mots de passes ne correspondent pas",
+			"passwordEmpty": "ne sera pas modifié si vide",
+			"securityRule": "min. 6 caractères"
+		},
+		"dialog": {
+			"delete": {
+				"title": "confirmation de suppression",
+				"text": "êtes-vous sûr de supprimer"
+			}
+		},
+		"success": {
+			"create": "administrateur créé",
+			"edit": "administrateur modifié"
+		},
+		"error": {
+			"list": "erreur de récupération des administrateurs",
+			"get": "erreur de récupération de l'administrateur",
+			"create": "erreur de création de l'administrateur",
+			"edit": "erreur de modification de l'administrateur",
+			"delete": "erreur de suppression de l'administrateur",
+			"username": "ce nom d'utilisateur est déjà prit"
+		}
+	},
+	"dayoffType": {
+		"create": "créer un type d'absence",
+		"new": "nouveau type d'absence",
+		"edit": "modification du type d'absence",
+		"form": {
+			"name": "nom",
+			"emoji": "emoji",
+			"enabled": "activé",
+			"displayed": "affiché",
+			"important": "important",
+			"nameHelp": "max. 75 caractères",
+			"enabledHelp": "Des absences pourront être créées avec ce type",
+			"disabledHelp": "aucune absence ne pourra être créée avec ce type",
+			"displayedHelp": "ce type sera affiché dans les données et filtres",
+			"notDisplayedHelp": "ce type ne sera pas affiché dans les données et filtres",
+			"importantHelp": "les absences de ce type seront mises en avant",
+			"notImportantHelp": "les absences de ce type ne seront pas mises en avant"
+		},
+		"dialog": {
+			"delete": {
+				"title": "confirmation de suppression",
+				"text": "êtes-vous sûr de supprimer le type d'absence"
+			}
+		},
+		"success": {
+			"create": "type d'absence créé",
+			"edit": "type d'absence modifié"
+		},
+		"error": {
+			"list": "erreur de récupération des types d'absence",
+			"get": "erreur de récupération du type d'absence",
+			"create": "erreur de création du type d'absence",
+			"edit": "erreur de modification du type d'absence",
+			"delete": "erreur de suppression du type d'absence",
+			"conflict": "un type d'absence existant porte déjà ce nom"
+		}
+	},
+	"filter": {
+		"start": "début",
+		"end": "fin",
+		"month": "mois",
+		"year": "année",
+		"users": "utilisateurs",
+		"slackUsers": "utilisateurs Slack",
+		"type": "type",
+		"status": "statut",
+		"all": "afficher tous",
+		"noResult": "aucun résultat"
+	},
+	"welcome": {
+		"intro": "bienvenue sur Freeday",
+		"selectLanguage": "sélectionnez votre langue",
+		"createUser": "créez votre premier utilisateur"
+	},
+	"error": {
+		"generic": "oups! Un problème est survenu"
+	},
+	"login": {
+		"submit": "connexion",
+		"error": {
+			"credentials": "identifiants invalides"
+		}
+	},
+	"nav": {
+		"daysoff": "absences",
+		"schedule": "planning",
+		"summary": "récapitulatif",
+		"types": "types d'absence",
+		"settings": "paramètres généraux",
+		"admins": "administrateurs",
+		"config": "administration",
+		"language": "langue",
+		"theme": "thème",
+		"slack": "installer app Slack",
+		"logout": "déconnexion",
+		"notFound": "page introuvable",
+		"support": "support"
+	},
+	"theme": {
+		"dark": "sombre",
+		"light": "clair"
+	},
+	"emojiPicker": {
+		"none": "aucune",
+		"clear": "vider"
+	},
+	"month": {
+		"1": "janvier",
+		"2": "février",
+		"3": "mars",
+		"4": "avril",
+		"5": "mai",
+		"6": "juin",
+		"7": "juillet",
+		"8": "août",
+		"9": "septembre",
+		"10": "octobre",
+		"11": "novembre",
+		"12": "décembre"
+	},
+	"day": {
+		"1": "lundi",
+		"2": "mardi",
+		"3": "mercredi",
+		"4": "jeudi",
+		"5": "vendredi",
+		"6": "samedi",
+		"7": "dimanche"
+	},
+	"period": {
+		"am": "matin",
+		"pm": "après-midi",
+		"short": {
+			"am": "mat.",
+			"pm": "apr."
+		}
+	},
+	"slack": {
+		"registering": "enregistrement de l'app Slack",
+		"registered": "enregistrement de l'app Slack terminé",
+		"error": {
+			"getAuth": "erreur de récupération des informations d'authentification Slack",
+			"register": "erreur d'enregistrement de l'app Slack"
+		}
+	},
+	"footer": {
+		"text": "Énergisé par %s",
+		"brand": "Coddity®"
+	}
+}

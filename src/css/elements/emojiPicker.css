@@ -1,0 +1,18 @@
+#emoji-picker-button {
+    margin: 0;
+    width: auto;
+}
+
+#emoji-picker-button .emoji-mart-emoji {
+    vertical-align: middle;
+}
+
+.emoji-picker-content {
+    display: flex;
+    flex-direction: column;
+}
+
+.emoji-picker-clear {
+    display: block;
+    flex-grow: 1;
+}

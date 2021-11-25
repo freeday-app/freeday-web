@@ -1,0 +1,58 @@
+.filter,
+.filter * {
+    z-index: 2;
+}
+
+.filter-inline {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 100%;
+}
+
+.filter-inline > div {
+    flex-grow: 1;
+}
+
+.filter .bp3-form-content {
+    flex-grow: 1;
+}
+
+/* fix largeur inputs date */
+.filter .bp3-popover-target {
+    width: 100%;
+}
+
+.filter-inline > .bp3-form-group {
+    flex-basis: 0;
+    flex-grow: 0;
+    margin: 0;
+}
+
+.filter-inline > .bp3-form-group:not(.no-grow) {
+    flex-basis: 300px;
+}
+
+.filter-inline > .bp3-form-group.small:not(.no-grow) {
+    flex-basis: 175px;
+}
+
+.filter-inline > .bp3-form-group.big:not(.no-grow) {
+    flex-basis: 375px;
+}
+
+.filter-inline > .bp3-form-group:not(:first-child) {
+    padding-left: 20px;
+}
+
+.filter .select-with-buttons-container {
+    align-content: center;
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+}
+
+:not(.filter-inline) .filter-footer {
+    text-align: center;
+}

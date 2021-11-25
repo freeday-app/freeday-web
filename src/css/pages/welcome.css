@@ -1,0 +1,44 @@
+.welcome-intro-title {
+    font-size: 2.5rem;
+    margin: 25px;
+    text-align: center;
+    width: auto;
+}
+
+button.welcome-intro-button {
+    padding: 0 25px;
+    width: auto;
+}
+
+.welcome-title {
+    font-size: 2rem;
+    margin: 20px;
+    text-align: center;
+    width: auto;
+}
+
+.welcome-language-list {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-top: 20px;
+    width: 100%;
+}
+
+.welcome-language-item {
+    cursor: pointer;
+    margin: 0 20px;
+    padding: 0;
+}
+
+.welcome-language-item:not(:hover) {
+    opacity: 0.5;
+}
+
+.welcome-language-item:hover {
+    opacity: 1;
+}
+
+.welcome-language-name {
+    font-size: 1rem;
+}

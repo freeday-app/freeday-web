@@ -1,0 +1,31 @@
+.bp3-dialog.conflict-dialog {
+    width: auto;
+}
+
+.conflict-content {
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    padding-bottom: 30px;
+}
+
+.conflict-table {
+    margin: 0;
+    width: 100%;
+}
+
+#conflict-table th,
+#conflict-table td {
+    padding: 11px;
+    text-align: center;
+}
+
+#conflict-table th.left,
+#conflict-table td.left {
+    text-align: left;
+}
+
+.conflict-table-status .bp3-icon {
+    margin-right: 5px;
+}

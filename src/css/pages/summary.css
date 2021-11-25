@@ -1,0 +1,47 @@
+.summary-buttons {
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    width: 100%;
+}
+
+.summary-button {
+    width: 200px;
+}
+
+.summary-table {
+    white-space: nowrap;
+    width: auto;
+}
+
+table.summary-table thead th,
+table.summary-table tbody td {
+    text-align: center;
+    vertical-align: middle;
+}
+
+table.summary-table thead th {
+    position: sticky;
+    top: 0;
+    z-index: 1;
+}
+
+table.summary-table thead th:not(.not-fixed),
+table.summary-table tbody td:not(.not-fixed) {
+    width: 100px;
+}
+
+table.summary-table tbody td.summary-table-name {
+    padding-right: 20px;
+    text-align: left;
+}
+
+table.summary-table th .bp3-icon {
+    margin-left: 5px;
+}
+
+.summary-csv-helper {
+    display: inline-block;
+    margin-left: 10px;
+}
