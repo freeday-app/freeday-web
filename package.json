@@ -46,7 +46,7 @@
         "start": "cross-env PORT=8788 SKIP_PREFLIGHT_CHECK=true react-scripts start",
         "start-no-browser": "cross-env PORT=8788 BROWSER=none SKIP_PREFLIGHT_CHECK=true react-scripts start",
         "wait": "wait-on http-get://localhost:8788",
-        "build": "react-scripts build",
+        "build": "SKIP_PREFLIGHT_CHECK=true react-scripts build",
         "eject": "react-scripts eject",
         "test": "concurrently --success first --kill-others \"npm run start-no-browser\" \"npm run wait && npm run e2e\"",
         "e2e": "npx playwright test --reporter list --config tests/e2e/conf/headless.js",
