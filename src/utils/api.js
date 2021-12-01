@@ -10,7 +10,7 @@ class FetchError extends Error {
 
 const API = {
 
-    apiUrl: process.env.REACT_APP_API_URL,
+    apiUrl: process.env.REACT_APP_API_PUBLIC_URL,
     isAuth: false,
     token: null,
     userId: null,
