@@ -1,4 +1,5 @@
 import Tools from './tools.js';
+import Env from './env.js';
 
 class FetchError extends Error {
     constructor(json) {
@@ -10,7 +11,7 @@ class FetchError extends Error {
 
 const API = {
 
-    apiUrl: process.env.REACT_APP_API_PUBLIC_URL,
+    apiUrl: Env.get('apiUrl'),
     isAuth: false,
     token: null,
     userId: null,

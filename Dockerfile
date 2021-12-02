@@ -7,9 +7,6 @@ WORKDIR /app
 # copy project files
 COPY . .
 
-# install serve package globally
-RUN npm install -g serve
-
 # install dependencies
 RUN npm install
 
@@ -20,4 +17,4 @@ RUN npm run build
 EXPOSE 8788
 
 # run app
-CMD ["serve", "-s", "-l", "8788", "build"]
+CMD ["node", "serve.js"]
