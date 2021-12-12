@@ -24,6 +24,7 @@
         "build/"
     ],
     "rules": {
+        "class-methods-use-this": "off",
         "comma-dangle": ["error", "never"],
         "import/extensions": ["error", "always"],
         "indent": ["error", 4, {

@@ -19,7 +19,7 @@ const Env = {
                 value = process.env[key];
             }
         });
-        if (Env.current === 'prod') {
+        if (Env.current === 'prod' && window) {
             keys.forEach((key) => {
                 if (window[key]) {
                     value = window[key];

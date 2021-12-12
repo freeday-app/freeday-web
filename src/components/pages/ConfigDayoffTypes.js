@@ -15,7 +15,7 @@ import Toaster from '../../utils/toaster.js';
 import Tools, { TruncLength } from '../../utils/tools.js';
 
 class DayoffTypes extends ConfigPage {
-    static NAME_MAXLENGTH = 75
+    static NAME_MAXLENGTH = 75;
 
     constructor(props) {
         super(props);
@@ -72,7 +72,7 @@ class DayoffTypes extends ConfigPage {
             });
         }
         return null;
-    }
+    };
 
     // sauvegarde données type d'absence
     saveData = async (data, id = null) => {
@@ -103,13 +103,13 @@ class DayoffTypes extends ConfigPage {
             });
             throw err;
         }
-    }
+    };
 
     // valide formulaire type d'absence
     validate = () => (
         this.state.data.name.length > 0
         && this.state.data.name.length <= DayoffTypes.NAME_MAXLENGTH
-    )
+    );
 
     // éléments du formulaire type d'absence
     formElements = (isCreate = true) => ({
@@ -158,7 +158,7 @@ class DayoffTypes extends ConfigPage {
             create: isCreate,
             validate: this.validate
         }]
-    })
+    });
 
     listData = () => {
         const { dayoffTypes } = this.state;
@@ -204,7 +204,7 @@ class DayoffTypes extends ConfigPage {
                 };
             })
         };
-    }
+    };
 }
 
 export default DayoffTypes;

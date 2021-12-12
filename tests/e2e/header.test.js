@@ -83,9 +83,11 @@ test.describe('[Navigation header]', () => {
         for (const [theme, bodyClass] of [['light', 'bp3'], ['dark', 'bp3-dark']]) {
             await GlobalHelper.changeTheme(page, theme);
             await GlobalHelper.assertHeader(page);
-            await page.$eval('body', (
-                (el, className) => el.classList.contains(className)
-            ), bodyClass);
+            await page.$eval(
+                'body',
+                (el, className) => el.classList.contains(className),
+                bodyClass
+            );
         }
         await GlobalHelper.changeTheme(page, 'light');
     });

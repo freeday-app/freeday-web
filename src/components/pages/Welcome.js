@@ -61,14 +61,14 @@ class Welcome extends Component {
             username && username.length >= 6
             && password && password.length >= 6
         );
-    }
+    };
 
     displayLanguageSelection = () => {
         this.setState({
             userCreation: false,
             languageSelection: true
         });
-    }
+    };
 
     handleLanguageSelection = (code) => {
         Lang.setCurrent(code);
@@ -77,13 +77,13 @@ class Welcome extends Component {
             userCreation: true,
             languageSelection: false
         });
-    }
+    };
 
     handleUserChange = (e) => {
         this.setState({
             [e.target.name]: e.target.value
         });
-    }
+    };
 
     handleUserSubmit = async (e) => {
         e.preventDefault();
@@ -130,7 +130,7 @@ class Welcome extends Component {
                 intent: Intent.DANGER
             });
         }
-    }
+    };
 
     render() {
         const {

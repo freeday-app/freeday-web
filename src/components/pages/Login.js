@@ -49,13 +49,13 @@ class Login extends Component {
     validateForm = () => {
         const { username, password } = this.state;
         return username.length > 0 && password.length > 0;
-    }
+    };
 
     handleChange = (e) => {
         this.setState({
             [e.target.name]: e.target.value
         });
-    }
+    };
 
     handleSubmit = async (e) => {
         e.preventDefault();
@@ -95,7 +95,7 @@ class Login extends Component {
                 intent: Intent.DANGER
             });
         }
-    }
+    };
 
     render() {
         const {

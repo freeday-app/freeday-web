@@ -74,7 +74,7 @@ class Admins extends ConfigPage {
             });
         }
         return null;
-    }
+    };
 
     // sauvegarde données user
     saveData = async (data, id = null) => {
@@ -108,7 +108,7 @@ class Admins extends ConfigPage {
             });
             throw err;
         }
-    }
+    };
 
     // supprime user
     delete = async (id) => {
@@ -124,7 +124,7 @@ class Admins extends ConfigPage {
             });
             throw err;
         }
-    }
+    };
 
     // valide formulaire user
     validate = () => (
@@ -133,7 +133,7 @@ class Admins extends ConfigPage {
                 this.state.action === 'edit' && this.state.data.password.length === 0
             )
         )
-    )
+    );
 
     // checks that password and password confirm match
     passwordMatch() {
@@ -190,7 +190,7 @@ class Admins extends ConfigPage {
             }]
         };
         return elements;
-    }
+    };
 
     listData = () => {
         const { users } = this.state;
@@ -225,7 +225,7 @@ class Admins extends ConfigPage {
                 }]
             }))
         };
-    }
+    };
 }
 
 export default Admins;

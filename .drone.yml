@@ -1,0 +1,78 @@
+kind: pipeline
+type: docker
+name: freeday-web-ci
+
+trigger:
+  branch:
+  - dev
+
+services:
+- name: mongo
+  image: mongo:latest
+- name: freeday-api
+  image: freedayapp/freeday-api
+  environment:
+    MODE: test
+    TEST_USER: teste2e:teste2e
+    FRONT_PUBLIC_URL: http://localhost:8788/
+    API_PUBLIC_URL: http://localhost:8787/
+    API_ENABLE_CORS: 'true'
+    API_PORT: 8787
+    MONGO_TEST_URL: mongodb://mongo:27017/freeday-test
+    SLACK_ENABLED: 'false'
+    SLACK_CLIENT_ID: 1234
+    DIALOGFLOW_ENABLED: 'false'
+
+steps:
+- name: dependencies
+  image: node:14
+  pull: if-not-exists
+  commands:
+  - npm i
+- name: lint
+  image: node:14
+  pull: if-not-exists
+  commands:
+  - npm run lint
+  depends_on:
+  - dependencies
+- name: test
+  image: mcr.microsoft.com/playwright:v1.12.3-focal
+  pull: if-not-exists
+  environment:
+    REACT_APP_API_PUBLIC_URL: http://freeday-api:8787
+  commands:
+  - npm run test
+  depends_on:
+  - dependencies
+- name: sonarqube
+  image: aosapps/drone-sonar-plugin
+  settings:
+    sonar_host:
+      from_secret: sonar_host
+    sonar_token:
+      from_secret: sonar_token
+  depends_on:
+  - dependencies
+
+---
+kind: pipeline
+type: docker
+name: freeday-web-publish
+
+trigger:
+  event:
+  - tag
+
+steps:
+- name: docker  
+  image: plugins/docker
+  settings:
+    repo: freedayapp/freeday-web
+    tags:
+    - ${DRONE_TAG}
+    - latest
+    username:
+      from_secret: docker_hub_username
+    password:
+      from_secret: docker_hub_password

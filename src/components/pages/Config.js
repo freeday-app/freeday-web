@@ -21,17 +21,17 @@ class ConfigPage extends Component {
                 {Lang.text(`nav.${name}`)}
             </span>
         </>
-    )
+    );
 
     getSelectedTabId = () => {
         const { content } = this.props;
         return content;
-    }
+    };
 
     handleTabChange = (tabId) => {
         const { history } = this.props;
         history.push(`/config/${tabId}`);
-    }
+    };
 
     subnav = () => (
         <div className="config-header">
@@ -45,7 +45,7 @@ class ConfigPage extends Component {
                 <Tab id="types" title={this.tabContent('types', 'manually-entered-data')} />
             </Tabs>
         </div>
-    )
+    );
 
     content = () => {
         const { content } = this.props;
@@ -59,7 +59,7 @@ class ConfigPage extends Component {
             default:
                 return null;
         }
-    }
+    };
 
     render() {
         return (

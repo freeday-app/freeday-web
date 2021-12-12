@@ -33,25 +33,25 @@ class DayoffItem extends Component {
                 <p>{Lang.text('dayoff.status.pending')}</p>
             </div>
         );
-    }
+    };
 
     date = (date, dateFull) => (
         <Tooltip content={dateFull} position={Position.BOTTOM}>
             <span className="dayoff-date">{date}</span>
         </Tooltip>
-    )
+    );
 
     comment = (comment) => (
         <Tooltip content={comment || ''} position={Position.BOTTOM}>
             <span className="dayoff-truncated-comment">{comment ? Tools.trunc(comment, TruncLength.VERYLONG) : ''}</span>
         </Tooltip>
-    )
+    );
 
     dayoffType = (type) => (
         <Tooltip content={type || ''} position={Position.BOTTOM}>
             <span className="dayoff-truncated-type">{Tools.trunc(type, TruncLength.SHORT)}</span>
         </Tooltip>
-    )
+    );
 
     render() {
         const { dayoff, onEdit, onRefresh } = this.props;

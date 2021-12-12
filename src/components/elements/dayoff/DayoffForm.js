@@ -172,7 +172,7 @@ class DayoffForm extends Component {
                 intent: Intent.DANGER
             });
         }
-    }
+    };
 
     // gère submit formulaire
     handleSubmit = () => {
@@ -188,7 +188,7 @@ class DayoffForm extends Component {
         } else { // si pas d'erreur de validation
             this.handleFormSubmit();
         }
-    }
+    };
 
     // renvoie les erreurs de validation du formulaire, null si aucune erreur
     // erreurs renvoyées sous forme d'objet pour mettre à jour le state

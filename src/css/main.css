@@ -182,6 +182,7 @@ a:hover {
     text-decoration: none;
 }
 
+/* stylelint-disable-next-line selector-class-pattern */
 .DayPicker-Day--isToday {
     border: 1px solid var(--palette-lightgrey);
 }
@@ -357,6 +358,7 @@ table td .avatar {
 }
 
 /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ BLUEPRINT OVERRIDES */
+/* stylelint-disable selector-class-pattern */
 
 /* Input */
 
@@ -379,3 +381,5 @@ table td .avatar {
 .bp3-form-helper-text .helper-error {
     color: var(--palette-red);
 }
+
+/* stylelint-enable selector-class-pattern */

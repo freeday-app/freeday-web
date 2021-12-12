@@ -2,7 +2,7 @@ const Fetch = require('node-fetch');
 
 const APIHelper = {
 
-    baseUrl: 'http://test.freeday',
+    baseUrl: process.env.REACT_APP_API_PUBLIC_URL,
     token: null,
 
     async request(opts) {

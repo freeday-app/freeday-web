@@ -35,7 +35,7 @@ class SideButtons extends Component {
             ]);
         });
         return csvData;
-    }
+    };
 
     render() {
         const {

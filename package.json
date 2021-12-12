@@ -3,7 +3,6 @@
     "version": "1.0.0",
     "author": "Coddity",
     "description": "Freeday web client",
-    "type": "module",
     "dependencies": {
         "@babel/core": "^7.16.0",
         "@babel/eslint-parser": "^7.16.3",
@@ -20,8 +19,6 @@
         "eslint-plugin-jsx-a11y": "^6.5.1",
         "eslint-plugin-react": "^7.27.1",
         "express": "^4.17.1",
-        "markdownlint": "^0.24.0",
-        "markdownlint-cli": "^0.30.0",
         "query-string": "^7.0.1",
         "react": "^17.0.2",
         "react-csv": "^2.0.3",
@@ -48,7 +45,7 @@
     "scripts": {
         "start": "cross-env REACT_APP_ENV=dev PORT=8788 SKIP_PREFLIGHT_CHECK=true react-scripts start",
         "start-no-browser": "cross-env REACT_APP_ENV=dev PORT=8788 BROWSER=none SKIP_PREFLIGHT_CHECK=true react-scripts start",
-        "wait": "wait-on http-get://localhost:8788",
+        "wait": "wait-on http-get://localhost:8788 --httpTimeout 90000 --timeout 90000",
         "build": "SKIP_PREFLIGHT_CHECK=true react-scripts build",
         "eject": "react-scripts eject",
         "test": "concurrently --success first --kill-others \"npm run start-no-browser\" \"npm run wait && npm run e2e\"",
@@ -57,12 +54,10 @@
         "e2e-headed-slow": "npx playwright test --reporter list --config tests/e2e/conf/headedSlow.js",
         "lint-js": "eslint .",
         "lint-js-fix": "eslint . --fix",
-        "lint-css": "stylelint **/*.css",
-        "lint-css-fix": "stylelint **/*.css --fix",
-        "lint-md": "markdownlint README.md",
-        "lint-md-fix": "markdownlint README.md --fix",
-        "lint": "npm run lint-js && npm run lint-css && npm run lint-md",
-        "lint-fix": "npm run lint-js-fix && npm run lint-css-fix && npm run lint-md-fix"
+        "lint-css": "stylelint src/**/*.css",
+        "lint-css-fix": "stylelint src/**/*.css --fix",
+        "lint": "npm run lint-js && npm run lint-css",
+        "lint-fix": "npm run lint-js-fix && npm run lint-css-fix"
     },
     "browserslist": [
         ">0.2%",

@@ -35,7 +35,7 @@ class ConfigContent extends Component {
                 ...prevState.defaultData
             }
         }));
-    }
+    };
 
     // gère click dans liste (édition)
     handleEdit = async (id) => {
@@ -46,7 +46,7 @@ class ConfigContent extends Component {
             title,
             data
         });
-    }
+    };
 
     // gère changement dans formulaire
     handleChange = (name, value) => {
@@ -56,7 +56,7 @@ class ConfigContent extends Component {
                 [name]: value
             }
         }));
-    }
+    };
 
     // gère submit formulaire
     handleSubmit = async (e) => {
@@ -78,12 +78,12 @@ class ConfigContent extends Component {
                 formLoading: false
             });
         }
-    }
+    };
 
     // gère annulation formulaire
     handleCancel = () => {
         this.closeForm();
-    }
+    };
 
     // ferme formulaire et affiche liste
     closeForm = () => {
@@ -98,7 +98,7 @@ class ConfigContent extends Component {
                 ...defaultData
             }
         });
-    }
+    };
 
     // gère confirmation de suppression
     handleDelete = async (id) => {
@@ -124,7 +124,7 @@ class ConfigContent extends Component {
                 formLoading: false
             });
         }
-    }
+    };
 
     list = () => {
         const type = this.getType();
@@ -150,7 +150,7 @@ class ConfigContent extends Component {
                 />
             </>
         );
-    }
+    };
 
     form = () => {
         const {
@@ -174,7 +174,7 @@ class ConfigContent extends Component {
                 )}
             />
         );
-    }
+    };
 
     // rendu page
     render() {

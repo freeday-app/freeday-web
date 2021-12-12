@@ -212,7 +212,7 @@ class Settings extends Component {
                 formLoading: false
             });
         }
-    }
+    };
 
     currentReferrerError() {
         const { slackChannelsById, configuration } = this.state;

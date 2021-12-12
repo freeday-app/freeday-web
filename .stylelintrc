@@ -11,9 +11,6 @@
 	},
     "ignoreFiles": [
         "node_modules/**/*",
-        "client/build/**/*",
-        "client/node_modules/**/*",
-        "docs/build/**/*",
-        "docs/node_modules/**/*"
+        "build/**/*"
     ]
 }
