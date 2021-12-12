@@ -45,7 +45,7 @@
     "scripts": {
         "start": "cross-env REACT_APP_ENV=dev PORT=8788 SKIP_PREFLIGHT_CHECK=true react-scripts start",
         "start-no-browser": "cross-env REACT_APP_ENV=dev PORT=8788 BROWSER=none SKIP_PREFLIGHT_CHECK=true react-scripts start",
-        "wait": "wait-on http-get://localhost:8788 --httpTimeout 90000 --timeout 90000",
+        "wait": "wait-on http-get://localhost:8788 --httpTimeout 180000 --timeout 180000",
         "build": "SKIP_PREFLIGHT_CHECK=true react-scripts build",
         "eject": "react-scripts eject",
         "test": "concurrently --success first --kill-others \"npm run start-no-browser\" \"npm run wait && npm run e2e\"",
