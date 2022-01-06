@@ -3,6 +3,7 @@
     "version": "1.0.0",
     "author": "Coddity",
     "description": "Freeday web client",
+    "type": "module",
     "dependencies": {
         "@babel/core": "^7.16.0",
         "@babel/eslint-parser": "^7.16.3",
