@@ -15,7 +15,7 @@ import {
 } from '@blueprintjs/core';
 import { Emoji } from 'emoji-mart';
 
-import ReactIcon from './elements/ReactIcon.js';
+// import ReactIcon from './elements/ReactIcon.js';
 import API from '../utils/api.js';
 import Toaster from '../utils/toaster.js';
 import Lang from '../utils/language.js';
@@ -108,23 +108,23 @@ class Header extends Component {
     };
 
     // handles slack install link
-    handleSlackInstall = async () => {
-        try {
-            // gets oauth data from api
-            const { url } = await API.call({
-                method: 'GET',
-                url: '/api/slack/auth'
-            });
-            // redirects to oauth url
-            window.location.href = url;
-        } catch (err) {
-            console.error(err);
-            Toaster.show({
-                message: Lang.text('slack.error.getAuth'),
-                intent: Intent.DANGER
-            });
-        }
-    };
+    // handleSlackInstall = async () => {
+    //     try {
+    //         // gets oauth data from api
+    //         const { url } = await API.call({
+    //             method: 'GET',
+    //             url: '/api/slack/auth'
+    //         });
+    //         // redirects to oauth url
+    //         window.location.href = url;
+    //     } catch (err) {
+    //         console.error(err);
+    //         Toaster.show({
+    //             message: Lang.text('slack.error.getAuth'),
+    //             intent: Intent.DANGER
+    //         });
+    //     }
+    // };
 
     // handles config menu links to config pages
     handleConfigLink = (path) => {
@@ -207,12 +207,12 @@ class Header extends Component {
             </Menu.Item>
             <Menu.Divider />
             {/* slack oauth button */}
-            <Menu.Item
+            {/* <Menu.Item
                 text={Lang.text('nav.slack')}
                 icon={<ReactIcon icon="slack" />}
                 onClick={this.handleSlackInstall}
             />
-            <Menu.Divider />
+            <Menu.Divider /> */}
             {/* Support dialog */}
             <Menu.Item
                 text={Lang.text('nav.support')}
