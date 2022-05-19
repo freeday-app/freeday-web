@@ -6,9 +6,9 @@ in the window object using the small javascript script in index.html
 This trick allows to change the environment variables without
 having to rebuild the app and therefore rebuild the docker image
 */
-import Express from 'express';
-import Ejs from 'ejs';
-import Path from 'path';
+const Express = require('express');
+const Ejs = require('ejs');
+const Path = require('path');
 
 const app = Express();
 
