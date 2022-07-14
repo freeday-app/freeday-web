@@ -1,9 +1,9 @@
 const { expect } = require('chai');
 const Path = require('path');
 
-const DataHelper = require('./data.helper.js');
-const GlobalHelper = require('./global.helper.js');
-const Lang = require('./lang.helper.js');
+const DataHelper = require('./data.helper');
+const GlobalHelper = require('./global.helper');
+const Lang = require('./lang.helper');
 
 const ConfigSettingsHelper = {
 

@@ -1,15 +1,15 @@
 import DayJS from 'dayjs';
 // charger des locales dayjs supplémentaires ici si besoin
-import 'dayjs/locale/fr.js';
-import 'dayjs/locale/en-gb.js';
+import 'dayjs/locale/fr';
+import 'dayjs/locale/en-gb';
 
-import Tools from './tools.js';
+import Tools from './tools';
 
-const enData = require('../lang/en.json');
-const frData = require('../lang/fr.json');
+import enData from '../lang/en.json';
+import frData from '../lang/fr.json';
 
-const enSupportData = require('../lang/support.en.json');
-const frSupportData = require('../lang/support.fr.json');
+import enSupportData from '../lang/support.en.json';
+import frSupportData from '../lang/support.fr.json';
 
 const Language = {
 

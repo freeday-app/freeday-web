@@ -1,8 +1,8 @@
 import { Position } from '@blueprintjs/core';
 import DayJS from 'dayjs';
 
-import Lang from './language.js';
-import Tools from './tools.js';
+import Lang from './language';
+import Tools from './tools';
 
 function getMonthList() {
     return Object.values(Lang.data('month')).map((m) => Tools.ucfirst(m));

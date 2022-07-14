@@ -1,9 +1,9 @@
 const DayJS = require('dayjs');
 const { test } = require('@playwright/test');
 
-const DataHelper = require('./helpers/data.helper.js');
-const GlobalHelper = require('./helpers/global.helper.js');
-const SummaryHelper = require('./helpers/summary.helper.js');
+const DataHelper = require('./helpers/data.helper');
+const GlobalHelper = require('./helpers/global.helper');
+const SummaryHelper = require('./helpers/summary.helper');
 
 test.describe('[Summary]', () => {
     test('Initializing tests', async ({ page }) => {

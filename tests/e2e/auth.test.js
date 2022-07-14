@@ -1,8 +1,8 @@
 const { test } = require('@playwright/test');
-const DataHelper = require('./helpers/data.helper.js');
-const GlobalHelper = require('./helpers/global.helper.js');
-const AuthHelper = require('./helpers/auth.helper.js');
-const Lang = require('./helpers/lang.helper.js');
+const DataHelper = require('./helpers/data.helper');
+const GlobalHelper = require('./helpers/global.helper');
+const AuthHelper = require('./helpers/auth.helper');
+const Lang = require('./helpers/lang.helper');
 
 test.describe('[Authentication]', () => {
     test('Initializing tests', async ({ page }) => {

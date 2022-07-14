@@ -1,8 +1,8 @@
 const { test } = require('@playwright/test');
 
-const DataHelper = require('./helpers/data.helper.js');
-const GlobalHelper = require('./helpers/global.helper.js');
-const WelcomeHelper = require('./helpers/welcome.helper.js');
+const DataHelper = require('./helpers/data.helper');
+const GlobalHelper = require('./helpers/global.helper');
+const WelcomeHelper = require('./helpers/welcome.helper');
 const AuthData = require('./data/auth.json');
 
 test.describe('[Welcome]', () => {

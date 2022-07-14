@@ -1,8 +1,8 @@
 const DayJS = require('dayjs');
 
-const GlobalHelper = require('./global.helper.js');
-const DataHelper = require('./data.helper.js');
-const Lang = require('./lang.helper.js');
+const GlobalHelper = require('./global.helper');
+const DataHelper = require('./data.helper');
+const Lang = require('./lang.helper');
 
 const SummaryHelper = {
 

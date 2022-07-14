@@ -1,8 +1,8 @@
 const { expect } = require('chai');
 const DayJS = require('dayjs');
 
-const GlobalHelper = require('./global.helper.js');
-const Lang = require('./lang.helper.js');
+const GlobalHelper = require('./global.helper');
+const Lang = require('./lang.helper');
 
 // gets list of day numbers (1-31) between to dates and within a range
 const getDayNumbers = (startDate, endDate, rangeStart, rangeEnd) => {

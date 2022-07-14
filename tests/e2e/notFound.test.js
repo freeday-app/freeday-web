@@ -1,9 +1,9 @@
 const { test } = require('@playwright/test');
 
-const DataHelper = require('./helpers/data.helper.js');
-const GlobalHelper = require('./helpers/global.helper.js');
-const AuthHelper = require('./helpers/auth.helper.js');
-const Lang = require('./helpers/lang.helper.js');
+const DataHelper = require('./helpers/data.helper');
+const GlobalHelper = require('./helpers/global.helper');
+const AuthHelper = require('./helpers/auth.helper');
+const Lang = require('./helpers/lang.helper');
 
 const assertNotFound = async (page) => {
     await page.waitForSelector(`#content .page-not-found:has-text("${Lang.text('nav.notFound')}")`);

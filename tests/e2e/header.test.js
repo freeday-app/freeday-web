@@ -1,11 +1,11 @@
 const { test } = require('@playwright/test');
 
-const DataHelper = require('./helpers/data.helper.js');
-const GlobalHelper = require('./helpers/global.helper.js');
-const ConfigHelper = require('./helpers/config.helper.js');
-const DaysoffHelper = require('./helpers/daysoff.helper.js');
-const ScheduleHelper = require('./helpers/schedule.helper.js');
-const SummaryHelper = require('./helpers/summary.helper.js');
+const DataHelper = require('./helpers/data.helper');
+const GlobalHelper = require('./helpers/global.helper');
+const ConfigHelper = require('./helpers/config.helper');
+const DaysoffHelper = require('./helpers/daysoff.helper');
+const ScheduleHelper = require('./helpers/schedule.helper');
+const SummaryHelper = require('./helpers/summary.helper');
 
 test.describe('[Navigation header]', () => {
     test('Initializing tests', async ({ page }) => {

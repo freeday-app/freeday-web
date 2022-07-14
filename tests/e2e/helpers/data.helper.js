@@ -1,6 +1,6 @@
 const { expect } = require('chai');
 
-const APIHelper = require('./api.helper.js');
+const APIHelper = require('./api.helper');
 
 const AuthData = require('../data/auth.json');
 const SlackUsersData = require('../data/slackUsers.json');

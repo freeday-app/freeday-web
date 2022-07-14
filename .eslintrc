@@ -26,7 +26,9 @@
     "rules": {
         "class-methods-use-this": "off",
         "comma-dangle": ["error", "never"],
-        "import/extensions": ["error", "always"],
+        "import/no-extraneous-dependencies": ["error", {
+            "devDependencies": ["tests/**/*.js", "vite.config.js"]
+        }],
         "indent": ["error", 4, {
             "SwitchCase": 1
         }],
@@ -42,7 +44,7 @@
             "namedComponents": "arrow-function"
         }],
         "react/jsx-filename-extension": ["error", {
-            "extensions": [".js"]
+            "extensions": [".jsx"]
         }],
         "react/jsx-indent": ["error", 4],
         "react/jsx-indent-props": ["error", 4],

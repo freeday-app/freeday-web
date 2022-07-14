@@ -1,13 +1,13 @@
 const { expect } = require('chai');
 const DayJS = require('dayjs');
-const AdvancedFormat = require('dayjs/plugin/advancedFormat.js');
-require('dayjs/locale/fr.js');
-require('dayjs/locale/en-gb.js');
+const AdvancedFormat = require('dayjs/plugin/advancedFormat');
+require('dayjs/locale/fr');
+require('dayjs/locale/en-gb');
 
 DayJS.extend(AdvancedFormat);
 
-const DataHelper = require('./data.helper.js');
-const Lang = require('./lang.helper.js');
+const DataHelper = require('./data.helper');
+const Lang = require('./lang.helper');
 const AuthData = require('../data/auth.json');
 const ConfigurationData = require('../data/configuration.json');
 

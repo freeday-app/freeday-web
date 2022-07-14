@@ -1,10 +1,10 @@
 const { test } = require('@playwright/test');
 
-const DataHelper = require('./helpers/data.helper.js');
-const GlobalHelper = require('./helpers/global.helper.js');
-const ConfigHelper = require('./helpers/config.helper.js');
-const ConfigSettingsHelper = require('./helpers/configSettings.helper.js');
-const Lang = require('./helpers/lang.helper.js');
+const DataHelper = require('./helpers/data.helper');
+const GlobalHelper = require('./helpers/global.helper');
+const ConfigHelper = require('./helpers/config.helper');
+const ConfigSettingsHelper = require('./helpers/configSettings.helper');
+const Lang = require('./helpers/lang.helper');
 const ConfigurationData = require('./data/configuration.json');
 const SlackChannelsData = require('./data/slackChannels.json');
 

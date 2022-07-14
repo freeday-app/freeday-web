@@ -1,7 +1,7 @@
 const { test } = require('@playwright/test');
-const DataHelper = require('./helpers/data.helper.js');
-const GlobalHelper = require('./helpers/global.helper.js');
-const ConfigHelper = require('./helpers/config.helper.js');
+const DataHelper = require('./helpers/data.helper');
+const GlobalHelper = require('./helpers/global.helper');
+const ConfigHelper = require('./helpers/config.helper');
 
 test.describe('[Configuration]', () => {
     test('Initializing tests', async ({ page }) => {

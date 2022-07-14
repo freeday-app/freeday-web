@@ -1,9 +1,9 @@
 const { expect } = require('chai');
 
-const DataHelper = require('./data.helper.js');
-const APIHelper = require('./api.helper.js');
-const GlobalHelper = require('./global.helper.js');
-const Lang = require('./lang.helper.js');
+const DataHelper = require('./data.helper');
+const APIHelper = require('./api.helper');
+const GlobalHelper = require('./global.helper');
+const Lang = require('./lang.helper');
 
 const WelcomeHelper = {
 

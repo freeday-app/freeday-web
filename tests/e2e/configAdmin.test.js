@@ -1,11 +1,11 @@
 const { expect } = require('chai');
 const { test } = require('@playwright/test');
 
-const DataHelper = require('./helpers/data.helper.js');
-const GlobalHelper = require('./helpers/global.helper.js');
-const ConfigHelper = require('./helpers/config.helper.js');
-const ConfigAdminHelper = require('./helpers/configAdmin.helper.js');
-const Lang = require('./helpers/lang.helper.js');
+const DataHelper = require('./helpers/data.helper');
+const GlobalHelper = require('./helpers/global.helper');
+const ConfigHelper = require('./helpers/config.helper');
+const ConfigAdminHelper = require('./helpers/configAdmin.helper');
+const Lang = require('./helpers/lang.helper');
 
 const getByValue = (listOfObj, key, val) => (
     listOfObj.filter((obj) => obj[key] === val).shift()

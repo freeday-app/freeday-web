@@ -1,10 +1,10 @@
 const DayJS = require('dayjs');
 const { test } = require('@playwright/test');
 
-const DataHelper = require('./helpers/data.helper.js');
-const GlobalHelper = require('./helpers/global.helper.js');
-const DaysoffHelper = require('./helpers/daysoff.helper.js');
-const Lang = require('./helpers/lang.helper.js');
+const DataHelper = require('./helpers/data.helper');
+const GlobalHelper = require('./helpers/global.helper');
+const DaysoffHelper = require('./helpers/daysoff.helper');
+const Lang = require('./helpers/lang.helper');
 
 test.describe('[Daysoff]', () => {
     test('Initializing tests', async ({ page }) => {

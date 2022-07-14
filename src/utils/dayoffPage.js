@@ -2,11 +2,11 @@ import { Intent } from '@blueprintjs/core';
 import QS from 'query-string';
 import DayJS from 'dayjs';
 
-import API from './api.js';
-import Lang from './language.js';
-import Toaster, { ToasterTimeout } from './toaster.js';
-import Tools from './tools.js';
-import Validator from './validator.js';
+import API from './api';
+import Lang from './language';
+import Toaster, { ToasterTimeout } from './toaster';
+import Tools from './tools';
+import Validator from './validator';
 
 const DayoffPage = {
 

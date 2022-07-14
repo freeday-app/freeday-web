@@ -1,7 +1,7 @@
 const { expect } = require('chai');
 
-const GlobalHelper = require('./global.helper.js');
-const Lang = require('./lang.helper.js');
+const GlobalHelper = require('./global.helper');
+const Lang = require('./lang.helper');
 
 const ConfigDayoffTypesHelper = {
 

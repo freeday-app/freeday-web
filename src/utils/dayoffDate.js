@@ -1,6 +1,6 @@
 import DayJS from 'dayjs';
 
-import Lang from './language.js';
+import Lang from './language';
 
 const DayoffDate = {
 

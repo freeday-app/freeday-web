@@ -1,5 +1,4 @@
-import Tools from './tools.js';
-import Env from './env.js';
+import Tools from './tools';
 
 class FetchError extends Error {
     constructor(json) {
@@ -11,7 +10,6 @@ class FetchError extends Error {
 
 const API = {
 
-    apiUrl: Env.get('apiUrl'),
     isAuth: false,
     token: null,
     userId: null,
@@ -31,7 +29,6 @@ const API = {
     },
 
     async call(opts) {
-        const fullUrl = new URL(opts.url, this.apiUrl).href;
         const headers = {
             'Content-Type': 'application/json'
         };
@@ -47,7 +44,7 @@ const API = {
         if (opts.data) {
             fetchOpts.body = JSON.stringify(opts.data);
         }
-        const result = await fetch(fullUrl, fetchOpts);
+        const result = await fetch(opts.url, fetchOpts);
         if (result.ok) {
             return result.json();
         }

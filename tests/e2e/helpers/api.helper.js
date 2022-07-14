@@ -2,7 +2,7 @@ const Fetch = require('node-fetch');
 
 const APIHelper = {
 
-    baseUrl: process.env.REACT_APP_API_PUBLIC_URL ?? 'http://localhost:8787',
+    baseUrl: import.meta.env.VITE_API_PUBLIC_URL ?? 'http://localhost:8787',
     token: null,
 
     async request(opts) {

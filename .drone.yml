@@ -40,7 +40,7 @@ steps:
   image: mcr.microsoft.com/playwright:v1.21.1-focal
   pull: if-not-exists
   environment:
-    REACT_APP_API_PUBLIC_URL: http://freeday-api:8787
+    VITE_API_PUBLIC_URL: http://freeday-api:8787
   commands:
   - npm run test
   depends_on:
