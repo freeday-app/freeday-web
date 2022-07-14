@@ -184,7 +184,7 @@ a:hover {
     border: 1px solid var(--palette-lightgrey);
 }
 
-.bp3-tooltip .bp3-popover-content {
+.bp4-tooltip .bp4-popover-content {
     max-width: 250px;
     text-align: center;
     word-wrap: break-word;
@@ -199,7 +199,7 @@ a:hover {
     font-size: 16px;
 }
 
-.tabs .bp3-tab-list {
+.tabs .bp4-tab-list {
     align-items: center;
 }
 
@@ -213,13 +213,13 @@ a:hover {
 }
 
 h1 .emoji-mart-emoji,
-h1 .bp3-icon,
+h1 .bp4-icon,
 h2 .emoji-mart-emoji,
-h2 .bp3-icon,
+h2 .bp4-icon,
 h3 .emoji-mart-emoji,
-h3 .bp3-icon,
+h3 .bp4-icon,
 h4 .emoji-mart-emoji,
-h4 .bp3-icon {
+h4 .bp4-icon {
     margin-right: 5px;
     vertical-align: middle;
 }
@@ -251,8 +251,8 @@ h4 span {
     height: 100%;
 }
 
-table th,
-table td {
+table.bp4-html-table th,
+table.bp4-html-table td {
     vertical-align: middle;
 }
 
@@ -334,23 +334,23 @@ table td .avatar {
 
 /* Input */
 
-.bp3-input,
-.bp3-form-group .react-select__control {
+.bp4-input,
+.bp4-form-group .react-select__control {
     min-height: 20px;
 }
 
-.bp3-input,
+.bp4-input,
 .react-select__indicator.react-select__dropdown-indicator,
 .react-select__indicator.react-select__clear-indicator {
     padding: 0 8px;
 }
 
-.bp3-dark .bp3-input:hover,
-.bp3-form-group .react-select__control:hover {
+.bp4-dark .bp4-input:hover,
+.bp4-form-group .react-select__control:hover {
     border: solid 1px #aaa;
 }
 
-.bp3-form-helper-text .helper-error {
+.bp4-form-helper-text .helper-error {
     color: var(--palette-red);
 }
 

@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import {
-    BrowserRouter as Router,
-    Route,
-    Redirect,
-    Switch
+    BrowserRouter,
+    Navigate,
+    Routes,
+    Route
 } from 'react-router-dom';
 import DayJS from 'dayjs';
 import AdvancedFormat from 'dayjs/plugin/advancedFormat';
@@ -36,18 +36,14 @@ import '../css/themes/light.css';
 DayJS.extend(AdvancedFormat);
 DayJS.extend(CustomParseFormat);
 
-// private routing handling authentication in react router
-const PrivateRoute = ({ component: Comp, content, ...rest }) => (
-    <Route
-        render={(props) => {
-            if (API.isAuth) {
-                return <Comp {...props} content={content} />;
-            }
-            return <Redirect to="/login" />;
-        }}
-        {...rest}
-    />
-);
+const RequireAuth = ({ children, admin }) => {
+    if (API.isAuth) {
+        return children;
+    }
+    return (
+        <Navigate to="/login" />
+    );
+};
 
 class App extends Component {
     constructor(props) {
@@ -153,9 +149,18 @@ class App extends Component {
     updateTheme() {
         // sets the body class according to the chosen theme
         const { theme } = this.state;
-        const className = theme === 'dark' ? 'bp3-dark' : 'bp3';
+        const className = theme === 'dark' ? 'bp4-dark' : 'bp4';
         document.body.className = className;
     }
+    // header navigation
+    getHeader = () => (
+        API.isAuth ? (
+            <Header
+                onLanguage={this.handleLanguage}
+                onTheme={this.handleTheme}
+            />
+        ) : null
+    );
 
     render() {
         const {
@@ -176,55 +181,105 @@ class App extends Component {
 
         // app content
         return (
-            <Router>
+            <BrowserRouter>
                 <div id="app">
                     {/* eslint-disable-next-line react/jsx-no-constructed-context-values */}
                     <ConfigurationContext.Provider value={{ configuration, setConfiguration }}>
                         <ThemeContext.Provider value={theme}>
-                            { /* header navigation */ }
-                            <Route
-                                path="/"
-                                render={(props) => (
-                                    API.isAuth
-                                        ? (
-                                            <Header
-                                                {...props}
-                                                onLanguage={this.handleLanguage}
-                                                onTheme={this.handleTheme}
-                                            />
-                                        ) : null
-                                )}
-                            />
-                            { /* contenu page */ }
-                            <Switch>
+                            <Routes>
                                 { /* redirects exact "/" path to home page */ }
-                                <PrivateRoute exact path="/" render={() => <Redirect to="/daysoff" />} />
-                                { /* pages */ }
-                                <PrivateRoute exact path="/daysoff" component={Daysoff} />
-                                <PrivateRoute exact path="/schedule" component={Schedule} />
-                                <PrivateRoute exact path="/summary" component={Summary} />
-                                <PrivateRoute exact path="/config/settings" component={Config} content="settings" />
-                                <PrivateRoute exact path="/config/admins" component={Config} content="admins" />
-                                <PrivateRoute exact path="/config/types" component={Config} content="types" />
                                 <Route
-                                    exact
-                                    path="/login"
-                                    render={(props) => (
-                                        <Login {...props} onTheme={this.handleTheme} />
+                                    path="/"
+                                    element={(
+                                        <RequireAuth>
+                                            <Navigate to="/daysoff" />
+                                        </RequireAuth>
                                     )}
                                 />
-                                { /* slack oauth register page */ }
-                                <Route exact path="/register" component={SlackRegister} />
+                                { /* pages */ }
+                                <Route
+                                    path="/daysoff"
+                                    element={(
+                                        <RequireAuth>
+                                            {this.getHeader()}
+                                            <Daysoff />
+                                        </RequireAuth>
+                                    )}
+                                />
+                                <Route
+                                    path="/schedule"
+                                    element={(
+                                        <RequireAuth>
+                                            {this.getHeader()}
+                                            <Schedule />
+                                        </RequireAuth>
+                                    )}
+                                />
+                                <Route
+                                    path="/summary"
+                                    element={(
+                                        <RequireAuth>
+                                            {this.getHeader()}
+                                            <Summary />
+                                        </RequireAuth>
+                                    )}
+                                />
+                                <Route
+                                    path="/config/settings"
+                                    element={(
+                                        <RequireAuth>
+                                            {this.getHeader()}
+                                            <Config content="settings" />
+                                        </RequireAuth>
+                                    )}
+                                />
+                                <Route
+                                    path="/config/admins"
+                                    element={(
+                                        <RequireAuth>
+                                            {this.getHeader()}
+                                            <Config content="admins" />
+                                        </RequireAuth>
+                                    )}
+                                />
+                                <Route
+                                    path="/config/types"
+                                    element={(
+                                        <RequireAuth>
+                                            {this.getHeader()}
+                                            <Config content="types" />
+                                        </RequireAuth>
+                                    )}
+                                />
+                                <Route
+                                    path="/login"
+                                    element={(
+                                        <Login onTheme={this.handleTheme} />
+                                    )}
+                                />
                                 { /* welcome page */ }
-                                <Route exact path="/welcome/:secret" component={Welcome} />
+                                <Route
+                                    path="/welcome/:secret"
+                                    element={(
+                                        <Welcome />
+                                    )}
+                                />
                                 { /* handles any other path to 404 */ }
-                                <PrivateRoute path="/" component={NotFound} />
-                            </Switch>
+                                <Route
+                                    path="*"
+                                    element={(
+                                        <RequireAuth>
+                                            {this.getHeader()}
+                                            <NotFound />
+                                        </RequireAuth>
+                                    )}
+                                />
+                            </Routes>
                             <Footer />
                         </ThemeContext.Provider>
                     </ConfigurationContext.Provider>
                 </div>
-            </Router>
+            </BrowserRouter>
         );
     }
 }

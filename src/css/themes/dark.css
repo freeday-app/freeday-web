@@ -2,71 +2,71 @@
 
 /* Emoji picker */
 
-.bp3-dark .emoji-mart {
+.bp4-dark .emoji-mart {
     background-color: var(--palette-darker);
     border: var(--palette-black);
 }
 
-.bp3-dark .emoji-mart-category-label span {
+.bp4-dark .emoji-mart-category-label span {
     background-color: var(--palette-black);
     color: var(--palette-lightgrey);
 }
 
 /* Scheduler */
 
-.bp3-dark .scheduler-table thead.scheduler-table-head-fixed {
+.bp4-dark .scheduler-table thead.scheduler-table-head-fixed {
     background-color: var(--palette-dark);
 }
 
-.bp3-dark .scheduler-table tbody tr:not(.no-hover):hover {
+.bp4-dark .scheduler-table tbody tr:not(.no-hover):hover {
     background: var(--palette-darker);
 }
 
-.bp3-dark .scheduler-table tbody td {
+.bp4-dark .scheduler-table tbody td {
     border-top: 1px solid var(--palette-greyer);
 }
 
-.bp3-dark .scheduler-table tbody tr:last-child td {
+.bp4-dark .scheduler-table tbody tr:last-child td {
     border-bottom: 1px solid var(--palette-greyer);
 }
 
-.bp3-dark .scheduler-table-blue { background: var(--palette-blue); }
-.bp3-dark .scheduler-table-green { background: var(--palette-green); }
-.bp3-dark .scheduler-table-grey { background: var(--palette-lightgrey); }
-.bp3-dark .scheduler-table-red { background: var(--palette-red); }
+.bp4-dark .scheduler-table-blue { background: var(--palette-blue); }
+.bp4-dark .scheduler-table-green { background: var(--palette-green); }
+.bp4-dark .scheduler-table-grey { background: var(--palette-lightgrey); }
+.bp4-dark .scheduler-table-red { background: var(--palette-red); }
 
-.bp3-dark .scheduler-table-holiday { background: var(--palette-lightgrey); }
+.bp4-dark .scheduler-table-holiday { background: var(--palette-lightgrey); }
 
-.bp3-dark .scheduler-table-body-half-event.am.split {
+.bp4-dark .scheduler-table-body-half-event.am.split {
     border-right-color: var(--palette-dark);
 }
 
-.bp3-dark .scheduler-table-body-half-event.pm.split {
+.bp4-dark .scheduler-table-body-half-event.pm.split {
     border-left-color: var(--palette-dark);
 }
 
-.bp3-dark .scheduler-table-head-day.today {
+.bp4-dark .scheduler-table-head-day.today {
     border-left: 2px solid var(--palette-grey);
     border-right: 2px solid var(--palette-grey);
     border-top: 2px solid var(--palette-grey);
 }
 
-.bp3-dark .scheduler-table-head-day.today.solo {
+.bp4-dark .scheduler-table-head-day.today.solo {
     border-bottom: 2px solid var(--palette-grey);
 }
 
-.bp3-dark .scheduler-table-body-day.today {
+.bp4-dark .scheduler-table-body-day.today {
     border-left: 2px solid var(--palette-grey);
     border-right: 2px solid var(--palette-grey);
 }
 
-.bp3-dark .scheduler-table tr:last-child .scheduler-table-body-day.today {
+.bp4-dark .scheduler-table tr:last-child .scheduler-table-body-day.today {
     border-bottom: 2px solid var(--palette-grey);
 }
 
 /* Support Dialog */
 
-.bp3-dark .bp3-dialog.support-dialog .bp3-card {
+.bp4-dark .bp4-dialog.support-dialog .bp4-card {
     background: var(--palette-dark);
 }
 
@@ -74,19 +74,19 @@
 
 /* Summary */
 
-.bp3-dark .summary-table thead th {
+.bp4-dark .summary-table thead th {
     background-color: var(--palette-dark);
 }
 
 /* Day Off */
 
-.bp3-dark #dayoff-table th {
+.bp4-dark #dayoff-table th {
     background-color: var(--palette-dark);
 }
 
 /* Welcome */
 
-.bp3-dark .welcome-language-item {
+.bp4-dark .welcome-language-item {
     background: none;
     border: none;
     color: var(--palette-light);
@@ -95,155 +95,155 @@
 
 /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ FOOTER */
 
-.bp3-dark #footer .footer-content {
+.bp4-dark #footer .footer-content {
     color: var(--palette-lightgrey);
 }
 
 /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ HEADER */
 
-.bp3-dark #nav {
+.bp4-dark #nav {
     background-color: var(--palette-darker);
 }
 
-.bp3-dark #nav button.bp3-button {
+.bp4-dark #nav button.bp4-button {
     border-radius: 0;
     color: var(--palette-white);
 }
 
-.bp3-dark #nav button.bp3-button.underline {
+.bp4-dark #nav button.bp4-button.underline {
     border-bottom: solid 1px var(--palette-link);
     color: var(--palette-link);
     margin-top: 2px;
 }
 
-.bp3-dark #nav button.bp3-button.underline > .bp3-icon {
+.bp4-dark #nav button.bp4-button.underline > .bp4-icon {
     color: var(--palette-link);
 }
 
 /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ BLUEPRINT OVERRIDES */
 
-.bp3-dark {
+.bp4-dark {
     background: var(--palette-dark);
 }
 
 /* Buttons */
 
-.bp3-dark .bp3-button:not([class*="bp3-intent-"]) {
+.bp4-dark .bp4-button:not([class*="bp4-intent-"]) {
     background-color: var(--palette-darker);
 }
 
-.bp3-dark .bp3-button:not([class*="bp3-intent-"]):hover {
+.bp4-dark .bp4-button:not([class*="bp4-intent-"]):hover {
     background-color: var(--palette-black);
 }
 
-.bp3-dark .bp3-button.bp3-intent-stealth {
+.bp4-dark .bp4-button.bp4-intent-stealth {
     color: var(--palette-light);
 }
 
-.bp3-dark .bp3-button.bp3-intent-stealth:hover {
+.bp4-dark .bp4-button.bp4-intent-stealth:hover {
     background-color: var(--palette-greyer);
 }
 
-.bp3-dark .bp3-button-group.bp3-vertical.bp3-fixed > button {
+.bp4-dark .bp4-button-group.bp4-vertical.bp4-fixed > button {
     background-color: var(--palette-blue);
     background-image: none;
     border: none;
     box-shadow: none;
 }
 
-.bp3-dark .bp3-button.bp3-intent-primary {
+.bp4-dark .bp4-button.bp4-intent-primary {
     background-color: none;
     background-image: none;
     border: none;
     box-shadow: none !important;
 }
 
-.bp3-dark .bp3-button.bp3-intent-primary:hover,
-.bp3-dark .bp3-numeric-input .bp3-button-group.bp3-vertical.bp3-fixed button:hover {
+.bp4-dark .bp4-button.bp4-intent-primary:hover,
+.bp4-dark .bp4-numeric-input .bp4-button-group.bp4-vertical.bp4-fixed button:hover {
     background-color: var(--palette-darkblue);
 }
 
-.bp3-dark .bp3-button.bp3-intent-primary.bp3-disabled {
+.bp4-dark .bp4-button.bp4-intent-primary.bp4-disabled {
     background-color: var(--palette-blue);
     opacity: 0.5;
 }
 
-.bp3-dark .bp3-button.bp3-intent-danger:hover {
+.bp4-dark .bp4-button.bp4-intent-danger:hover {
     background-color: var(--palette-darkred);
 }
 
 /* Numeric input */
 
-.bp3-dark .numeric-input div.bp3-button-group .bp3-button {
+.bp4-dark .numeric-input div.bp4-button-group .bp4-button {
     background-color: var(--palette-blue-primary);
     background-image: none;
 }
 
-.bp3-dark .numeric-input div.bp3-button-group .bp3-button span.bp3-icon {
+.bp4-dark .numeric-input div.bp4-button-group .bp4-button span.bp4-icon {
     color: var(--palette-white);
 }
 
-.bp3-dark .numeric-input div.bp3-button-group .bp3-button:hover {
+.bp4-dark .numeric-input div.bp4-button-group .bp4-button:hover {
     background-color: var(--palette-darkblue);
 }
 
 /* DatePicker */
 
-.bp3-dark .bp3-datepicker,
-.bp3-dark .bp3-menu {
+.bp4-dark .bp4-datepicker,
+.bp4-dark .bp4-menu {
     background-color: var(--palette-darker);
 }
 
-.bp3-dark .bp3-popover:not(.bp3-tooltip) .bp3-popover-arrow-fill {
+.bp4-dark .bp4-popover:not(.bp4-tooltip) .bp4-popover-arrow-fill {
     fill: var(--palette-darker);
 }
 
 /* stylelint-disable-next-line selector-class-pattern */
-.bp3-dark .bp3-datepicker .DayPicker-Day.DayPicker-Day--selected {
+.bp4-dark .bp4-datepicker .DayPicker-Day.DayPicker-Day--selected {
     background-color: var(--palette-blue);
 }
 
 /* Switch */
 
-.bp3-dark .bp3-control.bp3-switch input:checked ~ .bp3-control-indicator {
+.bp4-dark .bp4-control.bp4-switch input:checked ~ .bp4-control-indicator {
     background: var(--palette-blue);
 }
 
 /* Dialog */
 
-.bp3-dark .bp3-dialog {
+.bp4-dark .bp4-dialog {
     background: var(--palette-dark);
 }
 
-.bp3-dark .bp3-dialog-header {
+.bp4-dark .bp4-dialog-header {
     background: var(--palette-darker);
 }
 
 /* Input */
-.bp3-dark .bp3-input {
+.bp4-dark .bp4-input {
     background-color: var(--palette-darker);
     border: solid 1px var(--palette-black);
     box-shadow: none;
 }
 
-.bp3-dark .bp3-input:hover,
-.bp3-dark .bp3-form-group .react-select__control:hover { /* stylelint-disable-line selector-class-pattern */
+.bp4-dark .bp4-input:hover,
+.bp4-dark .bp4-form-group .react-select__control:hover { /* stylelint-disable-line selector-class-pattern */
     border: solid 1px var(--palette-lightgrey);
 }
 
-.bp3-dark .bp3-file-upload-input {
+.bp4-dark .bp4-file-upload-input {
     background-color: var(--palette-darker);
     border: solid 1px var(--palette-black);
     box-shadow: none;
 }
 
-.bp3-dark .bp3-file-upload-input:hover {
+.bp4-dark .bp4-file-upload-input:hover {
     border: solid 1px var(--palette-lightgrey);
 }
 
 /* Table */
 
-.bp3-dark table.bp3-html-table tbody tr:hover td {
+.bp4-dark table.bp4-html-table tbody tr:hover td {
     background-color: var(--palette-darker);
     opacity: 1;
 }

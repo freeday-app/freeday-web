@@ -2,71 +2,71 @@
 
 /* Emoji picker */
 
-.bp3 .emoji-mart {
+.bp4 .emoji-mart {
     background-color: var(--palette-lightergrey);
     border: var(--palette-black);
 }
 
-.bp3 .emoji-mart-category-label span {
+.bp4 .emoji-mart-category-label span {
     background-color: var(--palette-white);
     color: var(--palette-lightgrey);
 }
 
 /* Scheduler */
 
-.bp3 .scheduler-table thead.scheduler-table-head-fixed {
+.bp4 .scheduler-table thead.scheduler-table-head-fixed {
     background-color: var(--palette-white);
 }
 
-.bp3 .scheduler-table tbody tr:not(.no-hover):hover {
+.bp4 .scheduler-table tbody tr:not(.no-hover):hover {
     background: var(--palette-slightgrey);
 }
 
-.bp3 .scheduler-table tbody td {
+.bp4 .scheduler-table tbody td {
     border-top: 1px solid var(--palette-cleargrey);
 }
 
-.bp3 .scheduler-table tbody tr:last-child td {
+.bp4 .scheduler-table tbody tr:last-child td {
     border-bottom: 1px solid var(--palette-cleargrey);
 }
 
-.bp3 .scheduler-table-blue { background: var(--palette-blue); }
-.bp3 .scheduler-table-green { background: var(--palette-green); }
-.bp3 .scheduler-table-grey { background: var(--palette-lightgrey); }
-.bp3 .scheduler-table-red { background: var(--palette-red); }
+.bp4 .scheduler-table-blue { background: var(--palette-blue); }
+.bp4 .scheduler-table-green { background: var(--palette-green); }
+.bp4 .scheduler-table-grey { background: var(--palette-lightgrey); }
+.bp4 .scheduler-table-red { background: var(--palette-red); }
 
-.bp3 .scheduler-table-holiday { background: var(--palette-clearergrey); }
+.bp4 .scheduler-table-holiday { background: var(--palette-clearergrey); }
 
-.bp3 .scheduler-table-body-half-event.am.split {
+.bp4 .scheduler-table-body-half-event.am.split {
     border-right-color: var(--palette-white);
 }
 
-.bp3 .scheduler-table-body-half-event.pm.split {
+.bp4 .scheduler-table-body-half-event.pm.split {
     border-left-color: var(--palette-white);
 }
 
-.bp3 .scheduler-table-head-day.today {
+.bp4 .scheduler-table-head-day.today {
     border-left: 2px solid var(--palette-greyer);
     border-right: 2px solid var(--palette-greyer);
     border-top: 2px solid var(--palette-greyer);
 }
 
-.bp3 .scheduler-table-head-day.today.solo {
+.bp4 .scheduler-table-head-day.today.solo {
     border-bottom: 2px solid var(--palette-greyer);
 }
 
-.bp3 .scheduler-table-body-day.today {
+.bp4 .scheduler-table-body-day.today {
     border-left: 2px solid var(--palette-greyer);
     border-right: 2px solid var(--palette-greyer);
 }
 
-.bp3 .scheduler-table tr:last-child .scheduler-table-body-day.today {
+.bp4 .scheduler-table tr:last-child .scheduler-table-body-day.today {
     border-bottom: 2px solid var(--palette-greyer);
 }
 
 /* Support Dialog */
 
-.bp3 .bp3-dialog.support-dialog .bp3-card {
+.bp4 .bp4-dialog.support-dialog .bp4-card {
     background: var(--palette-white);
 }
 
@@ -74,19 +74,19 @@
 
 /* Summary */
 
-.bp3 .summary-table thead th {
+.bp4 .summary-table thead th {
     background-color: var(--palette-white);
 }
 
 /* Day Off */
 
-.bp3 #dayoff-table th {
+.bp4 #dayoff-table th {
     background-color: var(--palette-white);
 }
 
 /* Welcome */
 
-.bp3 .welcome-language-item {
+.bp4 .welcome-language-item {
     background: none;
     border: none;
     color: var(--palette-light);
@@ -95,150 +95,150 @@
 
 /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ FOOTER */
 
-.bp3 #footer .footer-content {
+.bp4 #footer .footer-content {
     color: var(--palette-lightgrey);
 }
 
 /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ HEADER */
 
-.bp3 #nav {
+.bp4 #nav {
     background-color: var(--palette-lightergrey);
 }
 
-.bp3 #nav button.bp3-button {
+.bp4 #nav button.bp4-button {
     border-radius: 0;
     color: var(--palette-white);
 }
 
-.bp3 #nav button.bp3-button.underline {
+.bp4 #nav button.bp4-button.underline {
     border-bottom: solid 1px var(--palette-link);
     color: var(--palette-link);
     margin-top: 2px;
 }
 
-.bp3 #nav button.bp3-button.underline > .bp3-icon {
+.bp4 #nav button.bp4-button.underline > .bp4-icon {
     color: var(--palette-link);
 }
 
 /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ BLUEPRINT OVERRIDES */
 
-.bp3 {
+.bp4 {
     background: var(--palette-white);
 }
 
 /* Buttons */
 
-.bp3 .bp3-button:not([class*="bp3-intent-"]),
-.bp3 .bp3-numeric-input .bp3-button {
+.bp4 .bp4-button:not([class*="bp4-intent-"]),
+.bp4 .bp4-numeric-input .bp4-button {
     background-color: transparent;
     background-image: none;
 }
 
-.bp3 .bp3-button:not([class*="bp3-intent-"]):hover,
-.bp3 .bp3-numeric-input .bp3-button:hover {
+.bp4 .bp4-button:not([class*="bp4-intent-"]):hover,
+.bp4 .bp4-numeric-input .bp4-button:hover {
     background-color: var(--palette-lightergrey);
     background-image: none;
 }
 
-.bp3 .bp3-button.bp3-intent-stealth {
+.bp4 .bp4-button.bp4-intent-stealth {
     color: var(--palette-light);
 }
 
-.bp3 .bp3-button.bp3-intent-stealth:hover {
+.bp4 .bp4-button.bp4-intent-stealth:hover {
     background-color: var(--palette-lightergrey);
 }
 
-.bp3 .bp3-button-group.bp3-vertical.bp3-fixed > button {
+.bp4 .bp4-button-group.bp4-vertical.bp4-fixed > button {
     background-color: var(--palette-blue);
     background-image: none;
     border: none;
     box-shadow: none;
 }
 
-.bp3 .bp3-button.bp3-intent-primary {
+.bp4 .bp4-button.bp4-intent-primary {
     background-color: none;
     background-image: none;
     border: none;
     box-shadow: none !important;
 }
 
-.bp3 .bp3-button.bp3-intent-primary.bp3-disabled {
+.bp4 .bp4-button.bp4-intent-primary.bp4-disabled {
     background-color: var(--palette-blue);
     opacity: 0.5;
 }
 
 /* Numeric input */
 
-.bp3 .numeric-input div.bp3-button-group .bp3-button {
+.bp4 .numeric-input div.bp4-button-group .bp4-button {
     background-color: var(--palette-blue-primary);
     background-image: none;
 }
 
-.bp3 .numeric-input div.bp3-button-group .bp3-button span.bp3-icon {
+.bp4 .numeric-input div.bp4-button-group .bp4-button span.bp4-icon {
     color: var(--palette-white);
 }
 
-.bp3 .numeric-input div.bp3-button-group .bp3-button:hover {
+.bp4 .numeric-input div.bp4-button-group .bp4-button:hover {
     background-color: var(--palette-darkblue);
 }
 
 /* DatePicker */
 
-.bp3 .bp3-datepicker,
-.bp3 .bp3-menu {
+.bp4 .bp4-datepicker,
+.bp4 .bp4-menu {
     background-color: var(--palette-lightergrey);
 }
 
-.bp3 .bp3-popover:not(.bp3-tooltip) .bp3-popover-arrow-fill {
+.bp4 .bp4-popover:not(.bp4-tooltip) .bp4-popover-arrow-fill {
     fill: var(--palette-lightergrey);
 }
 
 /* stylelint-disable-next-line selector-class-pattern */
-.bp3 .bp3-datepicker .DayPicker-Day.DayPicker-Day--selected {
+.bp4 .bp4-datepicker .DayPicker-Day.DayPicker-Day--selected {
     background-color: var(--palette-blue);
 }
 
 /* Switch */
 
-.bp3 .bp3-control.bp3-switch input:checked ~ .bp3-control-indicator {
+.bp4 .bp4-control.bp4-switch input:checked ~ .bp4-control-indicator {
     background: var(--palette-blue);
 }
 
 /* Dialog */
 
-.bp3 .bp3-dialog {
+.bp4 .bp4-dialog {
     background: var(--palette-white);
 }
 
-.bp3 .bp3-dialog-header {
+.bp4 .bp4-dialog-header {
     background: var(--palette-lightergrey);
 }
 
 /* Input */
-.bp3 .bp3-input {
+.bp4 .bp4-input {
     background-color: white;
     border: solid 1px var(--palette-lightergrey);
     box-shadow: none;
 }
 
-.bp3 .bp3-input:hover,
-.bp3 .bp3-form-group .react-select__control:hover { /* stylelint-disable-line selector-class-pattern */
+.bp4 .bp4-input:hover,
+.bp4 .bp4-form-group .react-select__control:hover { /* stylelint-disable-line selector-class-pattern */
     border: solid 1px var(--palette-lightgrey);
 }
 
-.bp3 .bp3-file-upload-input {
+.bp4 .bp4-file-upload-input {
     background-color: white;
     border: solid 1px var(--palette-lightergrey);
     box-shadow: none;
 }
 
-.bp3 .bp3-file-upload-input:hover {
+.bp4 .bp4-file-upload-input:hover {
     border: solid 1px var(--palette-lightgrey);
 }
 
 /* Table */
 
-.bp3 table.bp3-html-table tbody tr:hover td {
+.bp4 table.bp4-html-table tbody tr:hover td {
     background-color: var(--palette-slightgrey);
     opacity: 1;
 }

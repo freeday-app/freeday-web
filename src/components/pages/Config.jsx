@@ -1,4 +1,5 @@
-import React, { Component } from 'react';
+import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import {
     Tabs,
     Tab,
@@ -13,8 +14,10 @@ import Lang from '../../utils/language';
 
 import '../../css/pages/config.css';
 
-class ConfigPage extends Component {
-    tabContent = (name, icon) => (
+const ConfigPage = ({ content }) => {
+    const navigate = useNavigate();
+
+    const tabContent = (name, icon) => (
         <>
             <Icon className="tab-icon" icon={icon} />
             <span className="tab-text">
@@ -23,32 +26,25 @@ class ConfigPage extends Component {
         </>
     );
 
-    getSelectedTabId = () => {
-        const { content } = this.props;
-        return content;
+    const handleTabChange = (tabId) => {
+        navigate(`/config/${tabId}`);
     };
 
-    handleTabChange = (tabId) => {
-        const { history } = this.props;
-        history.push(`/config/${tabId}`);
-    };
-
-    subnav = () => (
+    const subnav = () => (
         <div className="config-header">
             <H4 className="center">
                 <Icon className="tab-icon" icon="cog" iconSize={20} />
                 <span>{Lang.text('nav.config')}</span>
             </H4>
-            <Tabs id="config-tabs" className="tabs" onChange={this.handleTabChange} selectedTabId={this.getSelectedTabId()}>
-                <Tab id="settings" title={this.tabContent('settings', 'settings')} />
-                <Tab id="admins" title={this.tabContent('admins', 'people')} />
-                <Tab id="types" title={this.tabContent('types', 'manually-entered-data')} />
+            <Tabs id="config-tabs" className="tabs" onChange={handleTabChange} selectedTabId={content}>
+                <Tab id="settings" title={tabContent('settings', 'settings')} />
+                <Tab id="admins" title={tabContent('admins', 'people')} />
+                <Tab id="types" title={tabContent('types', 'manually-entered-data')} />
             </Tabs>
         </div>
     );
 
-    content = () => {
-        const { content } = this.props;
+    const getContentComponent = () => {
         switch (content) {
             case 'settings':
                 return <Settings />;
@@ -61,20 +57,18 @@ class ConfigPage extends Component {
         }
     };
 
-    render() {
-        return (
-            <div id="content" className="content">
-                <div id="config" className="content-col config">
-                    <div id="config-top" className="content-layout-top config-top">
-                        {this.subnav()}
-                    </div>
-                    <div id="config-main" className="content-layout-main config-main">
-                        {this.content()}
-                    </div>
+    return (
+        <div id="content" className="content">
+            <div id="config" className="content-col config">
+                <div id="config-top" className="content-layout-top config-top">
+                    {subnav()}
+                </div>
+                <div id="config-main" className="content-layout-main config-main">
+                    {getContentComponent()}
                 </div>
             </div>
-        );
-    }
+        </div>
+    );
 }
 
 export default ConfigPage;

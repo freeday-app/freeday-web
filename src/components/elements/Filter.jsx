@@ -305,7 +305,7 @@ class Filter extends Component {
             >
                 <Button
                     minimal
-                    className="filter-reset bp3-intent-stealth"
+                    className="filter-reset bp4-intent-stealth"
                     icon="refresh"
                     text={Lang.text('button.reset')}
                     onClick={() => onReset()}

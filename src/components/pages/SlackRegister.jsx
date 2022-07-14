@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Redirect } from 'react-router-dom';
+import { Navigate } from 'react-router-dom';
 import { Icon } from '@blueprintjs/core';
 import QueryString from 'query-string';
 
@@ -50,7 +50,7 @@ class SlackRegister extends Component {
         const { done, error, home } = this.state;
 
         if (home) {
-            return <Redirect to="/daysoff" />;
+            return <Navigate to="/daysoff" />;
         }
 
         let data = {

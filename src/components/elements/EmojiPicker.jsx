@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
-import 'emoji-mart/css/emoji-mart.css';
 import { Picker, Emoji } from 'emoji-mart';
 import { Button, Popover, Position } from '@blueprintjs/core';
 
 import Lang from '../../utils/language';
 
+import 'emoji-mart/css/emoji-mart.css';
 import '../../css/elements/emojiPicker.css';
 
 class EmojiPicker extends Component {

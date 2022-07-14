@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Redirect, withRouter } from 'react-router-dom';
+import { Navigate } from 'react-router-dom';
 import {
     Icon,
     InputGroup,
@@ -141,7 +141,7 @@ class Welcome extends Component {
         } = this.state;
 
         if (API.isAuth) {
-            return <Redirect to="/daysoff" />;
+            return <Navigate to="/daysoff" />;
         }
 
         if (loading) {
@@ -251,4 +251,4 @@ class Welcome extends Component {
     }
 }
 
-export default withRouter(Welcome);
+export default Welcome;

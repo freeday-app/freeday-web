@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Redirect } from 'react-router-dom';
+import { Navigate } from 'react-router-dom';
 import { Button, InputGroup, Intent } from '@blueprintjs/core';
 import { Emoji } from 'emoji-mart';
 
@@ -105,7 +105,7 @@ class Login extends Component {
         } = this.state;
 
         if (API.isAuth) {
-            return <Redirect to="/daysoff" />;
+            return <Navigate to="/daysoff" />;
         }
 
         return (
