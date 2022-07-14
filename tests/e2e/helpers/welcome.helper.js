@@ -52,35 +52,35 @@ const WelcomeHelper = {
     async assertUserCreation(page) {
         await page.waitForSelector(`.welcome-title:has-text("${Lang.text('welcome.createUser')}")`);
         await page.waitForSelector(
-            `.login-form .bp3-input-group:has(span[icon="user"]) input[type="text"][name="username"][placeholder="${
+            `.login-form .bp4-input-group:has(span[icon="user"]) input[type="text"][name="username"][placeholder="${
                 Lang.text('admin.form.username')
             }"]`
         );
         await page.waitForSelector(
-            `.login-form .bp3-input-group:has(span[icon="lock"]) input[type="password"][name="password"][placeholder="${
+            `.login-form .bp4-input-group:has(span[icon="lock"]) input[type="password"][name="password"][placeholder="${
                 Lang.text('admin.form.password')
             }"]`
         );
         await page.waitForSelector(
-            `.login-form button.bp3-intent-primary:has(span[icon="add"]) .bp3-button-text:has-text("${
+            `.login-form button.bp4-intent-primary:has(span[icon="add"]) .bp4-button-text:has-text("${
                 Lang.text('button.create')
             }")`
         );
-        const inputSelector = '.login-form .bp3-input-group input[name="xxx"]';
+        const inputSelector = '.login-form .bp4-input-group input[name="xxx"]';
         const usernameSelector = inputSelector.replace('xxx', 'username');
         const passwordSelector = inputSelector.replace('xxx', 'password');
         const assertEnabled = async () => {
-            const isEnabled = await page.isEnabled('.login-form button.bp3-intent-primary');
+            const isEnabled = await page.isEnabled('.login-form button.bp4-intent-primary');
             expect(isEnabled).to.be.true;
-            await page.$eval('.login-form button.bp3-intent-primary', (el) => (
-                !el.classList.contains('bp3-disabled')
+            await page.$eval('.login-form button.bp4-intent-primary', (el) => (
+                !el.classList.contains('bp4-disabled')
             ));
         };
         const assertDisabled = async () => {
-            const isEnabled = await page.isEnabled('.login-form button.bp3-intent-primary');
+            const isEnabled = await page.isEnabled('.login-form button.bp4-intent-primary');
             expect(isEnabled).to.be.false;
-            await page.$eval('.login-form button.bp3-intent-primary', (el) => (
-                el.classList.contains('bp3-disabled')
+            await page.$eval('.login-form button.bp4-intent-primary', (el) => (
+                el.classList.contains('bp4-disabled')
             ));
         };
         await page.fill(usernameSelector, '');
@@ -117,7 +117,7 @@ const WelcomeHelper = {
             password
         );
         await page.click(
-            `.login-form button.bp3-intent-primary:has(.bp3-button-text:has-text("${Lang.text('button.create')}"))`
+            `.login-form button.bp4-intent-primary:has(.bp4-button-text:has-text("${Lang.text('button.create')}"))`
         );
     }
 

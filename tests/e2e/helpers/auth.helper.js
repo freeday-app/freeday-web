@@ -42,19 +42,19 @@ const AuthHelper = {
         }
         const headerText = await page.textContent('.login-form .login-header h1');
         expect(headerText).to.equal(`Freeday${brandingName ? ` ${brandingName}` : ''}`);
-        await page.waitForSelector('.login-form .bp3-input-group span[icon="user"]');
+        await page.waitForSelector('.login-form .bp4-input-group span[icon="user"]');
         await page.waitForSelector(
-            `.login-form .bp3-input-group input[type="text"][name="username"][placeholder="${Lang.text('admin.form.username')}"]`
+            `.login-form .bp4-input-group input[type="text"][name="username"][placeholder="${Lang.text('admin.form.username')}"]`
         );
-        await page.waitForSelector('.login-form .bp3-input-group span[icon="lock"]');
+        await page.waitForSelector('.login-form .bp4-input-group span[icon="lock"]');
         await page.waitForSelector(
-            `.login-form .bp3-input-group input[type="password"][name="password"][placeholder="${Lang.text('admin.form.password')}"]`
+            `.login-form .bp4-input-group input[type="password"][name="password"][placeholder="${Lang.text('admin.form.password')}"]`
         );
-        await page.waitForSelector('button.bp3-intent-primary span[icon="log-in"]');
+        await page.waitForSelector('button.bp4-intent-primary span[icon="log-in"]');
         await page.waitForSelector(
-            `.login-form .bp3-input-group input[type="password"][name="password"][placeholder="${Lang.text('admin.form.password')}"]`
+            `.login-form .bp4-input-group input[type="password"][name="password"][placeholder="${Lang.text('admin.form.password')}"]`
         );
-        const buttonContent = await page.textContent('.login-form button.bp3-intent-primary .bp3-button-text');
+        const buttonContent = await page.textContent('.login-form button.bp4-intent-primary .bp4-button-text');
         expect(buttonContent).to.equal(Lang.text('login.submit'));
     }
 

@@ -234,10 +234,10 @@ const ScheduleHelper = {
         };
         await page.click(selector);
         await GlobalHelper.blankHover(page);
-        await page.click(`.bp3-popover ul.bp3-menu li a.bp3-menu-item:has-text("${Lang.text(`button.${action}`)}")`);
+        await page.click(`.bp4-popover2 ul.bp4-menu li a.bp4-menu-item:has-text("${Lang.text(`button.${action}`)}")`);
         if (isCancel) {
-            await page.fill('.bp3-dialog .bp3-input', cancelReason);
-            await page.click(`.bp3-dialog .bp3-intent-primary:has-text("${Lang.text('button.confirm')}")`);
+            await page.fill('.bp4-dialog .bp4-input', cancelReason);
+            await page.click(`.bp4-dialog .bp4-intent-primary:has-text("${Lang.text('button.confirm')}")`);
         }
         await GlobalHelper.assertTooltip(
             page,

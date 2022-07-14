@@ -10,6 +10,7 @@ import {
     Position,
     Radio
 } from '@blueprintjs/core';
+import { Tooltip2 } from '@blueprintjs/popover2';
 
 import Lang from '../../../utils/language';
 
@@ -39,12 +40,12 @@ class ConflictDialog extends Component {
             );
         } if (dayoff.status === 'canceled') {
             return (
-                <Tooltip content={dayoff.cancelReason} position={Position.BOTTOM}>
+                <Tooltip2 content={dayoff.cancelReason} position={Position.BOTTOM}>
                     <div className="color-red">
                         <Icon icon="cross" />
                         <p>{Lang.text('dayoff.status.canceled')}</p>
                     </div>
-                </Tooltip>
+                </Tooltip2>
             );
         }
         return (

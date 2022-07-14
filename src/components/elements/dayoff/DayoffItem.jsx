@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { Icon, Tooltip, Position } from '@blueprintjs/core';
+import { Icon, Position } from '@blueprintjs/core';
+import { Tooltip2 } from '@blueprintjs/popover2';
 import { Emoji } from 'emoji-mart';
 
 import Tools, { TruncLength } from '../../../utils/tools';
@@ -19,12 +20,12 @@ class DayoffItem extends Component {
         }
         if (dayoff.status === 'canceled') {
             return (
-                <Tooltip content={dayoff.cancelReason || ''} position={Position.BOTTOM}>
+                <Tooltip2 content={dayoff.cancelReason || ''} position={Position.BOTTOM}>
                     <div className="color-red">
                         <Icon className="dayoff-status-icon" icon="cross" />
                         <p>{Lang.text('dayoff.status.canceled')}</p>
                     </div>
-                </Tooltip>
+                </Tooltip2>
             );
         }
         return (
@@ -36,21 +37,21 @@ class DayoffItem extends Component {
     };
 
     date = (date, dateFull) => (
-        <Tooltip content={dateFull} position={Position.BOTTOM}>
+        <Tooltip2 content={dateFull} position={Position.BOTTOM}>
             <span className="dayoff-date">{date}</span>
-        </Tooltip>
+        </Tooltip2>
     );
 
     comment = (comment) => (
-        <Tooltip content={comment || ''} position={Position.BOTTOM}>
+        <Tooltip2 content={comment || ''} position={Position.BOTTOM}>
             <span className="dayoff-truncated-comment">{comment ? Tools.trunc(comment, TruncLength.VERYLONG) : ''}</span>
-        </Tooltip>
+        </Tooltip2>
     );
 
     dayoffType = (type) => (
-        <Tooltip content={type || ''} position={Position.BOTTOM}>
+        <Tooltip2 content={type || ''} position={Position.BOTTOM}>
             <span className="dayoff-truncated-type">{Tools.trunc(type, TruncLength.SHORT)}</span>
-        </Tooltip>
+        </Tooltip2>
     );
 
     render() {

@@ -72,12 +72,12 @@ const GlobalHelper = {
         } else {
             throw new Error(`Unknown toaster type '${type}'`);
         }
-        const toasterText = await page.textContent(`.bp3-intent-${intent} .bp3-toast-message`);
+        const toasterText = await page.textContent(`.bp4-intent-${intent} .bp4-toast-message`);
         expect(toasterText).to.equal(message);
         if (closeToaster) {
-            await page.click('.bp3-toast .bp3-button:has(span[icon="cross"])');
-            await page.waitForSelector(`.bp3-intent-${intent} .bp3-toast-message`, { state: 'detached' });
-            const toaster = await page.$(`.bp3-intent-${intent} .bp3-toast-message`);
+            await page.click('.bp4-toast .bp4-button:has(span[icon="cross"])');
+            await page.waitForSelector(`.bp4-intent-${intent} .bp4-toast-message`, { state: 'detached' });
+            const toaster = await page.$(`.bp4-intent-${intent} .bp4-toast-message`);
             expect(toaster).to.not.be.ok;
         }
     },
@@ -97,9 +97,9 @@ const GlobalHelper = {
     // performs logout by clicking main menu button
     async logout(page) {
         await page.goto(GlobalHelper.url('/daysoff'));
-        await page.click(`#nav .bp3-popover-wrapper:has-text("${Lang.text('nav.config')}")`);
+        await page.click(`#nav .bp4-popover2-target:has-text("${Lang.text('nav.config')}")`);
         await Promise.all([
-            page.click(`#nav-config .bp3-menu-item:has-text("${Lang.text('nav.logout')}")`),
+            page.click(`#nav-config .bp4-menu-item:has-text("${Lang.text('nav.logout')}")`),
             GlobalHelper.waitAPI(page, 'logoutAuth')
         ]);
         await GlobalHelper.assertLoggedOut(page);
@@ -107,7 +107,7 @@ const GlobalHelper = {
 
     // checks we are logged by searching for main page element
     async assertLogged(page) {
-        await page.waitForSelector('.bp3-navbar-heading:has-text("Freeday")');
+        await page.waitForSelector('.bp4-navbar-heading:has-text("Freeday")');
     },
 
     // checks we are logged out by searching for login page element
@@ -118,13 +118,13 @@ const GlobalHelper = {
     // changes client language through header language select
     async changeLanguage(page, langCode) {
         await GlobalHelper.blankClick(page);
-        await page.click(`#nav .bp3-popover-wrapper:has-text("${Lang.text('nav.config')}")`);
-        const languageMenuSelector = `#nav-config .bp3-popover-target:has(.bp3-menu-item .bp3-text-overflow-ellipsis:has-text("${
+        await page.click(`#nav .bp4-popover2-target:has-text("${Lang.text('nav.config')}")`);
+        const languageMenuSelector = `#nav-config .bp4-popover-target:has(.bp4-menu-item .bp4-text-overflow-ellipsis:has-text("${
             Lang.text('nav.language')
         }"))`;
         await page.waitForSelector(languageMenuSelector);
         await page.hover(languageMenuSelector);
-        const languageSubMenuSelector = `#nav-config .bp3-submenu .bp3-submenu .bp3-menu-item .bp3-text-overflow-ellipsis:has-text("${
+        const languageSubMenuSelector = `#nav-config .bp4-submenu .bp4-submenu .bp4-menu-item .bp4-text-overflow-ellipsis:has-text("${
             Lang.languages[langCode]
         }")`;
         await page.waitForSelector(languageSubMenuSelector);
@@ -136,14 +136,14 @@ const GlobalHelper = {
     // triggers tooltip on element and checks its content
     async assertTooltip(page, selector, expectedContent, expectedEmoji = null) {
         await page.hover(selector);
-        await page.waitForSelector('.bp3-tooltip');
-        const tooltipText = await page.textContent('.bp3-tooltip');
+        await page.waitForSelector('.bp4-tooltip2');
+        const tooltipText = await page.textContent('.bp4-tooltip2');
         expect(tooltipText).to.equal(expectedContent);
         if (expectedEmoji) {
-            await GlobalHelper.containsEmoji(page, '.bp3-tooltip', expectedEmoji);
+            await GlobalHelper.containsEmoji(page, '.bp4-tooltip2', expectedEmoji);
         }
         await GlobalHelper.blankClick(page);
-        await page.waitForSelector('.bp3-tooltip', {
+        await page.waitForSelector('.bp4-tooltip2', {
             state: 'detached'
         });
     },
@@ -151,9 +151,9 @@ const GlobalHelper = {
     // asserts that navigation button is currently active/selected
     async assertSelectedNavButton(page, navLinkHref) {
         if (navLinkHref.startsWith('/config')) {
-            await page.waitForSelector(`#nav .tabs .bp3-tab:has-text("${Lang.text('nav.config')}")`);
+            await page.waitForSelector(`#nav .tabs .bp4-tab:has-text("${Lang.text('nav.config')}")`);
         } else {
-            await page.waitForSelector(`#nav .tabs .bp3-tab[aria-selected="true"]:has(a[href="${navLinkHref}"])`);
+            await page.waitForSelector(`#nav .tabs .bp4-tab[aria-selected="true"]:has(a[href="${navLinkHref}"])`);
         }
     },
 
@@ -222,56 +222,56 @@ const GlobalHelper = {
     ) {
         if (brandingLogoBase64) {
             await page.waitForSelector(
-                `#nav .bp3-navbar-heading .nav-logo img[src="${brandingLogoBase64}"]`
+                `#nav .bp4-navbar-heading .nav-logo img[src="${brandingLogoBase64}"]`
             );
         } else {
-            await GlobalHelper.containsEmoji(page, '#nav .bp3-navbar-heading .nav-logo', 'palm_tree');
+            await GlobalHelper.containsEmoji(page, '#nav .bp4-navbar-heading .nav-logo', 'palm_tree');
         }
         await page.waitForSelector(
-            `#nav .bp3-navbar-heading .nav-title:has-text("Freeday${brandingName ? ` ${brandingName}` : ''}")`
+            `#nav .bp4-navbar-heading .nav-title:has-text("Freeday${brandingName ? ` ${brandingName}` : ''}")`
         );
         await page.waitForSelector(
-            `#nav .tabs .bp3-tab a[href="/daysoff"]:has-text("${Lang.text('nav.daysoff')}")`
+            `#nav .tabs .bp4-tab a[href="/daysoff"]:has-text("${Lang.text('nav.daysoff')}")`
         );
         await page.waitForSelector(
-            `#nav .tabs .bp3-tab a[href="/schedule"]:has-text("${Lang.text('nav.schedule')}")`
+            `#nav .tabs .bp4-tab a[href="/schedule"]:has-text("${Lang.text('nav.schedule')}")`
         );
         await page.waitForSelector(
-            `#nav .tabs .bp3-tab a[href="/summary"]:has-text("${Lang.text('nav.summary')}")`
+            `#nav .tabs .bp4-tab a[href="/summary"]:has-text("${Lang.text('nav.summary')}")`
         );
         await page.click(
-            `#nav .tabs .bp3-tab .bp3-popover-wrapper:has-text("${Lang.text('nav.config')}")`
+            `#nav .tabs .bp4-tab .bp4-popover2-target:has-text("${Lang.text('nav.config')}")`
         );
         await page.waitForSelector(
-            `#nav-config a.bp3-menu-item:has-text("${Lang.text('nav.settings')}")`
+            `#nav-config a.bp4-menu-item:has-text("${Lang.text('nav.settings')}")`
         );
         await page.waitForSelector(
-            `#nav-config a.bp3-menu-item:has-text("${Lang.text('nav.admins')}")`
+            `#nav-config a.bp4-menu-item:has-text("${Lang.text('nav.admins')}")`
         );
         await page.waitForSelector(
-            `#nav-config a.bp3-menu-item:has-text("${Lang.text('nav.types')}")`
+            `#nav-config a.bp4-menu-item:has-text("${Lang.text('nav.types')}")`
         );
         await page.waitForSelector(
-            `#nav-config .bp3-popover-wrapper .bp3-menu-item:has-text("${Lang.text('nav.language')}")`
+            `#nav-config .bp4-popover-target .bp4-menu-item:has-text("${Lang.text('nav.language')}")`
         );
         await page.waitForSelector(
-            `#nav-config .bp3-popover-wrapper .bp3-menu-item:has-text("${Lang.text('nav.theme')}")`
+            `#nav-config .bp4-popover-target .bp4-menu-item:has-text("${Lang.text('nav.theme')}")`
         );
         // await page.waitForSelector(
-        //     `#nav-config a.bp3-menu-item:has-text("${Lang.text('nav.slack')}")`
+        //     `#nav-config a.bp4-menu-item:has-text("${Lang.text('nav.slack')}")`
         // );
         await page.waitForSelector(
-            `#nav-config a.bp3-menu-item:has-text("${Lang.text('nav.logout')}")`
+            `#nav-config a.bp4-menu-item:has-text("${Lang.text('nav.logout')}")`
         );
     },
 
     // visits page by clicking menu item
     async visitPageThroughMenu(page, menuItemKey) {
         if (menuItemKey === 'types' || menuItemKey === 'admins') {
-            await page.click(`#nav .bp3-popover-wrapper:has-text("${Lang.text('nav.config')}")`);
-            await page.click(`#nav-config .bp3-menu-item:has-text("${Lang.text(`nav.${menuItemKey}`)}")`);
+            await page.click(`#nav .bp4-popover2-target:has-text("${Lang.text('nav.config')}")`);
+            await page.click(`#nav-config .bp4-menu-item:has-text("${Lang.text(`nav.${menuItemKey}`)}")`);
         } else {
-            await page.click(`#nav .tabs .bp3-tab:has-text("${Lang.text(`nav.${menuItemKey}`)}")`);
+            await page.click(`#nav .tabs .bp4-tab:has-text("${Lang.text(`nav.${menuItemKey}`)}")`);
         }
     },
 
@@ -288,7 +288,7 @@ const GlobalHelper = {
         // set filter dates
         for (const name of ['start', 'end']) {
             if (opts[name]) {
-                const dateInputSelector = `.filter .bp3-form-group:has(.bp3-label:has-text("${
+                const dateInputSelector = `.filter .bp4-form-group:has(.bp4-label:has-text("${
                     Lang.text(`filter.${name}`)
                 }")) input[type="text"]`;
                 await page.fill(dateInputSelector, '');
@@ -307,7 +307,7 @@ const GlobalHelper = {
             await waitWrap(
                 GlobalHelper.selectValues(
                     page,
-                    `.filter .bp3-form-group:has(.bp3-label:has-text("${
+                    `.filter .bp4-form-group:has(.bp4-label:has-text("${
                         Lang.text('filter.month')
                     }")) .react-select__control`,
                     monthName
@@ -316,9 +316,9 @@ const GlobalHelper = {
             );
         }
         if (opts.year) {
-            const yearInputSelector = `.filter .bp3-form-group:has(.bp3-label:has-text("${
+            const yearInputSelector = `.filter .bp4-form-group:has(.bp4-label:has-text("${
                 Lang.text('filter.year')
-            }")) input.bp3-input`;
+            }")) input.bp4-input`;
             await page.fill(yearInputSelector, '');
             await waitWrap(
                 page.fill(
@@ -333,7 +333,7 @@ const GlobalHelper = {
             if (opts[name]) {
                 await GlobalHelper.selectValues(
                     page,
-                    `.filter .bp3-form-group:has(.bp3-label:has-text("${
+                    `.filter .bp4-form-group:has(.bp4-label:has-text("${
                         Lang.text(`filter.${name}`)
                     }")) .react-select__control`,
                     opts[name],
@@ -343,10 +343,10 @@ const GlobalHelper = {
         }
         // sets filter "all" checkbox
         if (opts.all) {
-            const isChecked = await page.isChecked('.filter .bp3-switch input[type="checkbox"]');
+            const isChecked = await page.isChecked('.filter .bp4-switch input[type="checkbox"]');
             if (isChecked !== opts.all) {
                 await waitWrap(
-                    page.click('.filter .bp3-switch'),
+                    page.click('.filter .bp4-switch'),
                     waitDaysoffRouteCall
                 );
             }
@@ -356,13 +356,13 @@ const GlobalHelper = {
     // changes client theme through header theme select
     async changeTheme(page, theme) {
         await GlobalHelper.blankClick(page);
-        await page.click(`#nav .bp3-popover-wrapper:has-text("${Lang.text('nav.config')}")`);
-        const themeMenuSelector = `#nav-config .bp3-popover-target:has(.bp3-menu-item .bp3-text-overflow-ellipsis:has-text("${
+        await page.click(`#nav .bp4-popover2-target:has-text("${Lang.text('nav.config')}")`);
+        const themeMenuSelector = `#nav-config .bp4-popover-target:has(.bp4-menu-item .bp4-text-overflow-ellipsis:has-text("${
             Lang.text('nav.theme')
         }"))`;
         await page.waitForSelector(themeMenuSelector);
         await page.hover(themeMenuSelector);
-        const themeSubMenuSelector = `#nav-config .bp3-submenu .bp3-submenu .bp3-menu-item .bp3-text-overflow-ellipsis:has-text("${
+        const themeSubMenuSelector = `#nav-config .bp4-submenu .bp4-submenu .bp4-menu-item .bp4-text-overflow-ellipsis:has-text("${
             Lang.text(`theme.${theme}`)
         }")`;
         await page.waitForSelector(themeSubMenuSelector);
@@ -376,23 +376,23 @@ const GlobalHelper = {
             Lang.text('support.contact.email', false)
         );
         // ouverture menu admin
-        await page.click(`#nav .bp3-popover-wrapper:has-text("${Lang.text('nav.config')}")`);
+        await page.click(`#nav .bp4-popover2-target:has-text("${Lang.text('nav.config')}")`);
         // ouverture popin de support
-        await page.click(`#nav-config .bp3-menu-item:has-text("${Lang.text('nav.support')}")`);
+        await page.click(`#nav-config .bp4-menu-item:has-text("${Lang.text('nav.support')}")`);
         // vérification du header
-        await page.waitForSelector(`.bp3-dialog .bp3-heading:has-text("${Lang.text('nav.support')}")`);
+        await page.waitForSelector(`.bp4-dialog .bp4-heading:has-text("${Lang.text('nav.support')}")`);
         // vérification de la sélection du menu contact
-        await page.waitForSelector(`.bp3-dialog .bp3-card .bp3-tab[aria-selected="true"]:has-text("${
+        await page.waitForSelector(`.bp4-dialog .bp4-card .bp4-tab[aria-selected="true"]:has-text("${
             Lang.text('support.contact.title')
         }")`);
         // vérification du titre de la section contact
-        await page.waitForSelector(`.bp3-dialog .bp3-card .bp3-tab-panel h2:has-text("${
+        await page.waitForSelector(`.bp4-dialog .bp4-card .bp4-tab-panel h2:has-text("${
             Lang.text('support.contact.title')
         }")`);
         // vérification du texte de la section contact
-        await page.waitForSelector(`.bp3-dialog .bp3-card .bp3-tab-panel div:has-text("${contactText}")`);
+        await page.waitForSelector(`.bp4-dialog .bp4-card .bp4-tab-panel div:has-text("${contactText}")`);
         // vérification de l'email
-        await page.waitForSelector(`.bp3-dialog .bp3-card .bp3-tab-panel a:has-text("${
+        await page.waitForSelector(`.bp4-dialog .bp4-card .bp4-tab-panel a:has-text("${
             Lang.text('support.contact.email', false)
         }")`);
         // données pour check du contenu des onglets
@@ -409,13 +409,13 @@ const GlobalHelper = {
         // parcoure les onglets et vérifie contenu
         for (const data of tabData) {
             // changement de section
-            await page.click(`.bp3-dialog .bp3-card .bp3-tab:has-text("${data.tab}")`);
+            await page.click(`.bp4-dialog .bp4-card .bp4-tab:has-text("${data.tab}")`);
             // vérification titre
-            await page.click(`.bp3-dialog .bp3-card .bp3-tab-panel h2:has-text("${data.title}")`);
+            await page.click(`.bp4-dialog .bp4-card .bp4-tab-panel h2:has-text("${data.title}")`);
         }
         // fermeture de la dialog
-        await page.click('.bp3-dialog .bp3-dialog-close-button');
-        await page.waitForSelector('.bp3-dialog', { state: 'detached' });
+        await page.click('.bp4-dialog .bp4-dialog-close-button');
+        await page.waitForSelector('.bp4-dialog', { state: 'detached' });
     },
 
     // asserts filter elements
@@ -426,22 +426,22 @@ const GlobalHelper = {
         for (const name of ['start', 'end']) {
             if (fields.includes(name)) {
                 await page.waitForSelector(
-                    `.filter .bp3-form-group:has(.bp3-label:has-text("${
+                    `.filter .bp4-form-group:has(.bp4-label:has-text("${
                         Lang.text(`filter.${name}`)
-                    }")) .bp3-input`
+                    }")) .bp4-input`
                 );
                 await GlobalHelper.blankClick(page);
             }
         }
         if (fields.includes('month')) {
             await page.waitForSelector(
-                `.filter .bp3-form-group:has(.bp3-label:has-text("${
+                `.filter .bp4-form-group:has(.bp4-label:has-text("${
                     Lang.text('filter.month')
                 }")) .react-select__control`
             );
             for (const arrowSide of ['left', 'right']) {
                 await page.waitForSelector(
-                    `.filter .bp3-form-group:has(.bp3-label:has-text("${
+                    `.filter .bp4-form-group:has(.bp4-label:has-text("${
                         Lang.text('filter.month')
                     }")) button span[icon="arrow-${arrowSide}"]`
                 );
@@ -449,12 +449,12 @@ const GlobalHelper = {
         }
         if (fields.includes('year')) {
             for (const selector of [
-                '.bp3-input',
-                'button.bp3-button span[icon="chevron-up"]',
-                'button.bp3-button span[icon="chevron-down"]'
+                '.bp4-input',
+                'button.bp4-button span[icon="chevron-up"]',
+                'button.bp4-button span[icon="chevron-down"]'
             ]) {
                 await page.waitForSelector(
-                    `.filter .bp3-form-group:has(.bp3-label:has-text("${
+                    `.filter .bp4-form-group:has(.bp4-label:has-text("${
                         Lang.text('filter.year')
                     }")) ${selector}`
                 );
@@ -463,7 +463,7 @@ const GlobalHelper = {
         if (fields.includes('slackUsers')) {
             await GlobalHelper.assertOptions(
                 page,
-                `.filter .bp3-form-group:has(.bp3-label:has-text("${
+                `.filter .bp4-form-group:has(.bp4-label:has-text("${
                     Lang.text('filter.slackUsers')
                 }")) .react-select__control`,
                 slackUsers.map((su) => su.name)
@@ -472,7 +472,7 @@ const GlobalHelper = {
         if (fields.includes('type')) {
             await GlobalHelper.assertOptions(
                 page,
-                `.filter .bp3-form-group:has(.bp3-label:has-text("${
+                `.filter .bp4-form-group:has(.bp4-label:has-text("${
                     Lang.text('filter.type')
                 }")) .react-select__control`,
                 dayoffTypes.map((dt) => dt.name)
@@ -480,16 +480,16 @@ const GlobalHelper = {
         }
         if (fields.includes('status')) {
             await page.waitForSelector(
-                `.filter .bp3-form-group:has(.bp3-label:has-text("${
+                `.filter .bp4-form-group:has(.bp4-label:has-text("${
                     Lang.text('filter.status')
                 }")) .react-select__control`
             );
         }
         if (fields.includes('all')) {
             await page.waitForSelector(
-                `.filter .bp3-form-group:has(.bp3-label:has-text("${
+                `.filter .bp4-form-group:has(.bp4-label:has-text("${
                     Lang.text('filter.all')
-                }")) .bp3-switch`
+                }")) .bp4-switch`
             );
         }
     },
@@ -500,7 +500,7 @@ const GlobalHelper = {
         for (const name of ['start', 'end']) {
             if (opts[name]) {
                 await page.waitForSelector(
-                    `.filter .bp3-form-group:has(.bp3-label:has-text("${
+                    `.filter .bp4-form-group:has(.bp4-label:has-text("${
                         Lang.text(`filter.${name}`)
                     }")) input[type="text"][value="${
                         DayJS(opts[name]).format(Lang.text('date.format'))
@@ -512,7 +512,7 @@ const GlobalHelper = {
         if (opts.month) {
             const monthName = Lang.text(`month.${opts.month}`, false);
             await page.waitForSelector(
-                `.filter .bp3-form-group:has(.bp3-label:has-text("${
+                `.filter .bp4-form-group:has(.bp4-label:has-text("${
                     Lang.text('filter.month')
                 }")) .react-select__control .react-select__single-value:has-text("${
                     monthName
@@ -521,9 +521,9 @@ const GlobalHelper = {
         }
         if (opts.year) {
             await page.waitForSelector(
-                `.filter .bp3-form-group:has(.bp3-label:has-text("${
+                `.filter .bp4-form-group:has(.bp4-label:has-text("${
                     Lang.text('filter.year')
-                }")) input.bp3-input[value="${
+                }")) input.bp4-input[value="${
                     opts.year.toString()
                 }"]`
             );
@@ -534,7 +534,7 @@ const GlobalHelper = {
                 if (name === 'slackUsers') {
                     for (const val of opts[name]) {
                         await page.waitForSelector(
-                            `.filter .bp3-form-group:has(.bp3-label:has-text("${
+                            `.filter .bp4-form-group:has(.bp4-label:has-text("${
                                 Lang.text(`filter.${name}`)
                             }")) .react-select__control .react-select__multi-value .react-select__multi-value__label:has-text("${
                                 val
@@ -543,7 +543,7 @@ const GlobalHelper = {
                     }
                 } else {
                     await page.waitForSelector(
-                        `.filter .bp3-form-group:has(.bp3-label:has-text("${
+                        `.filter .bp4-form-group:has(.bp4-label:has-text("${
                             Lang.text(`filter.${name}`)
                         }")) .react-select__control .react-select__single-value:has-text("${
                             opts[name]
@@ -554,7 +554,7 @@ const GlobalHelper = {
         }
         // asserts filter "all" checkbox
         if (opts.all) {
-            const isChecked = await page.isChecked('.filter .bp3-switch input[type="checkbox"]');
+            const isChecked = await page.isChecked('.filter .bp4-switch input[type="checkbox"]');
             expect(isChecked).to.equal(opts.all);
         }
     },
@@ -563,15 +563,15 @@ const GlobalHelper = {
     async assertConflict(page, contextMenuSelector) {
         await page.click(contextMenuSelector);
         await GlobalHelper.blankHover(page);
-        await page.click(`.bp3-popover ul.bp3-menu li a.bp3-menu-item:has-text("${Lang.text('button.confirm')}")`);
+        await page.click(`.bp4-popover2 ul.bp4-menu li a.bp4-menu-item:has-text("${Lang.text('button.confirm')}")`);
         await page.waitForSelector(
-            '.bp3-dialog.conflict-dialog .bp3-dialog-body .conflict-content .conflict-table .conflict-table-row .bp3-radio input[type="radio"]'
+            '.bp4-dialog.conflict-dialog .bp4-dialog-body .conflict-content .conflict-table .conflict-table-row .bp4-radio input[type="radio"]'
         );
         await page.waitForSelector(
-            `.bp3-dialog-footer-actions .bp3-button:has-text("${Lang.text('button.confirm')}")`
+            `.bp4-dialog-footer-actions .bp4-button:has-text("${Lang.text('button.confirm')}")`
         );
         await page.click(
-            `.bp3-dialog-footer-actions .bp3-button:has-text("${Lang.text('button.cancel')}")`
+            `.bp4-dialog-footer-actions .bp4-button:has-text("${Lang.text('button.cancel')}")`
         );
     },
 
@@ -588,19 +588,19 @@ const GlobalHelper = {
         await page.click(contextMenuSelector);
         await GlobalHelper.blankHover(page);
         await Promise.all([
-            page.click(`.bp3-popover ul.bp3-menu li a.bp3-menu-item:has-text("${Lang.text('button.confirm')}")`),
+            page.click(`.bp4-popover2 ul.bp4-menu li a.bp4-menu-item:has-text("${Lang.text('button.confirm')}")`),
             GlobalHelper.waitAPI(page, 'actionDayoff')
         ]);
-        const radioSelector = '.bp3-dialog.conflict-dialog .bp3-dialog-body .conflict-content .conflict-table .conflict-table-row .bp3-radio input[type="radio"]';
+        const radioSelector = '.bp4-dialog.conflict-dialog .bp4-dialog-body .conflict-content .conflict-table .conflict-table-row .bp4-radio input[type="radio"]';
         await page.waitForSelector(radioSelector);
         const allRadios = await page.$$(radioSelector);
         expect(allRadios).to.have.length.above(1);
-        const checkedRadios = await page.$$('.conflict-table-row .bp3-radio input[type="radio"]:checked');
+        const checkedRadios = await page.$$('.conflict-table-row .bp4-radio input[type="radio"]:checked');
         expect(checkedRadios).to.have.lengthOf(1);
-        const notCheckedRadios = await page.$$('.conflict-table-row .bp3-radio input[type="radio"]:not(:checked)');
+        const notCheckedRadios = await page.$$('.conflict-table-row .bp4-radio input[type="radio"]:not(:checked)');
         expect(notCheckedRadios).to.have.length.above(0);
-        await page.click(`.conflict-table-row .bp3-radio:has(input[type="radio"]${selectAnotherOne ? ':not(:checked)' : ':checked'})`);
-        const radios = await page.$$('.conflict-table-row .bp3-radio input[type="radio"]');
+        await page.click(`.conflict-table-row .bp4-radio:has(input[type="radio"]${selectAnotherOne ? ':not(:checked)' : ':checked'})`);
+        const radios = await page.$$('.conflict-table-row .bp4-radio input[type="radio"]');
         const assertData = {};
         for (const radio of radios) {
             const value = await radio.getAttribute('value');
@@ -608,7 +608,7 @@ const GlobalHelper = {
             assertData[value] = isChecked ? 'confirmed' : 'canceled';
         }
         await Promise.all([
-            page.click(`.bp3-dialog-footer-actions .bp3-button:has-text("${Lang.text('button.confirm')}")`),
+            page.click(`.bp4-dialog-footer-actions .bp4-button:has-text("${Lang.text('button.confirm')}")`),
             GlobalHelper.waitAPI(page, 'actionDayoff'),
             GlobalHelper.waitAPI(page, 'getDaysoff')
         ]);
@@ -640,7 +640,7 @@ const GlobalHelper = {
 
     // click in blank zone
     async blankClick(page) {
-        await page.click('#nav .bp3-navbar-heading', {
+        await page.click('#nav .bp4-navbar-heading', {
             position: {
                 x: 10,
                 y: 10
@@ -650,7 +650,7 @@ const GlobalHelper = {
 
     // click in blank zone of a dialog popup
     async blankClickDialog(page) {
-        await page.click('.bp3-dialog .bp3-heading', {
+        await page.click('.bp4-dialog .bp4-heading', {
             position: {
                 x: 10,
                 y: 10
@@ -660,7 +660,7 @@ const GlobalHelper = {
 
     // hover a blank zone
     async blankHover(page) {
-        await page.hover('#nav .bp3-navbar-heading', {
+        await page.hover('#nav .bp4-navbar-heading', {
             position: {
                 x: 10,
                 y: 10
@@ -678,7 +678,7 @@ const GlobalHelper = {
 
     // clicks button in dialog
     async clickDialogButton(page, text) {
-        await page.click(`.bp3-dialog .bp3-button-text:has-text("${text}")`);
+        await page.click(`.bp4-dialog .bp4-button-text:has-text("${text}")`);
     }
 
 };

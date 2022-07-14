@@ -22,31 +22,31 @@ const ConfigAdminHelper = {
         });
         // checks username label and input
         const usernameInputSelector = (
-            `.admin-form .bp3-form-group:has(.bp3-label:has-text("${
+            `.admin-form .bp4-form-group:has(.bp4-label:has-text("${
                 Lang.text('admin.form.username')
-            }")) .bp3-input-group:has(.bp3-icon-user) input.bp3-input`
+            }")) .bp4-input-group:has(.bp4-icon-user) input.bp4-input`
         );
         await page.waitForSelector(usernameInputSelector);
         const usernameInputValue = await page.$eval(usernameInputSelector, (el) => el.value);
         expect(usernameInputValue).to.equal(username || '');
         // checks password label and input
         await page.waitForSelector(
-            `.admin-form .bp3-form-group:has(.bp3-label:has-text("${
+            `.admin-form .bp4-form-group:has(.bp4-label:has-text("${
                 Lang.text('admin.form.password')
-            }")) .bp3-form-content .bp3-input-group:has(.bp3-icon-lock) input.bp3-input`
+            }")) .bp4-form-content .bp4-input-group:has(.bp4-icon-lock) input.bp4-input`
         );
         // checks password confirm label and input
         await page.waitForSelector(
-            `.admin-form .bp3-form-group:has(.bp3-label:has-text("${
+            `.admin-form .bp4-form-group:has(.bp4-label:has-text("${
                 Lang.text('admin.form.passwordConfirm')
-            }")) .bp3-form-content .bp3-input-group:has(.bp3-icon-lock) input.bp3-input`
+            }")) .bp4-form-content .bp4-input-group:has(.bp4-icon-lock) input.bp4-input`
         );
         // checks for input helpers
         for (const inputName of ['username', 'password']) {
             await page.waitForSelector(
-                `.admin-form .bp3-form-group:has(.bp3-label:has-text("${
+                `.admin-form .bp4-form-group:has(.bp4-label:has-text("${
                     Lang.text(`admin.form.${inputName}`)
-                }")) .bp3-form-helper-text:has-text("${
+                }")) .bp4-form-helper-text:has-text("${
                     [
                         Lang.text('admin.form.securityRule'),
                         inputName === 'password' && username
@@ -58,14 +58,14 @@ const ConfigAdminHelper = {
         }
         // checks buttons
         await page.waitForSelector(
-            `.admin-form button.bp3-intent-primary:has(.bp3-icon-${
+            `.admin-form button.bp4-intent-primary:has(.bp4-icon-${
                 username ? 'floppy-disk' : 'add'
-            }) .bp3-button-text:has-text("${
+            }) .bp4-button-text:has-text("${
                 Lang.text(`button.${username ? 'save' : 'create'}`)
             }")`
         );
         await page.waitForSelector(
-            `.admin-form button:has(.bp3-icon-undo) .bp3-button-text:has-text("${
+            `.admin-form button:has(.bp4-icon-undo) .bp4-button-text:has-text("${
                 Lang.text('button.cancel')
             }")`
         );
@@ -74,18 +74,18 @@ const ConfigAdminHelper = {
     // checks helper for non matching password is here
     async assertNonMatchingPasswordHelper(page, isHere = true) {
         await page.waitForSelector(
-            `.admin-form .bp3-form-group .bp3-label:has-text("${
+            `.admin-form .bp4-form-group .bp4-label:has-text("${
                 Lang.text('admin.form.passwordConfirm')
             }")`
         );
         if (isHere) {
             await page.waitForSelector(
-                `.admin-form .bp3-form-group .bp3-form-helper-text .helper-error:has-text("${
+                `.admin-form .bp4-form-group .bp4-form-helper-text .helper-error:has-text("${
                     Lang.text('admin.form.passwordDontMatch')
                 }")`
             );
         } else {
-            await page.waitForSelector('.admin-form .bp3-form-group .bp3-form-helper-text .helper-error', {
+            await page.waitForSelector('.admin-form .bp4-form-group .bp4-form-helper-text .helper-error', {
                 state: 'detached'
             });
         }
@@ -94,15 +94,15 @@ const ConfigAdminHelper = {
     // checks user delete confirm dialog
     async assertDeleteDialog(page, username) {
         await page.waitForSelector(
-            `.bp3-dialog .bp3-dialog-header:has(span[icon="warning-sign"]) h4.bp3-heading:has-text("${
+            `.bp4-dialog .bp4-dialog-header:has(span[icon="warning-sign"]) h5.bp4-heading:has-text("${
                 Lang.text('admin.dialog.delete.title')
             }")`
         );
         await page.waitForSelector(
-            `.bp3-dialog .bp3-dialog-body:has-text("${Lang.text('admin.dialog.delete.text')} ${username} ?")`
+            `.bp4-dialog .bp4-dialog-body:has-text("${Lang.text('admin.dialog.delete.text')} ${username} ?")`
         );
         await page.waitForSelector(
-            `.bp3-dialog .bp3-dialog-footer button.bp3-button.bp3-intent-primary .bp3-button-text:has-text("${Lang.text('button.confirm')}")`
+            `.bp4-dialog .bp4-dialog-footer button.bp4-button.bp4-intent-primary .bp4-button-text:has-text("${Lang.text('button.confirm')}")`
         );
     },
 
@@ -110,7 +110,7 @@ const ConfigAdminHelper = {
     async confirmDelete(page) {
         await Promise.all([
             page.click(
-                `.bp3-dialog .bp3-dialog-footer button.bp3-button:has(.bp3-button-text:has-text("${Lang.text('button.confirm')}"))`
+                `.bp4-dialog .bp4-dialog-footer button.bp4-button:has(.bp4-button-text:has-text("${Lang.text('button.confirm')}"))`
             ),
             GlobalHelper.waitAPI(page, 'deleteUser'),
             GlobalHelper.waitAPI(page, 'getUsers')
@@ -120,28 +120,28 @@ const ConfigAdminHelper = {
     // clicks cancel button in delete dialog
     async cancelDelete(page) {
         await page.click(
-            `.bp3-dialog .bp3-dialog-footer button.bp3-button:has(.bp3-button-text:has-text("${Lang.text('button.cancel')}"))`
+            `.bp4-dialog .bp4-dialog-footer button.bp4-button:has(.bp4-button-text:has-text("${Lang.text('button.cancel')}"))`
         );
     },
 
     // asserts user form button status (enabled / disabled)
     async assertFormButtons(page) {
-        const inputSelector = '.admin-form .bp3-input-group input[name="xxx"]';
+        const inputSelector = '.admin-form .bp4-input-group input[name="xxx"]';
         const usernameSelector = inputSelector.replace('xxx', 'username');
         const passwordSelector = inputSelector.replace('xxx', 'password');
         const passwordConfirmSelector = inputSelector.replace('xxx', 'passwordConfirm');
         const assertEnabled = async () => {
-            const enabled = await page.isEnabled('.admin-form button.bp3-intent-primary');
+            const enabled = await page.isEnabled('.admin-form button.bp4-intent-primary');
             expect(enabled).to.be.true;
-            await page.$eval('.admin-form button.bp3-intent-primary', (el) => (
-                !el.classList.contains('bp3-disabled')
+            await page.$eval('.admin-form button.bp4-intent-primary', (el) => (
+                !el.classList.contains('bp4-disabled')
             ));
         };
         const assertDisabled = async () => {
-            const enabled = await page.isEnabled('.admin-form button.bp3-intent-primary');
+            const enabled = await page.isEnabled('.admin-form button.bp4-intent-primary');
             expect(enabled).to.be.false;
-            await page.$eval('.admin-form button.bp3-intent-primary', (el) => (
-                el.classList.contains('bp3-disabled')
+            await page.$eval('.admin-form button.bp4-intent-primary', (el) => (
+                el.classList.contains('bp4-disabled')
             ));
         };
         const fillAndAssertForm = async (
@@ -186,14 +186,14 @@ const ConfigAdminHelper = {
         assertToaster = true,
         waitListRoute = true
     ) {
-        const usernameInputSelector = '.admin-form .bp3-input-group input[name="username"]';
+        const usernameInputSelector = '.admin-form .bp4-input-group input[name="username"]';
         await page.fill(usernameInputSelector, username);
-        const passwordInputSelector = '.admin-form .bp3-input-group input[name="password"]';
+        const passwordInputSelector = '.admin-form .bp4-input-group input[name="password"]';
         await page.fill(passwordInputSelector, password);
-        const passwordConfirmInputSelector = '.admin-form .bp3-input-group input[name="passwordConfirm"]';
+        const passwordConfirmInputSelector = '.admin-form .bp4-input-group input[name="passwordConfirm"]';
         await page.fill(passwordConfirmInputSelector, passwordConfirm);
         const tasks = [
-            page.click('.admin-form button.bp3-intent-primary'),
+            page.click('.admin-form button.bp4-intent-primary'),
             GlobalHelper.waitAPI(page, isCreate ? 'createUser' : 'editUser')
         ];
         if (waitListRoute) {

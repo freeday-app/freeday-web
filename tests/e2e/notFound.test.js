@@ -7,7 +7,7 @@ const Lang = require('./helpers/lang.helper');
 
 const assertNotFound = async (page) => {
     await page.waitForSelector(`#content .page-not-found:has-text("${Lang.text('nav.notFound')}")`);
-    await page.waitForSelector('#content .bp3-icon[icon="path-search"]');
+    await page.waitForSelector('#content .bp4-icon[icon="path-search"]');
     await GlobalHelper.assertFooter(page);
 };
 

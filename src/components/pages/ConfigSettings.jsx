@@ -6,10 +6,10 @@ import {
     InputGroup,
     FileInput,
     Icon,
-    Tooltip,
     Position,
     Switch
 } from '@blueprintjs/core';
+import { Tooltip2 } from '@blueprintjs/popover2';
 import Select from 'react-select';
 
 import API from '../../utils/api';
@@ -317,9 +317,9 @@ class Settings extends Component {
                                             } : null}
                                         />
                                         <div className="summary-csv-helper">
-                                            <Tooltip content={Lang.text('settings.form.slackReferrerHelper')} position={Position.BOTTOM}>
+                                            <Tooltip2 content={Lang.text('settings.form.slackReferrerHelper')} position={Position.BOTTOM}>
                                                 <Icon icon="help" iconSize={20} />
-                                            </Tooltip>
+                                            </Tooltip2>
                                         </div>
                                         {this.currentReferrerError()}
                                     </FormGroup>
@@ -329,7 +329,7 @@ class Settings extends Component {
                                         contentClassName="settings-monthly-recap-content"
                                         // label={Lang.text('settings.form.monthlyRecap')}
                                     >
-                                        <div className="setting-monthlyRecap-switch">
+                                        <div className="setting-monthly-recap-switch">
                                             <Switch
                                                 label={Lang.text('settings.form.monthlyRecap')}
                                                 checked={monthlyRecapJob.enabled}
@@ -337,9 +337,9 @@ class Settings extends Component {
                                             />
                                         </div>
                                         <div className="summary-csv-helper">
-                                            <Tooltip content={Lang.text('settings.form.monthlyRecapHelper')} position={Position.BOTTOM}>
+                                            <Tooltip2 content={Lang.text('settings.form.monthlyRecapHelper')} position={Position.BOTTOM}>
                                                 <Icon icon="help" iconSize={20} />
-                                            </Tooltip>
+                                            </Tooltip2>
                                         </div>
                                     </FormGroup>
                                     {/* submit button */}

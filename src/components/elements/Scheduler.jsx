@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { Tooltip, Position } from '@blueprintjs/core';
+import { Position } from '@blueprintjs/core';
+import { Tooltip2 } from '@blueprintjs/popover2';
 import DayJS from 'dayjs';
 
 import DayoffDate from '../../utils/dayoffDate';
@@ -103,7 +104,7 @@ class Scheduler extends Component {
         // if both periods of the day concern the same event we render a full circle
         if (events.am && events.pm && events.am.dayoffId === events.pm.dayoffId) {
             return (
-                <Tooltip
+                <Tooltip2
                     content={events.am.text}
                     position={Position.BOTTOM}
                 >
@@ -121,7 +122,7 @@ class Scheduler extends Component {
                             }
                         />
                     </DayoffMenu>
-                </Tooltip>
+                </Tooltip2>
             );
         }
         // else we render half circles for the different daysoff
@@ -129,7 +130,7 @@ class Scheduler extends Component {
         const splitClass = events.am && events.pm && events.am.color === events.pm.color ? ' split' : '';
         return ['am', 'pm'].map((period) => (
             events[period] ? (
-                <Tooltip
+                <Tooltip2
                     key={period}
                     content={events[period].text}
                     position={Position.BOTTOM}
@@ -148,7 +149,7 @@ class Scheduler extends Component {
                             }
                         />
                     </DayoffMenu>
-                </Tooltip>
+                </Tooltip2>
             ) : (
                 <span className="scheduler-table-body-half-event-wrapper" key={period}>
                     <div className="scheduler-table-body-half-event" />

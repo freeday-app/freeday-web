@@ -280,7 +280,7 @@ test.describe('[Daysoff]', () => {
         });
         await DaysoffHelper.create(page);
         await GlobalHelper.clickDialogButton(page, Lang.text('button.cancel'));
-        await page.waitForSelector('.bp3-dialog', { state: 'detached' });
+        await page.waitForSelector('.bp4-dialog', { state: 'detached' });
         await DaysoffHelper.create(page);
         await DaysoffHelper.assertForm(page);
         await GlobalHelper.clickDialogButton(page, Lang.text('button.confirm'));

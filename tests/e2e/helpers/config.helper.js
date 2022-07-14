@@ -8,10 +8,10 @@ const ConfigHelper = {
     // change config tab through tabs
     async selectTab(page, name) {
         await page.click(
-            `#config .config-top .config-header .tabs .bp3-tab-list .bp3-tab:has-text("${Lang.text(`nav.${name}`)}")`
+            `#config .config-top .config-header .tabs .bp4-tab-list .bp4-tab:has-text("${Lang.text(`nav.${name}`)}")`
         );
         await page.waitForSelector(
-            `#config .config-top .config-header .tabs .bp3-tab-list .bp3-tab[aria-selected="true"]:has-text("${Lang.text(`nav.${name}`)}")`
+            `#config .config-top .config-header .tabs .bp4-tab-list .bp4-tab[aria-selected="true"]:has-text("${Lang.text(`nav.${name}`)}")`
         );
     },
 
@@ -25,14 +25,14 @@ const ConfigHelper = {
     // edits config element by clicking edit button with given id
     async edit(page, id) {
         await page.click(
-            `#config .config-main .config-list-table tbody tr[data-id="${id}"] td.config-list-buttons button .bp3-icon[icon="edit"]`
+            `#config .config-main .config-list-table tbody tr[data-id="${id}"] td.config-list-buttons button .bp4-icon[icon="edit"]`
         );
     },
 
     // deletes config element by clicking delete button with given id
     async delete(page, id) {
         await page.click(
-            `#config .config-main .config-list-table tbody tr[data-id="${id}"] td.config-list-buttons button .bp3-icon[icon="trash"]`
+            `#config .config-main .config-list-table tbody tr[data-id="${id}"] td.config-list-buttons button .bp4-icon[icon="trash"]`
         );
     },
 
@@ -74,17 +74,17 @@ const ConfigHelper = {
             `#config .config-top .config-header h4:has-text("${Lang.text('nav.config')}")`
         );
         await page.waitForSelector(
-            `#config .config-top .config-header .tabs .bp3-tab:has-text("${Lang.text('nav.admins')}")`
+            `#config .config-top .config-header .tabs .bp4-tab:has-text("${Lang.text('nav.admins')}")`
         );
         await page.waitForSelector(
-            `#config .config-top .config-header .tabs .bp3-tab:has-text("${Lang.text('nav.types')}")`
+            `#config .config-top .config-header .tabs .bp4-tab:has-text("${Lang.text('nav.types')}")`
         );
         await page.waitForSelector(
-            `#config .config-top .config-header .tabs .bp3-tab-list .bp3-tab[aria-selected="true"]:has-text("${Lang.text(`nav.${name}`)}")`
+            `#config .config-top .config-header .tabs .bp4-tab-list .bp4-tab[aria-selected="true"]:has-text("${Lang.text(`nav.${name}`)}")`
         );
         if (buttonLanguageKey) {
             await page.waitForSelector(
-                `#config .config-main .config-buttons button.bp3-intent-primary:has-text("${Lang.text(`${buttonLanguageKey}.create`)}")`
+                `#config .config-main .config-buttons button.bp4-intent-primary:has-text("${Lang.text(`${buttonLanguageKey}.create`)}")`
             );
         }
         if (columns) {
@@ -124,7 +124,7 @@ const ConfigHelper = {
                             );
                         } else if (cell.type === 'tick') {
                             await page.waitForSelector(
-                                `:nth-match(#config .config-main .config-list-table tbody tr, ${i + 1}) >> :nth-match(td, ${j + 1}) >> .bp3-icon[icon="tick"]`
+                                `:nth-match(#config .config-main .config-list-table tbody tr, ${i + 1}) >> :nth-match(td, ${j + 1}) >> .bp4-icon[icon="tick"]`
                             );
                         }
                     } else {
@@ -159,7 +159,7 @@ const ConfigHelper = {
                         icon = null;
                 }
                 await page.waitForSelector(
-                    `:nth-match(#config .config-main .config-list-table tbody tr, ${i + 1}) >> td.config-list-buttons button .bp3-icon[icon="${icon}"]`
+                    `:nth-match(#config .config-main .config-list-table tbody tr, ${i + 1}) >> td.config-list-buttons button .bp4-icon[icon="${icon}"]`
                 );
             }
         }

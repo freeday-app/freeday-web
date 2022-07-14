@@ -1,7 +1,12 @@
 import React, { Component } from 'react';
 import {
-    Icon, HTMLTable, Button, Intent, Tooltip, Position
+    Icon,
+    HTMLTable,
+    Button,
+    Intent,
+    Position
 } from '@blueprintjs/core';
+import { Tooltip2 } from '@blueprintjs/popover2';
 import { CSVLink } from 'react-csv';
 import DayJS from 'dayjs';
 
@@ -284,11 +289,11 @@ class Summary extends Component {
                                         <th className="not-fixed">{}</th>
                                         {dayoffTypes.map((dt) => (
                                             <th key={dt.id}>
-                                                <Tooltip content={dt.name || ''} position={Position.BOTTOM}>
+                                                <Tooltip2 content={dt.name || ''} position={Position.BOTTOM}>
                                                     <span className="summary-column-text dayoff-truncated-type">
                                                         {Tools.trunc(dt.name, TruncLength.SHORT)}
                                                     </span>
-                                                </Tooltip>
+                                                </Tooltip2>
                                             </th>
                                         ))}
                                         <th>
@@ -310,9 +315,9 @@ class Summary extends Component {
                                             <span className="summary-column-text">
                                                 {Lang.text('summary.column.rate')}
                                             </span>
-                                            <Tooltip content={Lang.text('summary.column.rateHelper')} position={Position.BOTTOM}>
+                                            <Tooltip2 content={Lang.text('summary.column.rateHelper')} position={Position.BOTTOM}>
                                                 <Icon icon="help" iconSize={15} />
-                                            </Tooltip>
+                                            </Tooltip2>
                                         </th>
                                     </tr>
                                 </thead>
@@ -379,9 +384,9 @@ class Summary extends Component {
                                 />
                             </CSVLink>
                             <div className="summary-csv-helper">
-                                <Tooltip content={Lang.text('summary.csvHelper')} position={Position.BOTTOM}>
+                                <Tooltip2 content={Lang.text('summary.csvHelper')} position={Position.BOTTOM}>
                                     <Icon icon="help" iconSize={20} />
-                                </Tooltip>
+                                </Tooltip2>
                             </div>
                         </div>
                     </div>

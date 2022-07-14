@@ -80,7 +80,7 @@ const SummaryHelper = {
         await GlobalHelper.assertFilter(page, ['start', 'end', 'slackUsers', 'all']);
         await GlobalHelper.assertTooltip(
             page,
-            '#summary .summary-bottom:has(a[download="freeday-csv-export.csv"] button.summary-button.bp3-intent-primary) .summary-csv-helper .bp3-icon[icon="help"]',
+            '#summary .summary-bottom:has(a[download="freeday-csv-export.csv"] button.summary-button.bp4-intent-primary) .summary-csv-helper .bp4-icon[icon="help"]',
             Lang.text('summary.csvHelper')
         );
         await page.waitForSelector('#summary-main .summary-table');
@@ -95,7 +95,7 @@ const SummaryHelper = {
         }
         await GlobalHelper.assertTooltip(
             page,
-            `#summary-main .summary-table thead tr th:has(span.summary-column-text:has-text("${Lang.text('summary.column.rate')}")) .bp3-icon[icon="help"]`,
+            `#summary-main .summary-table thead tr th:has(span.summary-column-text:has-text("${Lang.text('summary.column.rate')}")) .bp4-icon[icon="help"]`,
             Lang.text('summary.column.rateHelper')
         );
         for (let i = 0; i < dayoffTypes.length; i += 1) {

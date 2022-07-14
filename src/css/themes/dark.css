@@ -194,7 +194,7 @@
     background-color: var(--palette-darker);
 }
 
-.bp4-dark .bp4-popover:not(.bp4-tooltip) .bp4-popover-arrow-fill {
+.bp4-dark .bp4-popover2:not(.bp4-tooltip2) .bp4-popover2-arrow-fill {
     fill: var(--palette-darker);
 }
 

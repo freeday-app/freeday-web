@@ -32,14 +32,14 @@ const ConfigDayoffTypesHelper = {
         await page.waitForSelector('#config-main form.dayoffType-form');
         // checks name label and input
         const nameInputValue = await page.$eval(
-            `.dayoffType-form .bp3-form-group:has(.bp3-label:has-text("${
+            `.dayoffType-form .bp4-form-group:has(.bp4-label:has-text("${
                 Lang.text('dayoffType.form.name')
-            }")) .bp3-form-content .bp3-input-group:has(.bp3-icon-annotation) input.bp3-input`,
+            }")) .bp4-form-content .bp4-input-group:has(.bp4-icon-annotation) input.bp4-input`,
             (el) => el.value
         );
         expect(nameInputValue).to.equal(dt.name ? dt.name : '');
         // checks emoji picker
-        const buttonSelector = `.dayoffType-form .bp3-form-group:has(.bp3-label:has-text("${
+        const buttonSelector = `.dayoffType-form .bp4-form-group:has(.bp4-label:has-text("${
             Lang.text('dayoffType.form.emoji')
         }")) button.emoji-picker-button`;
         if (dt.emoji) {
@@ -57,15 +57,15 @@ const ConfigDayoffTypesHelper = {
         for (const switchName of ['enabled', 'displayed', 'important']) {
             const labelText = Lang.text(`dayoffType.form.${switchName}`);
             await page.waitForSelector(
-                `.dayoffType-form .bp3-form-group label.bp3-control:has-text("${
+                `.dayoffType-form .bp4-form-group label.bp4-control:has-text("${
                     labelText
-                }"):has(input[type="checkbox"]) .bp3-control-indicator`
+                }"):has(input[type="checkbox"]) .bp4-control-indicator`
             );
             const shouldBeChecked = switchValues[switchName] !== null
                 ? switchValues[switchName]
                 : ['enabled', 'displayed'].includes(switchName);
             const isChecked = await page.isChecked(
-                `.dayoffType-form .bp3-form-group label.bp3-control:has-text("${
+                `.dayoffType-form .bp4-form-group label.bp4-control:has-text("${
                     labelText
                 }") input[type="checkbox"]`
             );
@@ -77,30 +77,30 @@ const ConfigDayoffTypesHelper = {
         }
         // checks buttons
         await page.waitForSelector(
-            `.dayoffType-form button.bp3-intent-primary:has(.bp3-icon-${dayoffType ? 'floppy-disk' : 'add'}) .bp3-button-text:has-text("${
+            `.dayoffType-form button.bp4-intent-primary:has(.bp4-icon-${dayoffType ? 'floppy-disk' : 'add'}) .bp4-button-text:has-text("${
                 Lang.text(`button.${dayoffType ? 'save' : 'create'}`)
             }")`
         );
         await page.waitForSelector(
-            `.dayoffType-form button:has(.bp3-icon-undo) .bp3-button-text:has-text("${Lang.text('button.cancel')}")`
+            `.dayoffType-form button:has(.bp4-icon-undo) .bp4-button-text:has-text("${Lang.text('button.cancel')}")`
         );
     },
 
     // asserts dayoff type form button status (enabled / disabled)
     async assertFormButtons(page) {
-        const nameSelector = '.dayoffType-form .bp3-input-group input[name="name"]';
+        const nameSelector = '.dayoffType-form .bp4-input-group input[name="name"]';
         const assertEnabled = async () => {
-            const enabled = await page.isEnabled('.dayoffType-form button.bp3-intent-primary');
+            const enabled = await page.isEnabled('.dayoffType-form button.bp4-intent-primary');
             expect(enabled).to.be.true;
-            await page.$eval('.dayoffType-form button.bp3-intent-primary', (el) => (
-                !el.classList.contains('bp3-disabled')
+            await page.$eval('.dayoffType-form button.bp4-intent-primary', (el) => (
+                !el.classList.contains('bp4-disabled')
             ));
         };
         const assertDisabled = async () => {
-            const enabled = await page.isEnabled('.dayoffType-form button.bp3-intent-primary');
+            const enabled = await page.isEnabled('.dayoffType-form button.bp4-intent-primary');
             expect(enabled).to.be.false;
-            await page.$eval('.dayoffType-form button.bp3-intent-primary', (el) => (
-                el.classList.contains('bp3-disabled')
+            await page.$eval('.dayoffType-form button.bp4-intent-primary', (el) => (
+                el.classList.contains('bp4-disabled')
             ));
         };
         await page.fill(nameSelector, '');
@@ -131,27 +131,27 @@ const ConfigDayoffTypesHelper = {
         for (const data of dataList) {
             const labelText = Lang.text(`dayoffType.form.${data.name}`);
             const isChecked = await page.isChecked(
-                `.dayoffType-form .bp3-form-group label.bp3-control:has-text("${labelText}") input[type="checkbox"]`
+                `.dayoffType-form .bp4-form-group label.bp4-control:has-text("${labelText}") input[type="checkbox"]`
             );
             if (!isChecked) {
                 await page.click(
-                    `.dayoffType-form .bp3-form-group:has(label.bp3-control:has-text("${labelText}")) .bp3-switch`
+                    `.dayoffType-form .bp4-form-group:has(label.bp4-control:has-text("${labelText}")) .bp4-switch`
                 );
             }
             await page.waitForSelector(
-                `.dayoffType-form .bp3-form-group:has(label.bp3-control:has-text("${
+                `.dayoffType-form .bp4-form-group:has(label.bp4-control:has-text("${
                     labelText
-                }")) .bp3-form-helper-text:has-text("${
+                }")) .bp4-form-helper-text:has-text("${
                     Lang.text(`dayoffType.form.${data.checked}`)
                 }")`
             );
             await page.click(
-                `.dayoffType-form .bp3-form-group:has(label.bp3-control:has-text("${labelText}")) .bp3-switch`
+                `.dayoffType-form .bp4-form-group:has(label.bp4-control:has-text("${labelText}")) .bp4-switch`
             );
             await page.waitForSelector(
-                `.dayoffType-form .bp3-form-group:has(label.bp3-control:has-text("${
+                `.dayoffType-form .bp4-form-group:has(label.bp4-control:has-text("${
                     labelText
-                }")) .bp3-form-helper-text:has-text("${
+                }")) .bp4-form-helper-text:has-text("${
                     Lang.text(`dayoffType.form.${data.unchecked}`)
                 }")`
             );
@@ -167,7 +167,7 @@ const ConfigDayoffTypesHelper = {
         waitListRoute = true
     ) {
         const dt = dayoffType || null;
-        const inputNameSelector = '.dayoffType-form .bp3-input-group input[name="name"]';
+        const inputNameSelector = '.dayoffType-form .bp4-input-group input[name="name"]';
         if (dt.name) {
             await page.fill(inputNameSelector, dt.name);
         } else {
@@ -181,24 +181,24 @@ const ConfigDayoffTypesHelper = {
         for (const switchName of ['enabled', 'displayed', 'important']) {
             const labelText = Lang.text(`dayoffType.form.${switchName}`);
             const isChecked = await page.isChecked(
-                `.dayoffType-form .bp3-form-group label.bp3-control:has-text("${labelText}") input[type="checkbox"]`
+                `.dayoffType-form .bp4-form-group label.bp4-control:has-text("${labelText}") input[type="checkbox"]`
             );
             if (isChecked !== switchValues[switchName]) {
                 await page.click(
-                    `.dayoffType-form .bp3-form-group:has(label.bp3-control:has-text("${labelText}")) .bp3-switch`
+                    `.dayoffType-form .bp4-form-group:has(label.bp4-control:has-text("${labelText}")) .bp4-switch`
                 );
             }
         }
         // checks emoji picker
         await GlobalHelper.pickEmoji(
             page,
-            `.dayoffType-form .bp3-form-group:has(.bp3-label:has-text("${
+            `.dayoffType-form .bp4-form-group:has(.bp4-label:has-text("${
                 Lang.text('dayoffType.form.emoji')
             }")) button.emoji-picker-button`,
             dt.emoji
         );
         const tasks = [
-            page.click('.dayoffType-form button.bp3-intent-primary'),
+            page.click('.dayoffType-form button.bp4-intent-primary'),
             GlobalHelper.waitAPI(page, isCreate ? 'createDayoffType' : 'editDayoffType')
         ];
         if (waitListRoute) {
@@ -213,12 +213,12 @@ const ConfigDayoffTypesHelper = {
     },
 
     async dayoffTypeName(page, name = '') {
-        const inputNameSelector = '.dayoffType-form .bp3-input-group input[name="name"]';
+        const inputNameSelector = '.dayoffType-form .bp4-input-group input[name="name"]';
         await page.fill(inputNameSelector, name);
     },
 
     async assertDayoffTypeNameValue(page, value = null) {
-        const inputNameSelector = '.dayoffType-form .bp3-input-group input[name="name"]';
+        const inputNameSelector = '.dayoffType-form .bp4-input-group input[name="name"]';
         const inputValue = await page.$eval(inputNameSelector, (el) => el.value);
         expect(inputValue).to.equal(value);
     }

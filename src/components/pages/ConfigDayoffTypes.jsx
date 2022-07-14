@@ -2,9 +2,9 @@ import React from 'react';
 import {
     Intent,
     Icon,
-    Tooltip,
     Position
 } from '@blueprintjs/core';
+import { Tooltip2 } from '@blueprintjs/popover2';
 import { Emoji } from 'emoji-mart';
 
 import ConfigPage from '../elements/config/ConfigContent';
@@ -189,9 +189,9 @@ class DayoffTypes extends ConfigPage {
                     name,
                     cells: [
                         (
-                            <Tooltip key={`dayoff-type-${id}`} content={name || ''} position={Position.BOTTOM}>
+                            <Tooltip2 key={`dayoff-type-${id}`} content={name || ''} position={Position.BOTTOM}>
                                 <span className="truncated-cell">{Tools.trunc(name, TruncLength.LONG)}</span>
-                            </Tooltip>
+                            </Tooltip2>
                         ),
                         emoji ? <Emoji emoji={emoji} set="google" size={20} /> : '',
                         checkIcon(enabled),

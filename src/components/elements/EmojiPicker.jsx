@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Picker, Emoji } from 'emoji-mart';
-import { Button, Popover, Position } from '@blueprintjs/core';
+import { Button, Position } from '@blueprintjs/core';
+import { Popover2 } from '@blueprintjs/popover2';
 
 import Lang from '../../utils/language';
 
@@ -53,7 +54,7 @@ class EmojiPicker extends Component {
         } = this.state;
         return (
             <div className="label-pushed-content">
-                <Popover
+                <Popover2
                     position={Position.RIGHT_TOP}
                     isOpen={isOpen}
                     onInteraction={(state) => this.handleInteraction(state)}
@@ -82,7 +83,7 @@ class EmojiPicker extends Component {
                                 : Lang.text('emojiPicker.none')
                         }
                     </Button>
-                </Popover>
+                </Popover2>
             </div>
         );
     }

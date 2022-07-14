@@ -1,29 +1,34 @@
-const Fetch = require('node-fetch');
+const Axios = require('axios');
 
 const APIHelper = {
 
-    baseUrl: import.meta.env.VITE_API_PUBLIC_URL ?? 'http://localhost:8787',
+    baseUrl: 'http://localhost:8788',
     token: null,
 
     async request(opts) {
         const options = {
+            url: `${APIHelper.baseUrl}${opts.url}`,
             method: opts.method ? opts.method : 'get',
             headers: {
                 'Content-Type': 'application/json'
             }
         };
         if (opts.body) {
-            options.body = JSON.stringify(opts.body);
+            options.data = opts.body;
         }
         if (APIHelper.token) {
             options.headers.Authorization = APIHelper.token;
         }
-        const response = await Fetch(`${APIHelper.baseUrl}${opts.url}`, options);
-        response.data = await response.json();
-        if (opts.ignoreError || response.ok) {
+        try {
+            const response = await Axios(options);
             return response;
-        }
-        throw new Error(`Fetch request error: ${JSON.stringify(response.data)}`);
+        } catch (err) {
+            if (opts.ignoreError) {
+                return err.response;
+            }
+            const { status, data } = err.response;
+            throw new Error(`HTTP error ${status} ${JSON.stringify(data)}`);
+        }        
     },
 
     async auth(username, password) {

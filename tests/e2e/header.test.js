@@ -80,7 +80,7 @@ test.describe('[Navigation header]', () => {
 
     test('Should change client theme', async ({ page }) => {
         await GlobalHelper.login(page);
-        for (const [theme, bodyClass] of [['light', 'bp3'], ['dark', 'bp3-dark']]) {
+        for (const [theme, bodyClass] of [['light', 'bp4'], ['dark', 'bp4-dark']]) {
             await GlobalHelper.changeTheme(page, theme);
             await GlobalHelper.assertHeader(page);
             await page.$eval(

@@ -26,19 +26,19 @@ const DaysoffHelper = {
         ]) {
             await page.waitForSelector(`#dayoff-table thead th:has-text("${name}")`);
         }
-        await page.waitForSelector('.bp3-popover', { state: 'detached' });
-        await page.click('#dayoff-table td.dayoff-action .bp3-popover-target');
-        await page.waitForSelector('.bp3-popover');
+        await page.waitForSelector('.bp4-popover2', { state: 'detached' });
+        await page.click('#dayoff-table td.dayoff-action .bp4-popover2-target');
+        await page.waitForSelector('.bp4-popover2');
         for (const name of [
             Lang.text('button.confirm'),
             Lang.text('button.cancel'),
             Lang.text('button.reset'),
             Lang.text('button.edit')
         ]) {
-            await page.waitForSelector(`.bp3-popover ul.bp3-menu li a.bp3-menu-item:has-text("${name}")`);
+            await page.waitForSelector(`.bp4-popover2 ul.bp4-menu li a.bp4-menu-item:has-text("${name}")`);
         }
         await GlobalHelper.blankClick(page);
-        await page.waitForSelector('.bp3-popover', { state: 'detached' });
+        await page.waitForSelector('.bp4-popover2', { state: 'detached' });
     },
 
     // checks dayoff list content with given dayoff data
@@ -171,21 +171,21 @@ const DaysoffHelper = {
     // changes dayoff status and assert status in dayoff list
     async changeAndAssertStatus(page, rowIdx, action, status, cancelReason = null) {
         const isCancel = action === Lang.text('button.cancel');
-        await page.click(`:nth-match(#dayoff-table td.dayoff-action .bp3-popover-target, ${rowIdx + 1})`);
+        await page.click(`:nth-match(#dayoff-table td.dayoff-action .bp4-popover2-target, ${rowIdx + 1})`);
         const tasks = [
-            page.click(`.bp3-popover ul.bp3-menu li a.bp3-menu-item:has-text("${action}")`)
+            page.click(`.bp4-popover2 ul.bp4-menu li a.bp4-menu-item:has-text("${action}")`)
         ];
         if (!isCancel) {
             tasks.push(GlobalHelper.waitAPI(page, 'actionDayoff'));
         }
         await Promise.all(tasks);
-        await page.waitForSelector(`.bp3-popover ul.bp3-menu li a.bp3-menu-item:has-text("${action}")`, {
+        await page.waitForSelector(`.bp4-popover2 ul.bp4-menu li a.bp4-menu-item:has-text("${action}")`, {
             state: 'detached'
         });
         if (isCancel) {
-            await page.fill('.bp3-dialog .bp3-input', cancelReason);
+            await page.fill('.bp4-dialog .bp4-input', cancelReason);
             await Promise.all([
-                page.click(`.bp3-dialog .bp3-intent-primary:has-text("${Lang.text('button.confirm')}")`),
+                page.click(`.bp4-dialog .bp4-intent-primary:has-text("${Lang.text('button.confirm')}")`),
                 GlobalHelper.waitAPI(page, 'actionDayoff')
             ]);
         }
@@ -201,16 +201,16 @@ const DaysoffHelper = {
 
     // tries to confirm target conflicted dayoff then handles conflict dialog
     async handleConflict(page, targetDayoffId) {
-        const selector = `#dayoff-table tr[data-dayoffid="${targetDayoffId}"] td.dayoff-action .bp3-popover-target`;
+        const selector = `#dayoff-table tr[data-dayoffid="${targetDayoffId}"] td.dayoff-action .bp4-popover2-target`;
         await GlobalHelper.assertConflict(page, selector);
         await GlobalHelper.handleConflict(page, selector, 'daysoff', true);
     },
 
     // checks that dayoff form elements exist
     async assertForm(page, isEdit = false) {
-        await page.waitForSelector('.bp3-dialog');
+        await page.waitForSelector('.bp4-dialog');
         await page.waitForSelector(
-            `.bp3-dialog .bp3-heading:has-text("${
+            `.bp4-dialog .bp4-heading:has-text("${
                 isEdit ? Lang.text('dayoff.dialog.form.editTitle') : Lang.text('dayoff.dialog.form.title')
             }")`
         );
@@ -219,7 +219,7 @@ const DaysoffHelper = {
             Lang.text('dayoff.field.type')
         ]) {
             await page.waitForSelector(
-                `.bp3-dialog .bp3-form-group:has(.bp3-label:has-text("${label}")) .react-select__control`
+                `.bp4-dialog .bp4-form-group:has(.bp4-label:has-text("${label}")) .react-select__control`
             );
         }
         for (const type of [
@@ -227,25 +227,25 @@ const DaysoffHelper = {
             Lang.text('filter.end')
         ]) {
             await page.waitForSelector(
-                `.bp3-dialog .bp3-form-group:has(.bp3-label:has-text("${type}")) .bp3-input`
+                `.bp4-dialog .bp4-form-group:has(.bp4-label:has-text("${type}")) .bp4-input`
             );
             await page.waitForSelector(
-                `.bp3-dialog .dayoff-form-body-row:has(.bp3-label:has-text("${Lang.text('period.am')}")) .bp3-switch`
+                `.bp4-dialog .dayoff-form-body-row:has(.bp4-label:has-text("${Lang.text('period.am')}")) .bp4-switch`
             );
             await page.waitForSelector(
-                `.bp3-dialog .dayoff-form-body-row:has(.bp3-label:has-text("${Lang.text('period.pm')}")) .bp3-switch`
+                `.bp4-dialog .dayoff-form-body-row:has(.bp4-label:has-text("${Lang.text('period.pm')}")) .bp4-switch`
             );
         }
         await page.waitForSelector(
-            `.bp3-dialog .bp3-form-group:has(.bp3-label:has-text("${
+            `.bp4-dialog .bp4-form-group:has(.bp4-label:has-text("${
                 Lang.text('dayoff.field.comment')
-            }")) .bp3-input`
+            }")) .bp4-input`
         );
         await page.waitForSelector(
-            `.bp3-dialog .bp3-button-text:has-text("${Lang.text('button.cancel')}")`
+            `.bp4-dialog .bp4-button-text:has-text("${Lang.text('button.cancel')}")`
         );
         await page.waitForSelector(
-            `.bp3-dialog .bp3-button-text:has-text("${Lang.text('button.confirm')}")`
+            `.bp4-dialog .bp4-button-text:has-text("${Lang.text('button.confirm')}")`
         );
     },
 
@@ -253,39 +253,39 @@ const DaysoffHelper = {
     async assertFormValues(page, dayoff) {
         await GlobalHelper.assertSingleValue(
             page,
-            `.bp3-dialog .bp3-form-group:has(.bp3-label:has-text("${
+            `.bp4-dialog .bp4-form-group:has(.bp4-label:has-text("${
                 Lang.text('dayoff.field.slackUser')
             }")) .react-select__control`,
             dayoff.slackUser.name
         );
         await GlobalHelper.assertSingleValue(
             page,
-            `.bp3-dialog .bp3-form-group:has(.bp3-label:has-text("${
+            `.bp4-dialog .bp4-form-group:has(.bp4-label:has-text("${
                 Lang.text('dayoff.field.type')
             }")) .react-select__control`,
             dayoff.type.name
         );
         for (const type of ['start', 'end']) {
             await page.waitForSelector(
-                `.bp3-dialog .bp3-form-group:has(.bp3-label:has-text("${
+                `.bp4-dialog .bp4-form-group:has(.bp4-label:has-text("${
                     Lang.text(`dayoff.field.${type}`)
-                }")) .bp3-input[value="${DayJS(dayoff[type.toLowerCase()]).format(Lang.text('date.format'))}"]`
+                }")) .bp4-input[value="${DayJS(dayoff[type.toLowerCase()]).format(Lang.text('date.format'))}"]`
             );
             for (const period of ['am', 'pm']) {
                 const isChecked = await page.isChecked(
-                    `.bp3-dialog .dayoff-form-body-row:has(.bp3-label:has-text("${
+                    `.bp4-dialog .dayoff-form-body-row:has(.bp4-label:has-text("${
                         Lang.text(`dayoff.field.${type}`)
-                    }")) .bp3-form-group:has(.bp3-label:has-text("${
+                    }")) .bp4-form-group:has(.bp4-label:has-text("${
                         Lang.text(`period.${period}`)
-                    }")) .bp3-switch input[type="checkbox"]`
+                    }")) .bp4-switch input[type="checkbox"]`
                 );
                 expect(isChecked).to.equal(dayoff[`${type.toLowerCase()}Period`] === period);
             }
         }
         await page.waitForSelector(
-            `.bp3-dialog .bp3-form-group:has(.bp3-label:has-text("${
+            `.bp4-dialog .bp4-form-group:has(.bp4-label:has-text("${
                 Lang.text('dayoff.field.comment')
-            }")) .bp3-input[value="${dayoff.comment}"]`
+            }")) .bp4-input[value="${dayoff.comment}"]`
         );
     },
 
@@ -294,7 +294,7 @@ const DaysoffHelper = {
         if (!isEdit) {
             await GlobalHelper.selectValues(
                 page,
-                `.bp3-dialog .bp3-form-group:has(.bp3-label:has-text("${
+                `.bp4-dialog .bp4-form-group:has(.bp4-label:has-text("${
                     Lang.text('dayoff.field.slackUser')
                 }")) .react-select__control`,
                 dayoff.slackUser.name,
@@ -304,7 +304,7 @@ const DaysoffHelper = {
         }
         await GlobalHelper.selectValues(
             page,
-            `.bp3-dialog .bp3-form-group:has(.bp3-label:has-text("${
+            `.bp4-dialog .bp4-form-group:has(.bp4-label:has-text("${
                 Lang.text('dayoff.field.type')
             }")) .react-select__control`,
             dayoff.type.name || dayoff.type,
@@ -313,28 +313,28 @@ const DaysoffHelper = {
         );
         for (const type of ['start', 'end']) {
             await page.fill(
-                `.bp3-dialog .bp3-form-group:has(.bp3-label:has-text("${Lang.text(`dayoff.field.${type}`)}")) .bp3-input`,
+                `.bp4-dialog .bp4-form-group:has(.bp4-label:has-text("${Lang.text(`dayoff.field.${type}`)}")) .bp4-input`,
                 DayJS(dayoff[type.toLowerCase()]).format(Lang.text('date.format'))
             );
             await page.click(
-                `.bp3-dialog .dayoff-form-body-row:has(.bp3-label:has-text("${
+                `.bp4-dialog .dayoff-form-body-row:has(.bp4-label:has-text("${
                     Lang.text(`dayoff.field.${type}`)
-                }")) .bp3-form-group:has(.bp3-label:has-text("${
+                }")) .bp4-form-group:has(.bp4-label:has-text("${
                     dayoff[`${type.toLowerCase()}Period`] === 'am'
                         ? Lang.text('period.am')
                         : Lang.text('period.pm')
-                }")) .bp3-switch`
+                }")) .bp4-switch`
             );
         }
         await page.fill(
-            `.bp3-dialog .bp3-form-group:has(.bp3-label:has-text("${
+            `.bp4-dialog .bp4-form-group:has(.bp4-label:has-text("${
                 Lang.text('dayoff.field.comment')
-            }")) .bp3-input`,
+            }")) .bp4-input`,
             dayoff.comment
         );
         if (submitForm) {
             await Promise.all([
-                page.click(`.bp3-dialog .bp3-button-text:has-text("${Lang.text('button.confirm')}")`),
+                page.click(`.bp4-dialog .bp4-button-text:has-text("${Lang.text('button.confirm')}")`),
                 GlobalHelper.waitAPI(page, 'getDaysoff')
             ]);
         }
@@ -343,7 +343,7 @@ const DaysoffHelper = {
     // clicks create dayoff button
     async create(page) {
         await page.click(`.dayoff-buttons button:has-text("${Lang.text('dayoff.button.create')}")`);
-        await page.waitForSelector('.bp3-dialog');
+        await page.waitForSelector('.bp4-dialog');
     },
 
     // clicks csv export button
@@ -358,23 +358,23 @@ const DaysoffHelper = {
             Lang.text('dayoff.field.type')
         ]) {
             await page.waitForSelector(
-                `.bp3-dialog .bp3-form-group:has(.bp3-label:has-text("${label}")) .error .react-select__control`
+                `.bp4-dialog .bp4-form-group:has(.bp4-label:has-text("${label}")) .error .react-select__control`
             );
         }
         await page.waitForSelector(
-            `.bp3-dialog .bp3-form-group:has(.bp3-label:has-text("${
+            `.bp4-dialog .bp4-form-group:has(.bp4-label:has-text("${
                 Lang.text('dayoff.field.start')
-            }")) .error .bp3-input`
+            }")) .error .bp4-input`
         );
     },
 
     // open first dayoff row menu, then clicks edit, then clicks dialog button if provided
     async editFirstRow(page, dialogButtonText) {
-        await page.click('#dayoff-table td.dayoff-action .bp3-popover-target');
-        await page.click(`.bp3-popover ul.bp3-menu li a.bp3-menu-item:has-text("${Lang.text('button.edit')}")`);
-        await page.waitForSelector('.bp3-dialog');
+        await page.click('#dayoff-table td.dayoff-action .bp4-popover2-target');
+        await page.click(`.bp4-popover2 ul.bp4-menu li a.bp4-menu-item:has-text("${Lang.text('button.edit')}")`);
+        await page.waitForSelector('.bp4-dialog');
         if (dialogButtonText) {
-            await page.click(`.bp3-button-text:has-text("${dialogButtonText}")`);
+            await page.click(`.bp4-button-text:has-text("${dialogButtonText}")`);
         }
     },
 

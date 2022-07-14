@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
-import { Navigate } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { useParams, useNavigate } from 'react-router-dom';
 import {
     Icon,
     InputGroup,
@@ -12,91 +12,68 @@ import Loading from '../elements/Loading';
 import API from '../../utils/api';
 import Lang from '../../utils/language';
 import Configuration from '../../utils/configuration';
+import { useConfiguration } from '../elements/ConfigurationContext';
 import Toaster from '../../utils/toaster';
 
 import '../../css/pages/welcome.css';
 
-class Welcome extends Component {
-    constructor(props) {
-        super(props);
-        const { match: { params: { secret } } } = this.props;
-        this.state = {
-            secret,
-            username: null,
-            password: null,
-            language: 'en',
-            loading: true,
-            error: false,
-            languageSelection: false,
-            userCreation: false
-        };
-    }
+const Welcome = () => {
+    const { secret }= useParams();
+    const navigate = useNavigate();
+    const { setConfiguration } = useConfiguration();
 
-    async componentDidMount() {
-        const that = this;
-        try {
-            // checks secret code validity
-            const { secret } = this.state;
-            await API.call({
-                method: 'GET',
-                url: '/api/auth/welcome',
-                token: secret
-            });
-            that.setState({
-                loading: false,
-                error: false
-            });
-        } catch (err) {
-            console.error(err);
-            that.setState({
-                loading: false,
-                error: true
-            });
-        }
-    }
+    const [pageData, setPageData] = useState({
+        loading: true,
+        error: false,
+        languageSelection: false,
+        userCreation: false
+    });
+    const [userData, setUserData] = useState({
+        username: null,
+        password: null
+    });
+    const [language, setLanguage] = useState('en');
 
-    validateForm = () => {
-        const { username, password } = this.state;
+    const validateForm = () => {
+        const { username, password } = userData;
         return (
             username && username.length >= 6
             && password && password.length >= 6
         );
     };
 
-    displayLanguageSelection = () => {
-        this.setState({
+    const displayLanguageSelection = () => {
+        setPageData({
             userCreation: false,
             languageSelection: true
         });
     };
 
-    handleLanguageSelection = (code) => {
+    const handleLanguageSelection = (code) => {
         Lang.setCurrent(code);
-        this.setState({
-            language: code,
+        setLanguage(code);
+        setPageData((previous) => ({
+            ...previous,
             userCreation: true,
             languageSelection: false
-        });
+        }));
     };
 
-    handleUserChange = (e) => {
-        this.setState({
+    const handleUserChange = (e) => {
+        setUserData((previous) => ({
+            ...previous,
             [e.target.name]: e.target.value
-        });
+        }));
     };
 
-    handleUserSubmit = async (e) => {
+    const handleUserSubmit = async (e) => {
         e.preventDefault();
-        const {
-            secret,
-            username,
-            password,
-            language
-        } = this.state;
+        const { username, password } = userData;
         try {
-            this.setState({
+            setPageData((previous) => ({
+                ...previous,
                 loading: true
-            });
+            }));
             const user = await API.call({
                 method: 'POST',
                 url: '/api/auth/welcome',
@@ -116,15 +93,15 @@ class Welcome extends Component {
                 }
             });
             API.setAuth(result);
-            await Configuration.load();
             Lang.setCurrent(user.language);
-            this.setState({
-                loading: false
-            });
+            await Configuration.load();
+            setConfiguration(Configuration.data);
+            navigate('/daysoff');
         } catch (err) {
-            this.setState({
+            setPageData((previous) => ({
+                ...previous,
                 loading: false
-            });
+            }));
             Toaster.show({
                 message: Lang.text('error.generic'),
                 intent: Intent.DANGER
@@ -132,123 +109,142 @@ class Welcome extends Component {
         }
     };
 
-    render() {
-        const {
-            loading,
-            error,
-            userCreation,
-            languageSelection
-        } = this.state;
+    useEffect(() => {
+        (async () => {
+            try {
+                // checks secret code validity
+                await API.call({
+                    method: 'GET',
+                    url: '/api/auth/welcome',
+                    token: secret
+                });
+                setPageData((previous) => ({
+                    ...previous,
+                    loading: false,
+                    error: false
+                }));
+            } catch (err) {
+                console.error(err);
+                setPageData((previous) => ({
+                    ...previous,
+                    loading: false,
+                    error: true
+                }));
+            }
+        })();
+    }, []);
 
-        if (API.isAuth) {
-            return <Navigate to="/daysoff" />;
-        }
+    const {
+        loading,
+        error,
+        userCreation,
+        languageSelection
+    } = pageData;
 
-        if (loading) {
-            return (
-                <div className="content content-no-header">
-                    <Loading />
-                </div>
-            );
-        }
-
-        if (error) {
-            return (
-                <div className="content content-no-header">
-                    <div className="simple">
-                        <div className="simple-text">
-                            {Lang.text('error.generic')}
-                        </div>
-                        <div className="simple-icon">
-                            <Icon className="color-red" icon="cross" iconSize={100} />
-                        </div>
-                    </div>
-                </div>
-            );
-        }
-
-        if (languageSelection) {
-            return (
-                <div className="content content-no-header">
-                    <form className="login-form" onSubmit={this.handleSubmit}>
-                        <div className="welcome-title">
-                            {Lang.text('welcome.selectLanguage')}
-                            <div className="welcome-language-list">
-                                {
-                                    Object.keys(Lang.languages).map((code) => {
-                                        const lang = Lang.languages[code];
-                                        return (
-                                            <button
-                                                type="button"
-                                                key={`lang-${code}`}
-                                                className="welcome-language-item"
-                                                onClick={() => this.handleLanguageSelection(code)}
-                                            >
-                                                <Emoji emoji={lang.emoji} set="google" size={50} />
-                                                <div className="welcome-language-name">
-                                                    {lang.name}
-                                                </div>
-                                            </button>
-                                        );
-                                    })
-                                }
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            );
-        }
-
-        if (userCreation) {
-            return (
-                <div className="content content-no-header">
-                    <form className="login-form" onSubmit={this.handleUserSubmit}>
-                        <div className="welcome-title">
-                            {Lang.text('welcome.createUser')}
-                        </div>
-                        <InputGroup
-                            name="username"
-                            placeholder={Lang.text('admin.form.username')}
-                            leftIcon="user"
-                            onChange={this.handleUserChange}
-                        />
-                        <InputGroup
-                            name="password"
-                            placeholder={Lang.text('admin.form.password')}
-                            leftIcon="lock"
-                            type="password"
-                            onChange={this.handleUserChange}
-                        />
-                        <Button
-                            type="submit"
-                            icon="add"
-                            intent={Intent.PRIMARY}
-                            disabled={!this.validateForm()}
-                            text={Lang.text('button.create')}
-                        />
-                    </form>
-                </div>
-            );
-        }
-
+    if (loading) {
         return (
             <div className="content content-no-header">
-                <div className="login-form">
-                    <div className="welcome-intro-title">
-                        {Lang.text('welcome.intro')}
+                <Loading />
+            </div>
+        );
+    }
+
+    if (error) {
+        return (
+            <div className="content content-no-header">
+                <div className="simple">
+                    <div className="simple-text">
+                        {Lang.text('error.generic')}
                     </div>
-                    <Button
-                        className="welcome-intro-button"
-                        type="submit"
-                        icon="flag"
-                        intent={Intent.PRIMARY}
-                        text={Lang.text('button.start')}
-                        onClick={this.displayLanguageSelection}
-                    />
+                    <div className="simple-icon">
+                        <Icon className="color-red" icon="cross" iconSize={100} />
+                    </div>
                 </div>
             </div>
         );
     }
+
+    if (languageSelection) {
+        return (
+            <div className="content content-no-header">
+                <form className="login-form">
+                    <div className="welcome-title">
+                        {Lang.text('welcome.selectLanguage')}
+                        <div className="welcome-language-list">
+                            {
+                                Object.keys(Lang.languages).map((code) => {
+                                    const lang = Lang.languages[code];
+                                    return (
+                                        <button
+                                            type="button"
+                                            key={`lang-${code}`}
+                                            className="welcome-language-item"
+                                            onClick={() => handleLanguageSelection(code)}
+                                        >
+                                            <Emoji emoji={lang.emoji} set="google" size={50} />
+                                            <div className="welcome-language-name">
+                                                {lang.name}
+                                            </div>
+                                        </button>
+                                    );
+                                })
+                            }
+                        </div>
+                    </div>
+                </form>
+            </div>
+        );
+    }
+
+    if (userCreation) {
+        return (
+            <div className="content content-no-header">
+                <form className="login-form" onSubmit={handleUserSubmit}>
+                    <div className="welcome-title">
+                        {Lang.text('welcome.createUser')}
+                    </div>
+                    <InputGroup
+                        name="username"
+                        placeholder={Lang.text('admin.form.username')}
+                        leftIcon="user"
+                        onChange={handleUserChange}
+                    />
+                    <InputGroup
+                        name="password"
+                        placeholder={Lang.text('admin.form.password')}
+                        leftIcon="lock"
+                        type="password"
+                        onChange={handleUserChange}
+                    />
+                    <Button
+                        type="submit"
+                        icon="add"
+                        intent={Intent.PRIMARY}
+                        disabled={!validateForm()}
+                        text={Lang.text('button.create')}
+                    />
+                </form>
+            </div>
+        );
+    }
+
+    return (
+        <div className="content content-no-header">
+            <div className="login-form">
+                <div className="welcome-intro-title">
+                    {Lang.text('welcome.intro')}
+                </div>
+                <Button
+                    className="welcome-intro-button"
+                    type="submit"
+                    icon="flag"
+                    intent={Intent.PRIMARY}
+                    text={Lang.text('button.start')}
+                    onClick={displayLanguageSelection}
+                />
+            </div>
+        </div>
+    );
 }
 
 export default Welcome;
