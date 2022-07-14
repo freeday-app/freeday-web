@@ -1,6 +1,10 @@
 import React, { Component } from 'react';
 import {
-    FormGroup, Switch, NumericInput, Button, Intent
+    FormGroup,
+    Switch,
+    NumericInput,
+    Button,
+    Intent
 } from '@blueprintjs/core';
 import { DateInput } from '@blueprintjs/datetime';
 import Select from 'react-select';
@@ -24,7 +28,13 @@ class Filter extends Component {
     start = () => {
         const { inline, data, onChange } = this.props;
         return (
-            <FormGroup label={Lang.text('filter.start')} className="small" key="start" inline={inline}>
+            <FormGroup
+                key="start"
+                className="filter-group small"
+                contentClassName="filter-content"
+                label={Lang.text('filter.start')}
+                inline={inline}
+            >
                 <DateInput
                     {...dateProps()}
                     onChange={(val) => onChange('date', 'start', val)}
@@ -45,7 +55,13 @@ class Filter extends Component {
     end = () => {
         const { inline, data, onChange } = this.props;
         return (
-            <FormGroup label={Lang.text('filter.end')} className="small" key="end" inline={inline}>
+            <FormGroup
+                key="end"
+                className="filter-group small"
+                contentClassName="filter-content"
+                label={Lang.text('filter.end')}
+                inline={inline}
+            >
                 <DateInput
                     {...dateProps()}
                     onChange={(val) => onChange('date', 'end', val)}
@@ -66,7 +82,13 @@ class Filter extends Component {
     month = () => {
         const { inline, data, onChange } = this.props;
         return (
-            <FormGroup label={Lang.text('filter.month')} key="month" inline={inline}>
+            <FormGroup
+                key="month"
+                className="filter-group"
+                contentClassName="filter-content"
+                label={Lang.text('filter.month')}
+                inline={inline}
+            >
                 <div className="select-with-buttons-container">
                     <Button
                         intent={Intent.PRIMARY}
@@ -100,7 +122,13 @@ class Filter extends Component {
     year = () => {
         const { inline, data, onChange } = this.props;
         return (
-            <FormGroup label={Lang.text('filter.year')} className="small" key="year" inline={inline}>
+            <FormGroup
+                key="year"
+                className="filter-group small"
+                contentClassName="filter-content"
+                label={Lang.text('filter.year')}
+                inline={inline}
+            >
                 <NumericInput
                     className="numeric-input"
                     fill
@@ -123,7 +151,13 @@ class Filter extends Component {
             onChange
         } = this.props;
         return (
-            <FormGroup label={Lang.text('filter.slackUsers')} className="big" key="slackUser" inline={inline}>
+            <FormGroup
+                key="slackUser"
+                className="filter-group big"
+                contentClassName="filter-content"
+                label={Lang.text('filter.slackUsers')}
+                inline={inline}
+            >
                 <ThemeContext.Consumer>
                     {(themeValue) => (
                         <Select
@@ -156,7 +190,13 @@ class Filter extends Component {
     all = () => {
         const { data, onChange } = this.props;
         return (
-            <FormGroup label={Lang.text('filter.all')} className="small" key="all" inline>
+            <FormGroup
+                key="all"
+                className="filter-group small"
+                contentClassName="filter-content"
+                label={Lang.text('filter.all')}
+                inline
+            >
                 <Switch
                     checked={data.all}
                     onChange={() => onChange('switch', 'all', !data.all)}
@@ -173,7 +213,13 @@ class Filter extends Component {
             onChange
         } = this.props;
         return (
-            <FormGroup label={Lang.text('filter.type')} key="type" inline={inline}>
+            <FormGroup
+                key="type"
+                className="filter-group"
+                contentClassName="filter-content"
+                label={Lang.text('filter.type')}
+                inline={inline}
+            >
                 <ThemeContext.Consumer>
                     {(themeValue) => (
                         <Select
@@ -205,7 +251,13 @@ class Filter extends Component {
     status = () => {
         const { inline, data, onChange } = this.props;
         return (
-            <FormGroup label={Lang.text('filter.status')} key="status" inline={inline}>
+            <FormGroup
+                key="status"
+                className="filter-group"
+                contentClassName="filter-content"
+                label={Lang.text('filter.status')}
+                inline={inline}
+            >
                 <ThemeContext.Consumer>
                     {(themeValue) => (
                         <Select
@@ -246,7 +298,11 @@ class Filter extends Component {
     reset = () => {
         const { onReset } = this.props;
         return (
-            <FormGroup className="filter-footer no-grow" key="footer">
+            <FormGroup
+                className="filter-group filter-footer no-grow"
+                contentClassName="filter-content"
+                key="footer"
+            >
                 <Button
                     minimal
                     className="filter-reset bp3-intent-stealth"

@@ -1,7 +1,11 @@
 import React, { Component } from 'react';
 import {
-    Menu, Intent, Popover, Position
+    Menu,
+    MenuItem,
+    Intent,
+    Position
 } from '@blueprintjs/core';
+import { Popover2 } from '@blueprintjs/popover2';
 
 import CancelDialog from './CancelDialog';
 import ConflictDialog from './ConflictDialog';
@@ -134,12 +138,12 @@ class DayoffMenu extends Component {
         return (
             <>
                 {/* context menu */}
-                <Popover
+                <Popover2
                     position={Position.BOTTOM}
                     content={(
                         <Menu>
                             {!isExclude || !exclude.includes('confirm') ? (
-                                <Menu.Item
+                                <MenuItem
                                     icon="tick"
                                     text={Lang.text('button.confirm')}
                                     intent={Intent.SUCCESS}
@@ -147,7 +151,7 @@ class DayoffMenu extends Component {
                                 />
                             ) : null}
                             {!isExclude || !exclude.includes('cancel') ? (
-                                <Menu.Item
+                                <MenuItem
                                     icon="cross"
                                     text={Lang.text('button.cancel')}
                                     intent={Intent.WARNING}
@@ -155,7 +159,7 @@ class DayoffMenu extends Component {
                                 />
                             ) : null}
                             {!isExclude || !exclude.includes('reset') ? (
-                                <Menu.Item
+                                <MenuItem
                                     icon="undo"
                                     text={Lang.text('button.reset')}
                                     intent={Intent.NONE}
@@ -163,7 +167,7 @@ class DayoffMenu extends Component {
                                 />
                             ) : null}
                             {!isExclude || !exclude.includes('edit') ? (
-                                <Menu.Item
+                                <MenuItem
                                     icon="edit"
                                     text={Lang.text('button.edit')}
                                     intent={Intent.PRIMARY}
@@ -174,7 +178,7 @@ class DayoffMenu extends Component {
                     )}
                 >
                     {children}
-                </Popover>
+                </Popover2>
                 {/* cancel confirmation dialog */}
                 {!isExclude || !exclude.includes('cancel') ? (
                     <CancelDialog

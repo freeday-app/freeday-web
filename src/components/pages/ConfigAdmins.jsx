@@ -5,6 +5,7 @@ import {
     Tooltip,
     Position
 } from '@blueprintjs/core';
+import { Tooltip2 } from '@blueprintjs/popover2';
 
 import ConfigPage from '../elements/config/ConfigContent';
 import API from '../../utils/api';
@@ -204,15 +205,15 @@ class Admins extends ConfigPage {
                 cells: [
                     <>
                         <span className="config-name-inner">
-                            <Tooltip key={`config-user-name-${user.id}`} content={user.username} position={Position.BOTTOM}>
+                            <Tooltip2 key={`config-user-name-${user.id}`} content={user.username} position={Position.BOTTOM}>
                                 <span className="truncated-cell">
                                     {Tools.trunc(user.username, TruncLength.LONG)}
                                 </span>
-                            </Tooltip>
+                            </Tooltip2>
                         </span>
                         {
                             user.id === API.userId
-                                ? <Tag>{Lang.text('admin.self')}</Tag>
+                                ? <Tag className="config-admin-self">{Lang.text('admin.self')}</Tag>
                                 : null
                         }
                     </>

@@ -62,7 +62,11 @@ h3.config-form-title {
     margin-left: 10px;
 }
 
-.settings-brandingLogo-container {
+.config-admin-self {
+    margin-left: 10px;
+}
+
+.settings-branding-logo-container {
     align-items: center;
     display: flex;
     flex-direction: row;
@@ -71,31 +75,31 @@ h3.config-form-title {
     width: 100%;
 }
 
-.settings-brandingLogo-image {
+.settings-branding-logo-image {
     max-height: 75px;
     max-width: 100px;
 }
 
-.settings-brandingLogo-icon {
+.settings-branding-logo-icon {
     cursor: pointer;
     margin-left: 10px;
 }
 
-.settings-slackReferrer-container .bp3-form-content,
-.settings-monthlyRecap-container .bp3-form-content {
+.settings-slack-referrer-content,
+.settings-monthly-recap-content {
     align-items: center;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
 }
 
-.settings-slackReferrer-error {
+.settings-slack-referrer-error {
     color: var(--palette-red);
     font-size: 12px;
     margin-top: 5px;
 }
 
-.settings-slackReferrer-select,
-.setting-monthlyRecap-switch {
+.settings-slack-referrer-select,
+.setting-monthly-recap-switch {
     flex-grow: 1;
 }

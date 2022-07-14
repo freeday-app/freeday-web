@@ -97,13 +97,38 @@ const SupportDialog = ({ isOpen, onClose }) => (
     >
         <Card elevation={Elevation.TWO}>
             <Tabs
+                className="support-tabs"
                 renderActiveTabPanelOnly="true"
                 vertical="true"
             >
-                <Tab id="contact" className="support-tab" title={Lang.text('support.contact.title')} panel={<ContactPanel />} />
-                <Tab id="cgu" className="support-tab" title={Lang.text('support.cgu.title')} panel={<CguPanel />} />
-                <Tab id="legal" className="support-tab" title={Lang.text('support.legal.title')} panel={<LegalPanel />} />
-                <Tab id="data" className="support-tab" title={Lang.text('support.data.title')} panel={<DataPanel />} />
+                <Tab
+                    id="contact"
+                    className="support-tab"
+                    panelClassName="support-panel"
+                    title={Lang.text('support.contact.title')}
+                    panel={<ContactPanel />}
+                />
+                <Tab
+                    id="cgu"
+                    className="support-tab"
+                    panelClassName="support-panel"
+                    title={Lang.text('support.cgu.title')}
+                    panel={<CguPanel />}
+                />
+                <Tab
+                    id="legal"
+                    className="support-tab"
+                    panelClassName="support-panel"
+                    title={Lang.text('support.legal.title')}
+                    panel={<LegalPanel />}
+                />
+                <Tab
+                    id="data"
+                    className="support-tab"
+                    panelClassName="support-panel"
+                    title={Lang.text('support.data.title')}
+                    panel={<DataPanel />}
+                />
             </Tabs>
         </Card>
     </Dialog>

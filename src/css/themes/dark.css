@@ -137,7 +137,6 @@
 }
 
 .bp3-dark .bp3-button.bp3-intent-stealth {
-    background-color: none;
     color: var(--palette-light);
 }
 
@@ -199,6 +198,7 @@
     fill: var(--palette-darker);
 }
 
+/* stylelint-disable-next-line selector-class-pattern */
 .bp3-dark .bp3-datepicker .DayPicker-Day.DayPicker-Day--selected {
     background-color: var(--palette-blue);
 }
@@ -227,7 +227,7 @@
 }
 
 .bp3-dark .bp3-input:hover,
-.bp3-dark .bp3-form-group .react-select__control:hover {
+.bp3-dark .bp3-form-group .react-select__control:hover { /* stylelint-disable-line selector-class-pattern */
     border: solid 1px var(--palette-lightgrey);
 }
 

@@ -219,7 +219,7 @@ class Settings extends Component {
         const { slackReferrer } = configuration;
         if (slackChannelsById[slackReferrer] && !slackChannelsById[slackReferrer].isMember) {
             return (
-                <div className="settings-slackReferrer-error">
+                <div className="settings-slack-referrer-error">
                     {Lang.text('settings.error.currentReferrer')}
                 </div>
             );
@@ -279,14 +279,14 @@ class Settings extends Component {
                                     </FormGroup>
                                     {
                                         configuration.brandingLogo ? (
-                                            <div className="settings-brandingLogo-container">
+                                            <div className="settings-branding-logo-container">
                                                 <img
-                                                    className="settings-brandingLogo-image"
+                                                    className="settings-branding-logo-image"
                                                     src={brandingLogo}
                                                     alt="brandingLogo"
                                                 />
                                                 <Icon
-                                                    className="settings-brandingLogo-icon"
+                                                    className="settings-branding-logo-icon"
                                                     icon="trash"
                                                     onClick={() => this.onLogoClear()}
                                                 />
@@ -295,11 +295,12 @@ class Settings extends Component {
                                     }
                                     {/* slack referrer select */}
                                     <FormGroup
-                                        className="settings-slackReferrer-container"
+                                        className="settings-slack-referrer-container"
+                                        contentClassName="settings-slack-referrer-content"
                                         label={Lang.text('settings.form.slackReferrer')}
                                     >
                                         <Select
-                                            className="settings-slackReferrer-select"
+                                            className="settings-slack-referrer-select"
                                             classNamePrefix="react-select"
                                             placeholder={Lang.text('settings.form.slackReferrerNoResult')}
                                             noOptionsMessage={() => Lang.text('settings.form.slackReferrerNoResult')}
@@ -324,7 +325,8 @@ class Settings extends Component {
                                     </FormGroup>
                                     {/* monthly recap */}
                                     <FormGroup
-                                        className="settings-monthlyRecap-container"
+                                        className="settings-monthly-recap-container"
+                                        contentClassName="settings-monthly-recap-content"
                                         // label={Lang.text('settings.form.monthlyRecap')}
                                     >
                                         <div className="setting-monthlyRecap-switch">

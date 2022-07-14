@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import {
+    Classes,
     Label,
     Intent,
     FormGroup,
@@ -43,7 +44,7 @@ class ConfigForm extends Component {
 
     emojiPicker = (options) => (
         <FormGroup key={options.index}>
-            <Label className="bp3-inline label-pushed">
+            <Label className={`label-pushed ${Classes.INLINE}`}>
                 {options.label}
                 <EmojiPicker
                     onChange={(emoji) => options.handler(options.name, emoji)}

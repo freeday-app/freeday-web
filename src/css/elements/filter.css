@@ -14,34 +14,34 @@
     flex-grow: 1;
 }
 
-.filter .bp3-form-content {
+.filter .filter-content {
     flex-grow: 1;
 }
 
-/* fix largeur inputs date */
+/* fix size of inputs date
 .filter .bp3-popover-target {
     width: 100%;
-}
+} */
 
-.filter-inline > .bp3-form-group {
+.filter-inline > .filter-group {
     flex-basis: 0;
     flex-grow: 0;
     margin: 0;
 }
 
-.filter-inline > .bp3-form-group:not(.no-grow) {
+.filter-inline > .filter-group:not(.no-grow) {
     flex-basis: 300px;
 }
 
-.filter-inline > .bp3-form-group.small:not(.no-grow) {
+.filter-inline > .filter-group.small:not(.no-grow) {
     flex-basis: 175px;
 }
 
-.filter-inline > .bp3-form-group.big:not(.no-grow) {
+.filter-inline > .filter-group.big:not(.no-grow) {
     flex-basis: 375px;
 }
 
-.filter-inline > .bp3-form-group:not(:first-child) {
+.filter-inline > .filter-group:not(:first-child) {
     padding-left: 20px;
 }
 

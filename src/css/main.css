@@ -141,10 +141,6 @@ p {
     width: 500px;
 }
 
-.bp3-icon {
-    vertical-align: middle;
-}
-
 .loading {
     align-items: center;
     display: flex;
@@ -216,27 +212,6 @@ a:hover {
     vertical-align: middle;
 }
 
-#subnav {
-    background: transparent;
-    background-color: transparent;
-    box-shadow: none;
-    height: auto;
-    margin-bottom: 10px;
-    padding: 0;
-}
-
-#subnav .bp3-navbar-group {
-    height: auto;
-}
-
-#subnav .nav-divider {
-    margin: 0 15px;
-}
-
-#subnav .bp3-navbar-heading {
-    margin: 0;
-}
-
 h1 .emoji-mart-emoji,
 h1 .bp3-icon,
 h2 .emoji-mart-emoji,
@@ -276,13 +251,9 @@ h4 span {
     height: 100%;
 }
 
-table.bp3-html-table th,
-table.bp3-html-table td {
+table th,
+table td {
     vertical-align: middle;
-}
-
-.bp3-tag {
-    margin-left: 10px;
 }
 
 .clickable {

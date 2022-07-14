@@ -237,8 +237,8 @@ class Header extends Component {
                 {({ configuration }) => (
                     <>
                         <Navbar id="nav">
-                            <NavbarGroup>
-                                <NavbarHeading>
+                            <NavbarGroup className="nav-group">
+                                <NavbarHeading className="nav-heading">
                                     <div className="nav-logo">
                                         {
                                             configuration && configuration.brandingLogo
@@ -263,16 +263,28 @@ class Header extends Component {
                                     className="tabs"
                                     selectedTabId={this.getSelectedTab()}
                                 >
-                                    {/* navigation tabs */}
-                                    <Tab id="daysoff" title={this.tabLink('daysoff', 'calendar')} />
+                                    {/* pages tabs */}
+                                    <Tab
+                                        id="daysoff"
+                                        className="nav-tab"
+                                        title={this.tabLink('daysoff', 'calendar')}
+                                    />
                                     <Tab
                                         id="schedule"
+                                        className="nav-tab"
                                         title={this.tabLink('schedule', 'gantt-chart')}
                                     />
-                                    <Tab id="summary" title={this.tabLink('summary', 'th-list')} />
+                                    <Tab
+                                        id="summary"
+                                        className="nav-tab"
+                                        title={this.tabLink('summary', 'th-list')}
+                                    />
                                     <Tabs.Expander />
                                     {/* configuration */}
-                                    <Tab id="config" title={this.configTab()} />
+                                    <Tab
+                                        className="nav-tab"
+                                        id="config" title={this.configTab()}
+                                    />
                                 </Tabs>
                             </NavbarGroup>
                         </Navbar>
