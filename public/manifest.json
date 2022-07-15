@@ -1,7 +1,0 @@
-{
-    "short_name": "Freeday",
-    "name": "Freeday",
-    "icons": [],
-    "start_url": "./index.html",
-    "display": "standalone"
-}
