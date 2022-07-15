@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import DayJS from 'dayjs';
 import { Intent } from '@blueprintjs/core';
-import { Emoji } from 'emoji-mart';
+import Emoji from '../elements/Emoji';
 
 import Loading from '../elements/Loading';
 import Filter from '../elements/Filter';
@@ -71,7 +71,7 @@ class Schedule extends Component {
                         <div className="scheduler-tooltip">
                             {
                                 dayoff.type.emoji
-                                    ? <Emoji emoji={dayoff.type.emoji} set="google" size={18} />
+                                    ? <Emoji emoji={dayoff.type.emoji} size={18} />
                                     : ''
                             }
                             {dayoff.type.name}

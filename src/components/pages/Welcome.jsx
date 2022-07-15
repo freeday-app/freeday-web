@@ -6,7 +6,7 @@ import {
     Button,
     Intent
 } from '@blueprintjs/core';
-import { Emoji } from 'emoji-mart';
+import Emoji from '../elements/Emoji';
 
 import Loading from '../elements/Loading';
 import API from '../../utils/api';
@@ -181,7 +181,7 @@ const Welcome = () => {
                                             className="welcome-language-item"
                                             onClick={() => handleLanguageSelection(code)}
                                         >
-                                            <Emoji emoji={lang.emoji} set="google" size={50} />
+                                            <Emoji emoji={lang.emoji} size={50} />
                                             <div className="welcome-language-name">
                                                 {lang.name}
                                             </div>

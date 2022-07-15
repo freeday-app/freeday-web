@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Navigate } from 'react-router-dom';
 import { Button, InputGroup, Intent } from '@blueprintjs/core';
-import { Emoji } from 'emoji-mart';
+import Emoji from '../elements/Emoji';
 
 import API from '../../utils/api';
 import Configuration from '../../utils/configuration';
@@ -116,7 +116,7 @@ class Login extends Component {
                             {
                                 brandingLogo
                                     ? <img src={brandingLogo} alt="brandingLogo" />
-                                    : <Emoji emoji="palm_tree" set="google" size={50} />
+                                    : <Emoji emoji="palm_tree" size={50} />
                             }
                         </div>
                         <h1>{`Freeday${brandingName ? ` ${brandingName}` : ''}`}</h1>

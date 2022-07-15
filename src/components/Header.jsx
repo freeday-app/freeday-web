@@ -19,7 +19,6 @@ import {
     Icon
 } from '@blueprintjs/core';
 import { Popover2 } from '@blueprintjs/popover2';
-import { Emoji } from 'emoji-mart';
 
 // import ReactIcon from './elements/ReactIcon';
 import API from '../utils/api';
@@ -28,6 +27,7 @@ import Lang from '../utils/language';
 import Tools from '../utils/tools';
 import SupportDialog from './elements/SupportDialog';
 import ConfigurationContext from './elements/ConfigurationContext';
+import Emoji from './elements/Emoji';
 
 import '../css/header.css';
 
@@ -238,7 +238,7 @@ const Header = ({ onLanguage, onTheme }) => {
                                     {
                                         configuration && configuration.brandingLogo
                                             ? <img src={configuration.brandingLogo} alt="brandingLogo" />
-                                            : <Emoji emoji="palm_tree" set="google" size={20} />
+                                            : <Emoji emoji="palm_tree" size={20} />
                                     }
                                 </div>
                                 <div className="nav-title">

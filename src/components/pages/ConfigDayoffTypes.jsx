@@ -5,7 +5,7 @@ import {
     Position
 } from '@blueprintjs/core';
 import { Tooltip2 } from '@blueprintjs/popover2';
-import { Emoji } from 'emoji-mart';
+import Emoji from '../elements/Emoji';
 
 import ConfigPage from '../elements/config/ConfigContent';
 import DayoffPage from '../../utils/dayoffPage';
@@ -193,7 +193,7 @@ class DayoffTypes extends ConfigPage {
                                 <span className="truncated-cell">{Tools.trunc(name, TruncLength.LONG)}</span>
                             </Tooltip2>
                         ),
-                        emoji ? <Emoji emoji={emoji} set="google" size={20} /> : '',
+                        emoji ? <Emoji emoji={emoji} size={20} /> : '',
                         checkIcon(enabled),
                         checkIcon(displayed),
                         checkIcon(important)

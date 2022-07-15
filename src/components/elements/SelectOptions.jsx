@@ -1,7 +1,8 @@
 import React from 'react';
 import { components } from 'react-select';
-import { Emoji } from 'emoji-mart';
 import { Icon } from '@blueprintjs/core';
+
+import Emoji from './Emoji';
 
 const { Option } = components;
 
@@ -24,7 +25,7 @@ export const EmojiOption = (props) => {
     return (
         <Option className="select-option" {...props}>
             {emoji ? (
-                <Emoji emoji={emoji} set="google" size={20} className="select-emoji" />
+                <Emoji className="select-emoji" emoji={emoji} size={20} />
             ) : null}
             <span className="select-text">{label}</span>
         </Option>

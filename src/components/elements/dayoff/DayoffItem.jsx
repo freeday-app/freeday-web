@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Icon, Position } from '@blueprintjs/core';
 import { Tooltip2 } from '@blueprintjs/popover2';
-import { Emoji } from 'emoji-mart';
+import Emoji from '../Emoji';
 
 import Tools, { TruncLength } from '../../../utils/tools';
 import Lang from '../../../utils/language';
@@ -67,7 +67,7 @@ class DayoffItem extends Component {
                 <td className="dayoff-type">
                     {
                         dayoff.emoji
-                            ? <Emoji emoji={dayoff.emoji} set="google" size={18} />
+                            ? <Emoji emoji={dayoff.emoji} size={18} />
                             : ''
                     }
                     {this.dayoffType(dayoff.type)}
@@ -79,7 +79,7 @@ class DayoffItem extends Component {
                 <td className="dayoff-important">
                     {
                         dayoff.important
-                            ? <Emoji emoji="warning" set="google" size={18} />
+                            ? <Emoji emoji="warning" size={18} />
                             : ''
                     }
                 </td>
