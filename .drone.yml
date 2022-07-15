@@ -46,7 +46,7 @@ steps:
   depends_on:
   - dependencies
 - name: sonarqube
-  image: aosapps/drone-sonar-plugin
+  image: pitininja/drone-sonar-plugin:latest
   settings:
     sonar_host:
       from_secret: sonar_host
