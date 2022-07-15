@@ -1,6 +1,6 @@
 kind: pipeline
 type: docker
-name: freeday-web-ci
+name: freeday-web
 
 trigger:
   branch:
@@ -40,7 +40,7 @@ steps:
   image: mcr.microsoft.com/playwright:v1.23.3-focal
   pull: if-not-exists
   environment:
-    VITE_API_PUBLIC_URL: http://freeday-api:8787
+    VITE_API_URL: http://freeday-api:8787
   commands:
   - npm run test
   depends_on:
@@ -58,17 +58,24 @@ steps:
 ---
 kind: pipeline
 type: docker
-name: freeday-web-publish
+name: freeday-docker
 
 trigger:
   event:
   - tag
 
+clone:
+  disable: true
+
 steps:
+- name: clone
+  image: alpine/git
+  commands:
+  - git clone https://github.com/freeday-app/freeday-docker.git .
 - name: docker  
   image: plugins/docker
   settings:
-    repo: freedayapp/freeday-web
+    repo: freedayapp/freeday
     tags:
     - ${DRONE_TAG}
     - latest

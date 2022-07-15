@@ -28,7 +28,7 @@ const APIHelper = {
             }
             const { status, data } = err.response;
             throw new Error(`HTTP error ${status} ${JSON.stringify(data)}`);
-        }        
+        }
     },
 
     async auth(username, password) {
