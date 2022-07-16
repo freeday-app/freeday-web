@@ -3,7 +3,7 @@ import { Picker } from 'emoji-mart';
 import { Button, Position } from '@blueprintjs/core';
 import { Popover2 } from '@blueprintjs/popover2';
 
-import Emoji, { getSpreadSheet } from './Emoji';
+import Emoji from './Emoji';
 
 import Lang from '../../utils/language';
 
@@ -69,13 +69,10 @@ class EmojiPicker extends Component {
                                 exclude={['recent']}
                                 set="google"
                                 sheetSize={64}
-                                backgroundImageFn={getSpreadSheet}
                                 onSelect={(emj) => this.handleEmojiSelect(emj)}
                             />
                             <Button className="emoji-picker-clear" onClick={() => this.handleEmojiClear()}>
-                                {
-                                    Lang.text('emojiPicker.clear')
-                                }
+                                {Lang.text('emojiPicker.clear')}
                             </Button>
                         </div>
                     )}
