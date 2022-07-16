@@ -4,6 +4,8 @@ const APIHelper = {
 
     baseUrl: 'http://localhost:8788',
     token: null,
+    username: process.env.TEST_USERNAME,
+    password: process.env.TEST_PASSWORD,
 
     async request(opts) {
         const options = {

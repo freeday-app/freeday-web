@@ -2,7 +2,6 @@ const { expect } = require('chai');
 
 const APIHelper = require('./api.helper');
 
-const AuthData = require('../data/auth.json');
 const SlackUsersData = require('../data/slackUsers.json');
 const SlackChannelsData = require('../data/slackChannels.json');
 const DayoffTypesData = require('../data/dayoffTypes.json');
@@ -16,7 +15,7 @@ const DataHelper = {
     selfUserId: null,
     async resetAuth() {
         // logs with e2e user
-        const testUser = await APIHelper.auth(AuthData.username, AuthData.password);
+        const testUser = await APIHelper.auth(APIHelper.username, APIHelper.password);
         await APIHelper.request({
             method: 'post',
             url: `/api/users/${testUser.userId}`,
@@ -28,13 +27,13 @@ const DataHelper = {
             method: 'post',
             url: '/api/users',
             body: {
-                username: `${AuthData.username}-data`,
-                password: `${AuthData.password}-data`
+                username: `${APIHelper.username}-data`,
+                password: `${APIHelper.password}-data`
             },
             ignoreError: true
         });
         expect(userResponse.status).to.be.oneOf([200, 409]);
-        const user = await APIHelper.auth(`${AuthData.username}-data`, `${AuthData.password}-data`);
+        const user = await APIHelper.auth(`${APIHelper.username}-data`, `${APIHelper.password}-data`);
         DataHelper.selfUserId = user.userId;
     },
 
@@ -349,7 +348,7 @@ const DataHelper = {
         const recDeleteUsers = async (usrs) => {
             const user = usrs.shift();
             if (user) {
-                if (!user.username.startsWith(AuthData.username)) {
+                if (!user.username.startsWith(APIHelper.username)) {
                     await APIHelper.request({
                         method: 'delete',
                         url: `/api/users/${user.id}`

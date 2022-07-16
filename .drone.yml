@@ -39,9 +39,8 @@ steps:
 - name: test
   image: mcr.microsoft.com/playwright:v1.23.3-focal
   pull: if-not-exists
-  environment:
-    VITE_API_URL: http://freeday-api:8787
   commands:
+  - cp .env.ci .env
   - npm run test
   depends_on:
   - dependencies

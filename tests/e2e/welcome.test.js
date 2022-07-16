@@ -1,9 +1,9 @@
 const { test } = require('@playwright/test');
 
+const APIHelper = require('./helpers/api.helper');
 const DataHelper = require('./helpers/data.helper');
 const GlobalHelper = require('./helpers/global.helper');
 const WelcomeHelper = require('./helpers/welcome.helper');
-const AuthData = require('./data/auth.json');
 
 test.describe('[Welcome]', () => {
     test('Initializing tests', async ({ page }) => {
@@ -21,7 +21,7 @@ test.describe('[Welcome]', () => {
         await WelcomeHelper.assertLanguageSelection(page);
         await WelcomeHelper.selectLanguage(page, 'en');
         await WelcomeHelper.assertUserCreation(page);
-        await WelcomeHelper.createUser(page, AuthData.username, AuthData.password);
+        await WelcomeHelper.createUser(page, APIHelper.username, APIHelper.password);
         await GlobalHelper.assertLogged(page);
         await DataHelper.resetAuth();
         await DataHelper.resetData();

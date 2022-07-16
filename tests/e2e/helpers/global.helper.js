@@ -6,9 +6,9 @@ require('dayjs/locale/en-gb');
 
 DayJS.extend(AdvancedFormat);
 
+const APIHelper = require('./api.helper');
 const DataHelper = require('./data.helper');
 const Lang = require('./lang.helper');
-const AuthData = require('../data/auth.json');
 const ConfigurationData = require('../data/configuration.json');
 
 const GlobalHelper = {
@@ -85,8 +85,8 @@ const GlobalHelper = {
     // goes to login page and authenticate using conf variables by default
     async login(page, username = null, password = null) {
         await page.goto(GlobalHelper.url('/login'));
-        await page.fill('.login-form input[name="username"]', username || AuthData.username);
-        await page.fill('.login-form input[name="password"]', password || AuthData.password);
+        await page.fill('.login-form input[name="username"]', username || APIHelper.username);
+        await page.fill('.login-form input[name="password"]', password || APIHelper.password);
         await Promise.all([
             page.click('.login-form button[type="submit"]'),
             GlobalHelper.waitAPI(page, 'loginAuth')
