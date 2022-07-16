@@ -82,11 +82,9 @@ const DayoffDate = {
     // renvoie liste des dates fériés année ciblée
     getHolidays(year, format = false) {
         if (Array.isArray(year)) {
-            let holidays = [];
-            year.forEach((y) => {
-                holidays = holidays.concat(DayoffDate.getHolidays(y, format));
-            });
-            return holidays;
+            return year.map((y) => (
+                DayoffDate.getHolidays(y, format)
+            )).flat();
         }
 
         const holidays = [
@@ -121,9 +119,7 @@ const DayoffDate = {
         const L = I - J;
         const month = 3 + floor((L + 40) / 44);
         const day = L + 28 - 31 * floor(month / 4);
-        const easter = DayJS(`${year}-${month}-${day}`, 'YYYY-M-D');
-
-        return easter;
+        return DayJS(`${year}-${month}-${day}`, 'YYYY-M-D');
     },
 
     // renvoie le nombre de jours travaillés sur une liste de jours

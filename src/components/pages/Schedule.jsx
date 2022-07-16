@@ -152,10 +152,6 @@ class Schedule extends Component {
         }
     };
 
-    // updateState = (newState) => {
-    //     this.setState(newState);
-    // };
-
     // refresh les données de la page
     refresh = async () => {
         const { filter } = this.state;

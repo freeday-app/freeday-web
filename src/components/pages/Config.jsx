@@ -14,7 +14,7 @@ import Lang from '../../utils/language';
 
 import '../../css/pages/config.css';
 
-const ConfigPage = ({ content }) => {
+const Config = ({ content }) => {
     const navigate = useNavigate();
 
     const tabContent = (name, icon) => (
@@ -69,6 +69,6 @@ const ConfigPage = ({ content }) => {
             </div>
         </div>
     );
-}
+};
 
-export default ConfigPage;
+export default Config;

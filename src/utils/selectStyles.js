@@ -97,10 +97,10 @@ const selectDarkStyles = {
     })
 };
 
-export default function getSelectStyles(theme, withButtons = false) {
+export default (theme, withButtons = false) => {
     let styles = theme === 'dark' ? selectDarkStyles : selectLightStyles;
     if (withButtons) {
         styles = { ...styles, ...selectWithButtonsStyles };
     }
     return styles;
-}
+};

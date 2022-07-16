@@ -49,7 +49,6 @@ const API = {
             return result.json();
         }
         const json = await result.json();
-        // console.error(`Fetch error ${result.status} ${JSON.stringify(json)}`);
         throw new FetchError(json);
     }
 

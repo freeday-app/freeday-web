@@ -33,8 +33,7 @@ const Tools = {
         if (string.length > length) {
             const truncatedString = string.slice(0, length);
             const indexes = [];
-            for (let i = 0; i < wordSeparator.length; i += 1) {
-                const currentSeparator = wordSeparator[i];
+            for (const currentSeparator of wordSeparator) {
                 indexes.push(truncatedString.lastIndexOf(currentSeparator));
             }
             const maxIndex = Math.max(...indexes);

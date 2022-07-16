@@ -6,7 +6,7 @@ const Lang = require('./helpers/lang.helper');
 
 test.describe('[Authentication]', () => {
     test('Initializing tests', async ({ page }) => {
-        await page.setDefaultTimeout(5000);
+        page.setDefaultTimeout(5000);
         await DataHelper.resetAuth();
         await DataHelper.resetData();
     });

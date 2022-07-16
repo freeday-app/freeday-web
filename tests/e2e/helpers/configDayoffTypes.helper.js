@@ -108,7 +108,7 @@ const ConfigDayoffTypesHelper = {
         await page.fill(nameSelector, 'a');
         await assertEnabled();
         await page.fill(nameSelector, '');
-        await await assertDisabled();
+        await assertDisabled();
         await page.fill(nameSelector, 'aaa');
         assertEnabled();
     },

@@ -5,7 +5,6 @@ import {
     Dialog,
     HTMLTable,
     Icon,
-    Tooltip,
     Intent,
     Position,
     Radio
@@ -38,7 +37,8 @@ class ConflictDialog extends Component {
                     <p>{Lang.text('dayoff.status.confirmed')}</p>
                 </div>
             );
-        } if (dayoff.status === 'canceled') {
+        }
+        if (dayoff.status === 'canceled') {
             return (
                 <Tooltip2 content={dayoff.cancelReason} position={Position.BOTTOM}>
                     <div className="color-red">

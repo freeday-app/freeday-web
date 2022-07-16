@@ -237,7 +237,7 @@ const DayoffPage = {
             if (d.canceled) { return 'canceled'; }
             return 'pending';
         };
-        const parsed = Object.keys(daysoff).map((dayoffId) => {
+        return Object.keys(daysoff).map((dayoffId) => {
             const dayoff = daysoff[dayoffId];
             return {
                 id: dayoff.id,
@@ -256,7 +256,6 @@ const DayoffPage = {
                 cancelReason: dayoff.cancelReason
             };
         });
-        return parsed;
     }
 
 };

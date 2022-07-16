@@ -18,7 +18,6 @@ import Summary from './pages/Summary';
 import Config from './pages/Config';
 import Welcome from './pages/Welcome';
 import NotFound from './pages/NotFound';
-import SlackRegister from './pages/SlackRegister';
 import Loading from './elements/Loading';
 import ThemeContext from './elements/ThemeContext';
 import ConfigurationContext from './elements/ConfigurationContext';
@@ -36,7 +35,7 @@ import '../css/themes/light.css';
 DayJS.extend(AdvancedFormat);
 DayJS.extend(CustomParseFormat);
 
-const RequireAuth = ({ children, admin }) => {
+const RequireAuth = ({ children }) => {
     if (API.isAuth) {
         return children;
     }
@@ -113,7 +112,7 @@ class App extends Component {
         }
     }
 
-    componentDidUpdate(prevProps, prevState) {
+    componentDidUpdate(_prevProps, prevState) {
         // checks and updates the theme whenever the state changes
         const { theme: currentTheme } = this.state;
         const { theme: previousTheme } = prevState;
@@ -146,12 +145,6 @@ class App extends Component {
         }
     };
 
-    updateTheme() {
-        // sets the body class according to the chosen theme
-        const { theme } = this.state;
-        const className = theme === 'dark' ? 'bp4-dark' : 'bp4';
-        document.body.className = className;
-    }
     // header navigation
     getHeader = () => (
         API.isAuth ? (
@@ -161,6 +154,13 @@ class App extends Component {
             />
         ) : null
     );
+
+    updateTheme() {
+        // sets the body class according to the chosen theme
+        const { theme } = this.state;
+        const className = theme === 'dark' ? 'bp4-dark' : 'bp4';
+        document.body.className = className;
+    }
 
     render() {
         const {

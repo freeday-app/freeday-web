@@ -4,7 +4,9 @@ import Configuration from '../../utils/configuration';
 
 const ConfigurationContext = React.createContext({
     configuration: Configuration.data,
-    setConfiguration: () => {}
+    setConfiguration: () => {
+        // declaration
+    }
 });
 
 export default ConfigurationContext;

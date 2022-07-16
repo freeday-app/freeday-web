@@ -7,14 +7,14 @@ import {
 import { Tooltip2 } from '@blueprintjs/popover2';
 import Emoji from '../elements/Emoji';
 
-import ConfigPage from '../elements/config/ConfigContent';
+import ConfigContent from '../elements/config/ConfigContent';
 import DayoffPage from '../../utils/dayoffPage';
 import API from '../../utils/api';
 import Lang from '../../utils/language';
 import Toaster from '../../utils/toaster';
 import Tools, { TruncLength } from '../../utils/tools';
 
-class DayoffTypes extends ConfigPage {
+class ConfigDayoffTypes extends ConfigContent {
     static NAME_MAXLENGTH = 75;
 
     constructor(props) {
@@ -108,7 +108,7 @@ class DayoffTypes extends ConfigPage {
     // valide formulaire type d'absence
     validate = () => (
         this.state.data.name.length > 0
-        && this.state.data.name.length <= DayoffTypes.NAME_MAXLENGTH
+        && this.state.data.name.length <= ConfigDayoffTypes.NAME_MAXLENGTH
     );
 
     // éléments du formulaire type d'absence
@@ -120,7 +120,7 @@ class DayoffTypes extends ConfigPage {
             helper: Lang.text('dayoffType.form.nameHelp'),
             icon: 'annotation',
             value: this.state.data.name,
-            maxLength: DayoffTypes.NAME_MAXLENGTH
+            maxLength: ConfigDayoffTypes.NAME_MAXLENGTH
         }, {
             type: 'emojiPicker',
             name: 'emoji',
@@ -207,4 +207,4 @@ class DayoffTypes extends ConfigPage {
     };
 }
 
-export default DayoffTypes;
+export default ConfigDayoffTypes;

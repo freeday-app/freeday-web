@@ -257,9 +257,6 @@ const GlobalHelper = {
         await page.waitForSelector(
             `#nav-config .bp4-popover-target .bp4-menu-item:has-text("${Lang.text('nav.theme')}")`
         );
-        // await page.waitForSelector(
-        //     `#nav-config a.bp4-menu-item:has-text("${Lang.text('nav.slack')}")`
-        // );
         await page.waitForSelector(
             `#nav-config a.bp4-menu-item:has-text("${Lang.text('nav.logout')}")`
         );

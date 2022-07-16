@@ -22,7 +22,7 @@ import getSelectStyles from '../../utils/selectStyles';
 import ThemeContext from '../elements/ThemeContext';
 import ConfigurationContext from '../elements/ConfigurationContext';
 
-class Settings extends Component {
+class ConfigSettings extends Component {
     constructor(props) {
         super(props);
         const defaultConfiguration = {
@@ -196,13 +196,9 @@ class Settings extends Component {
             });
         } catch (err) {
             console.error(err);
-            let errorMessage;
-            switch (err.code) {
-                case 4005:
-                    errorMessage = 'settings.error.slackReferrer';
-                    break;
-                default:
-                    errorMessage = 'settings.error.save';
+            let errorMessage = 'settings.error.save';
+            if (err.code === 4005) {
+                errorMessage = 'settings.error.slackReferrer';
             }
             Toaster.show({
                 message: Lang.text(errorMessage),
@@ -362,6 +358,6 @@ class Settings extends Component {
     }
 }
 
-Settings.contextType = ConfigurationContext;
+ConfigSettings.contextType = ConfigurationContext;
 
-export default Settings;
+export default ConfigSettings;

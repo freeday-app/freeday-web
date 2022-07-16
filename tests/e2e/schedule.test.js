@@ -7,7 +7,7 @@ const ScheduleHelper = require('./helpers/schedule.helper');
 
 test.describe('[Schedule]', () => {
     test('Initializing tests', async ({ page }) => {
-        await page.setDefaultTimeout(5000);
+        page.setDefaultTimeout(5000);
         await DataHelper.resetAuth();
         await DataHelper.resetData();
         await DataHelper.takeActionOnAllDaysoff(['confirm', 'cancel', null]);

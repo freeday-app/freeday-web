@@ -316,8 +316,12 @@ class Filter extends Component {
 
     render() {
         const { inline, prefix, fields } = this.props;
+
+        const inlineClass = inline ? ' filter-inline' : '';
+        const prefixClass = prefix ? ` ${prefix}-filter` : '';
+
         return (
-            <div className={`filter${inline ? ' filter-inline' : ''}${prefix ? ` ${prefix}-filter` : ''}`}>
+            <div className={`filter${inlineClass}${prefixClass}`}>
                 {
                     fields.map((field) => {
                         switch (field) {

@@ -2,18 +2,17 @@ import React from 'react';
 import {
     Tag,
     Intent,
-    Tooltip,
     Position
 } from '@blueprintjs/core';
 import { Tooltip2 } from '@blueprintjs/popover2';
 
-import ConfigPage from '../elements/config/ConfigContent';
+import ConfigContent from '../elements/config/ConfigContent';
 import API from '../../utils/api';
 import Lang from '../../utils/language';
 import Toaster from '../../utils/toaster';
 import Tools, { TruncLength } from '../../utils/tools';
 
-class Admins extends ConfigPage {
+class ConfigAdmins extends ConfigContent {
     constructor(props) {
         super(props);
         const defaultData = {
@@ -147,51 +146,48 @@ class Admins extends ConfigPage {
     }
 
     // éléments du formulaire user
-    formElements = (isCreate = true) => {
-        const elements = {
-            inputs: [{
-                type: 'input',
-                name: 'username',
-                label: Lang.text('admin.form.username'),
-                helper: Lang.text('admin.form.securityRule'),
-                icon: 'user',
-                value: this.state.data.username || ''
-            }, {
-                type: 'input',
-                inputType: 'password',
-                name: 'password',
-                label: Lang.text('admin.form.password'),
-                helper: [
-                    Lang.text('admin.form.securityRule'),
-                    isCreate ? '' : `, ${Lang.text('admin.form.passwordEmpty', false)}`
-                ].join(''),
-                icon: 'lock',
-                value: this.state.data.password || ''
-            }, {
-                type: 'input',
-                inputType: 'password',
-                name: 'passwordConfirm',
-                label: Lang.text('admin.form.passwordConfirm'),
-                helper: (
-                    this.passwordMatch() ? null : (
-                        <span className="helper-error">
-                            {Lang.text('admin.form.passwordDontMatch')}
-                        </span>
-                    )
-                ),
-                icon: 'lock',
-                value: this.state.data.passwordConfirm || ''
-            }],
-            buttons: [{
-                type: 'cancel'
-            }, {
-                type: 'submit',
-                create: isCreate,
-                validate: this.validate
-            }]
-        };
-        return elements;
-    };
+    formElements = (isCreate = true) => ({
+        inputs: [{
+            type: 'input',
+            name: 'username',
+            label: Lang.text('admin.form.username'),
+            helper: Lang.text('admin.form.securityRule'),
+            icon: 'user',
+            value: this.state.data.username || ''
+        }, {
+            type: 'input',
+            inputType: 'password',
+            name: 'password',
+            label: Lang.text('admin.form.password'),
+            helper: [
+                Lang.text('admin.form.securityRule'),
+                isCreate ? '' : `, ${Lang.text('admin.form.passwordEmpty', false)}`
+            ].join(''),
+            icon: 'lock',
+            value: this.state.data.password || ''
+        }, {
+            type: 'input',
+            inputType: 'password',
+            name: 'passwordConfirm',
+            label: Lang.text('admin.form.passwordConfirm'),
+            helper: (
+                this.passwordMatch() ? null : (
+                    <span className="helper-error">
+                        {Lang.text('admin.form.passwordDontMatch')}
+                    </span>
+                )
+            ),
+            icon: 'lock',
+            value: this.state.data.passwordConfirm || ''
+        }],
+        buttons: [{
+            type: 'cancel'
+        }, {
+            type: 'submit',
+            create: isCreate,
+            validate: this.validate
+        }]
+    });
 
     listData = () => {
         const { users } = this.state;
@@ -229,4 +225,4 @@ class Admins extends ConfigPage {
     };
 }
 
-export default Admins;
+export default ConfigAdmins;

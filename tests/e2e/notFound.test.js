@@ -13,7 +13,7 @@ const assertNotFound = async (page) => {
 
 test.describe('[Page not found]', () => {
     test('Initializing tests', async ({ page }) => {
-        await page.setDefaultTimeout(5000);
+        page.setDefaultTimeout(5000);
         await DataHelper.resetAuth();
         await DataHelper.resetData();
         await GlobalHelper.login(page);

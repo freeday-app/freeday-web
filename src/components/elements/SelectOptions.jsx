@@ -34,7 +34,7 @@ export const EmojiOption = (props) => {
 
 export const IconOption = (props) => {
     const { data: { label, icon, iconClass } } = props;
-    const iconClassName = `select-icon${iconClass ? ` ${iconClass}` : ''}`;
+    const iconClassName = `select-icon ${iconClass ?? ''}`;
     return (
         <Option className="select-option" {...props}>
             {icon ? (

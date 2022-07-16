@@ -117,9 +117,10 @@ class DayoffForm extends Component {
                 dayoffData.cancelReason = cancelReason;
             }
             // ajoute / modifie l'absence
+            const idParam = isEdit ? `/${dayoff.id}` : '';
             const result = await API.call({
                 method: 'POST',
-                url: `/api/daysoff${isEdit ? `/${dayoff.id}` : ''}`,
+                url: `/api/daysoff${idParam}`,
                 data: dayoffData
             });
             if (result.code) {

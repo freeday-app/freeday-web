@@ -20,7 +20,6 @@ import {
 } from '@blueprintjs/core';
 import { Popover2 } from '@blueprintjs/popover2';
 
-// import ReactIcon from './elements/ReactIcon';
 import API from '../utils/api';
 import Toaster from '../utils/toaster';
 import Lang from '../utils/language';
@@ -187,6 +186,14 @@ const Header = ({ onLanguage, onTheme }) => {
         </Menu>
     );
 
+    // tabs items content
+    const tabContent = (name, icon) => (
+        <>
+            <Icon className="tab-icon" icon={icon} iconSize={16} />
+            <span className="tab-text">{Lang.text(`nav.${name}`)}</span>
+        </>
+    );
+
     // configuration nav tab
     const configTab = () => (
         <Popover2
@@ -195,14 +202,6 @@ const Header = ({ onLanguage, onTheme }) => {
         >
             {tabContent('config', 'cog')}
         </Popover2>
-    );
-
-    // tabs items content
-    const tabContent = (name, icon) => (
-        <>
-            <Icon className="tab-icon" icon={icon} iconSize={16} />
-            <span className="tab-text">{Lang.text(`nav.${name}`)}</span>
-        </>
     );
 
     // tabs items navigation link
@@ -292,6 +291,6 @@ const Header = ({ onLanguage, onTheme }) => {
             )}
         </ConfigurationContext.Consumer>
     );
-}
+};
 
 export default Header;
