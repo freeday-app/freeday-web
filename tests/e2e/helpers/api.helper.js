@@ -22,7 +22,9 @@ const APIHelper = {
             options.headers.Authorization = APIHelper.token;
         }
         try {
-            return Axios(options);
+            // do not directly return the promise otherwise errors won't be catched
+            const response = await Axios(options);
+            return response;
         } catch (err) {
             if (opts.ignoreError) {
                 return err.response;
