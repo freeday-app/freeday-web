@@ -10,18 +10,18 @@ services:
 - name: mongo
   image: mongo:latest
 - name: freeday-api
-  image: freedayapp/freeday-api
+  image: freedayapp/freeday
   environment:
-    MODE: test
-    TEST_USER: teste2e:teste2e
-    FRONT_PUBLIC_URL: http://localhost:8788/
-    API_PUBLIC_URL: http://localhost:8787/
-    API_ENABLE_CORS: 'true'
-    API_PORT: 8787
+    ENVIRONMENT: test
+    PUBLIC_URL: http://localhost:8788/
+    PORT: 8787
+    TEST_USERNAME: testuser
+    TEST_PASSWORD: testpassword
+    MONGO_URL: mongodb://mongo:27017/freeday-test
     MONGO_TEST_URL: mongodb://mongo:27017/freeday-test
-    SLACK_ENABLED: 'false'
+    SLACK_ENABLED: false
     SLACK_CLIENT_ID: 1234
-    DIALOGFLOW_ENABLED: 'false'
+    DIALOGFLOW_ENABLED: false
 
 steps:
 - name: dependencies
