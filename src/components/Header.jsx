@@ -197,7 +197,7 @@ const Header = ({ onLanguage, onTheme }) => {
     // configuration nav tab
     const configTab = () => (
         <Popover2
-            position={Position.BOTTOM}
+            position={Position.BOTTOM_LEFT}
             content={configMenu()}
         >
             {tabContent('config', 'cog')}
