@@ -43,6 +43,7 @@ const DayoffPage = {
             const daysoffById = {};
             if (Validator.validateFilter(processedFilter)) {
                 const URLArgs = DayoffPage.getFilterURLArgs(processedFilter);
+                console.log(URLArgs);
                 const result = await API.call({
                     method: 'GET',
                     url: `/api/daysoff?page=all&order=asc&${URLArgs}`
@@ -136,15 +137,17 @@ const DayoffPage = {
     getFilterURLArgs(data) {
         const filter = {};
         Object.keys(data).forEach((name) => {
-            if (Array.isArray(data[name])) {
-                if (data[name].length > 0) {
-                    filter[name] = data[name].join(',');
-                }
-            } else if (data[name] !== null) {
+            if ((
+                Array.isArray(data[name]) && data[name].length
+            ) || (
+                data[name] !== null
+            )) {
                 filter[name] = data[name];
             }
         });
-        return QS.stringify(filter);
+        return QS.stringify(filter, {
+            arrayFormat: 'bracket'
+        });
     },
 
     // update données filtre avec valeur changée dans input
