@@ -5,6 +5,9 @@ name: freeday-web
 trigger:
   branch:
   - dev
+  event:
+  - push
+  - pull_request
 
 services:
 - name: mongo
@@ -24,18 +27,18 @@ services:
     DIALOGFLOW_ENABLED: false
 
 steps:
-- name: dependencies
+- name: install
   image: node:14
   pull: if-not-exists
   commands:
-  - npm i
+  - npm ci
 - name: lint
   image: node:14
   pull: if-not-exists
   commands:
   - npm run lint
   depends_on:
-  - dependencies
+  - install
 - name: test
   image: mcr.microsoft.com/playwright:v1.23.3-focal
   pull: if-not-exists
@@ -43,7 +46,7 @@ steps:
   - cp .env.ci .env
   - npm run test
   depends_on:
-  - dependencies
+  - install
 - name: sonarqube
   image: pitininja/drone-sonar-plugin:latest
   settings:
@@ -52,7 +55,12 @@ steps:
     sonar_token:
       from_secret: sonar_token
   depends_on:
-  - dependencies
+  - install
+  when:
+    branch:
+    - dev
+    event:
+    - push
 
 ---
 kind: pipeline
