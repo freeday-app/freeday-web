@@ -206,22 +206,39 @@ const DaysoffHelper = {
         await GlobalHelper.handleConflict(page, selector, 'daysoff', true);
     },
 
+    // click bulk mode switch on dayoff creation form
+    async clickBulkModeSwitch(page) {
+        await page.click(
+            `.bp4-dialog .bp4-form-group:has(.bp4-label:has-text("${Lang.text('dayoff.field.bulk')}")) .bp4-switch`
+        );
+    },
+
     // checks that dayoff form elements exist
-    async assertForm(page, isEdit = false) {
+    async assertForm(page, isEdit = false, isBulkMode = false) {
         await page.waitForSelector('.bp4-dialog');
         await page.waitForSelector(
             `.bp4-dialog .bp4-heading:has-text("${
                 isEdit ? Lang.text('dayoff.dialog.form.editTitle') : Lang.text('dayoff.dialog.form.title')
             }")`
         );
-        for (const label of [
-            Lang.text('dayoff.field.slackUser'),
-            Lang.text('dayoff.field.type')
-        ]) {
+        if (isBulkMode) {
             await page.waitForSelector(
-                `.bp4-dialog .bp4-form-group:has(.bp4-label:has-text("${label}")) .react-select__control`
+                `.bp4-dialog .bp4-form-group:has(.bp4-label:has-text("${Lang.text('dayoff.field.bulk')}")) .bp4-switch`
+            );
+            await page.waitForSelector(
+                `.bp4-dialog .bp4-form-group:has(.bp4-label:has-text("${Lang.text('dayoff.field.slackUsers')}")) .react-select__control .react-select__value-container--is-multi`
+            );
+            const selectAllButton = `.bp4-dialog .bp4-form-group:has(.bp4-label:has-text("${Lang.text('dayoff.field.slackUsers')}")) button.dayoff-form-select-all-button`;
+            await page.waitForSelector(selectAllButton);
+            await GlobalHelper.assertTooltip(page, selectAllButton, Lang.text('select.selectAll'), null, true);
+        } else {
+            await page.waitForSelector(
+                `.bp4-dialog .bp4-form-group:has(.bp4-label:has-text("${Lang.text('dayoff.field.slackUser')}")) .react-select__control .react-select__value-container`
             );
         }
+        await page.waitForSelector(
+            `.bp4-dialog .bp4-form-group:has(.bp4-label:has-text("${Lang.text('dayoff.field.type')}")) .react-select__control`
+        );
         for (const type of [
             Lang.text('filter.start'),
             Lang.text('filter.end')
@@ -292,12 +309,20 @@ const DaysoffHelper = {
     // fills dayoff form with given data
     async fillForm(page, dayoff, isEdit = false, submitForm = false) {
         if (!isEdit) {
+            let value;
+            if (dayoff.slackUser) {
+                value = dayoff.slackUser.name;
+            } else if (dayoff.slackUsers) {
+                value = dayoff.slackUsers.map(({ name }) => name);
+            } else {
+                throw new Error('No Slack user found in dayoff data (daysoffHelper.fillForm)');
+            }
             await GlobalHelper.selectValues(
                 page,
                 `.bp4-dialog .bp4-form-group:has(.bp4-label:has-text("${
                     Lang.text('dayoff.field.slackUser')
                 }")) .react-select__control`,
-                dayoff.slackUser.name,
+                value,
                 null,
                 true
             );

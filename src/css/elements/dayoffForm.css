@@ -1,3 +1,7 @@
+div.dayoff-form-dialog {
+    width: 650px;
+}
+
 .dayoff-form-body {
     text-align: left;
     width: 100%;
@@ -15,10 +19,20 @@
     padding: 10px;
 }
 
+.dayoff-form-body-row > .dayoff-form-body-col-small {
+    flex-basis: 0;
+    flex-grow: 1;
+    padding: 0 10px;
+}
+
 .dayoff-form-body-row > .dayoff-form-body-col-half {
     flex-grow: 2;
 }
 
 .dayoff-form-body-row > .dayoff-form-body-col-quarter {
     flex-grow: 1;
+}
+
+.dayoff-form-body-row > .dayoff-form-body-col-user {
+    flex-grow: 2.5;
 }

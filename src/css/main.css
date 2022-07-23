@@ -195,10 +195,6 @@ a:hover {
     outline: none !important;
 }
 
-.react-icon {
-    font-size: 16px;
-}
-
 .tabs .bp4-tab-list {
     align-items: center;
 }
@@ -316,6 +312,12 @@ table td .avatar {
 
 /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ SELECTS */
 
+div.select-option {
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+}
+
 .select-option .select-avatar,
 .select-option .emoji-mart-emoji,
 .select-option .select-icon {
@@ -325,6 +327,7 @@ table td .avatar {
 }
 
 .select-option .select-text {
+    flex-grow: 1;
     line-height: normal;
     vertical-align: middle;
 }
@@ -352,6 +355,10 @@ table td .avatar {
 
 .bp4-form-helper-text .helper-error {
     color: var(--palette-red);
+}
+
+.bp4-control input:focus ~ .bp4-control-indicator {
+    outline: none !important;
 }
 
 /* stylelint-enable selector-class-pattern */

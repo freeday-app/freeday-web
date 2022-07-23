@@ -6,6 +6,9 @@ const GlobalHelper = require('./helpers/global.helper');
 const DaysoffHelper = require('./helpers/daysoff.helper');
 const Lang = require('./helpers/lang.helper');
 
+const SlackUsersData = require('./data/slackUsers.json');
+const DayoffTypesData = require('./data/dayoffTypes.json');
+
 test.describe('[Daysoff]', () => {
     test('Initializing tests', async ({ page }) => {
         page.setDefaultTimeout(5000);
@@ -283,6 +286,10 @@ test.describe('[Daysoff]', () => {
         await page.waitForSelector('.bp4-dialog', { state: 'detached' });
         await DaysoffHelper.create(page);
         await DaysoffHelper.assertForm(page);
+        await DaysoffHelper.clickBulkModeSwitch(page);
+        await DaysoffHelper.assertForm(page, false, true);
+        await DaysoffHelper.clickBulkModeSwitch(page);
+        await DaysoffHelper.assertForm(page);
         await GlobalHelper.clickDialogButton(page, Lang.text('button.confirm'));
         await DaysoffHelper.assertFormErrors(page);
         await DaysoffHelper.fillForm(page, daysoff[0], false, true);
@@ -291,6 +298,32 @@ test.describe('[Daysoff]', () => {
         await DaysoffHelper.editFirstRow(page);
         await DaysoffHelper.assertForm(page, true);
         await GlobalHelper.clickDialogButton(page, Lang.text('button.cancel'));
+    });
+
+    test('Should create a dayoff for multiple users', async ({ page }) => {
+        await GlobalHelper.login(page);
+        await page.goto(GlobalHelper.url('/daysoff'));
+        await GlobalHelper.setFilter(page, {
+            start: '2022-12-01',
+            end: '2022-12-31'
+        });
+        const allActiveUsers = SlackUsersData.filter(({ deleted }) => !deleted);
+        const dayoffData = {
+            slackUsers: allActiveUsers,
+            type: DayoffTypesData[0],
+            start: '2022-12-13',
+            end: '2022-12-16',
+            startPeriod: 'pm',
+            endPeriod: 'pm',
+            count: '3.5',
+            comment: 'multiple test'
+        };
+        await DaysoffHelper.create(page);
+        await DaysoffHelper.clickBulkModeSwitch(page);
+        await DaysoffHelper.assertForm(page, false, true);
+        await DaysoffHelper.fillForm(page, dayoffData, false, true);
+        const ds = await DataHelper.getDaysoff('2022-12-01', '2022-12-31');
+        await DaysoffHelper.assertList(page, ds);
     });
 
     test('Should edit a dayoff', async ({ page }) => {

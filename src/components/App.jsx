@@ -28,6 +28,7 @@ import Lang from '../utils/language';
 import Tools from '../utils/tools';
 
 import '../css/main.css';
+import '../css/utilities.css';
 import '../css/themes/dark.css';
 import '../css/themes/light.css';
 

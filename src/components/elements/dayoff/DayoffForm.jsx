@@ -8,6 +8,7 @@ import {
     Switch,
     InputGroup
 } from '@blueprintjs/core';
+import { Tooltip2 } from '@blueprintjs/popover2';
 import { DateInput } from '@blueprintjs/datetime';
 import Select from 'react-select';
 import DayJS from 'dayjs';
@@ -16,6 +17,7 @@ import Lang from '../../../utils/language';
 import getSelectStyles from '../../../utils/selectStyles';
 import dateProps from '../../../utils/dateProps';
 import { AvatarOption, EmojiOption } from '../SelectOptions';
+import SelectMultiUserCompactValue from '../SelectMultiUserCompactValue';
 import ThemeContext from '../ThemeContext';
 
 import '../../../css/elements/dayoffForm.css';
@@ -27,10 +29,18 @@ import Tools from '../../../utils/tools';
 class DayoffForm extends Component {
     constructor(props) {
         super(props);
+        const slackUserValues = props.slackUsers.map((user) => ({
+            value: user.slackId,
+            label: user.name,
+            avatar: user.avatar
+        }));
         const defaultState = {
             loading: false,
+            bulkMode: false,
             dayoff: null,
-            slackUser: null,
+            slackUserValues,
+            selectedSlackUser: null,
+            selectedSlackUsers: [],
             type: null,
             start: null,
             startPeriod: null,
@@ -40,7 +50,8 @@ class DayoffForm extends Component {
             cancelReason: null,
             emptyStartError: false,
             emptyTypeError: false,
-            emptySlackUserError: false,
+            emptySelectedSlackUserError: false,
+            emptySelectedSlackUsersError: false,
             endBeforeStartError: false
         };
         this.defaultState = defaultState;
@@ -49,6 +60,7 @@ class DayoffForm extends Component {
 
     async shouldComponentUpdate(nextProps) {
         const { isOpen } = this.props;
+        const { slackUserValues } = this.state;
         if (!isOpen && nextProps.isOpen) {
             // si édition absence
             if (nextProps.dayoffId) {
@@ -59,7 +71,9 @@ class DayoffForm extends Component {
                         loading: false,
                         ...this.defaultState,
                         dayoff,
-                        slackUser: dayoff.slackUser.slackId,
+                        selectedSlackUser: slackUserValues.find(({ value }) => (
+                            value === dayoff.slackUser.slackId
+                        )) ?? null,
                         type: dayoff.type.id,
                         start: DayJS(dayoff.start).format('YYYY-MM-DD'),
                         startPeriod: dayoff.startPeriod,
@@ -87,11 +101,13 @@ class DayoffForm extends Component {
     // gère submit formulaire absence
     handleFormSubmit = async () => {
         const {
+            bulkMode,
             dayoff,
             cancelReason,
             type,
             start,
-            slackUser
+            selectedSlackUser,
+            selectedSlackUsers
         } = this.state;
         const {
             filter,
@@ -111,7 +127,11 @@ class DayoffForm extends Component {
                 }
             });
             if (!isEdit) {
-                dayoffData.slackUserId = slackUser;
+                if (bulkMode) {
+                    dayoffData.slackUserId = selectedSlackUsers.map(({ value }) => value);
+                } else {
+                    dayoffData.slackUserId = selectedSlackUser.value;
+                }
             }
             if (dayoff && dayoff.canceled) {
                 dayoffData.cancelReason = cancelReason;
@@ -195,15 +215,26 @@ class DayoffForm extends Component {
     // erreurs renvoyées sous forme d'objet pour mettre à jour le state
     validateForm() {
         const { state } = this;
-        const { start, end } = state;
+        const {
+            start,
+            end,
+            bulkMode,
+            selectedSlackUsers
+        } = state;
         // validation formulaire
         const errors = {};
         let atLeastOneError = false;
         // contrôle champs vides
-        ['slackUser', 'type', 'start'].forEach((field) => {
-            const isError = state[field] === null;
-            errors[`empty${Tools.ucfirst(field)}Error`] = isError;
-            if (isError) { atLeastOneError = true; }
+        if (bulkMode && selectedSlackUsers.length === 0) {
+            errors.emptySelectedSlackUsersError = true;
+            atLeastOneError = true;
+        }
+        ['selectedSlackUser', 'type', 'start'].forEach((field) => {
+            if (!bulkMode || field !== 'selectedSlackUser') {
+                const isError = state[field] === null;
+                errors[`empty${Tools.ucfirst(field)}Error`] = isError;
+                if (isError) { atLeastOneError = true; }
+            }
         });
         // contrôle date de début et date de fin
         const isEndBeforeStartError = (
@@ -225,9 +256,13 @@ class DayoffForm extends Component {
     render() {
         const {
             dayoff,
+            bulkMode,
             type,
-            slackUser,
-            emptySlackUserError,
+            slackUserValues,
+            selectedSlackUser,
+            selectedSlackUsers,
+            emptySelectedSlackUserError,
+            emptySelectedSlackUsersError,
             emptyTypeError,
             emptyStartError,
             endBeforeStartError,
@@ -241,7 +276,6 @@ class DayoffForm extends Component {
         } = this.state;
         const {
             dayoffTypes,
-            slackUsers,
             handleParentState,
             isOpen
         } = this.props;
@@ -257,19 +291,15 @@ class DayoffForm extends Component {
             type && opt.value === type
         )).shift();
         // données pour select user slack
-        const slackUserSelectOptions = slackUsers.map((user) => ({
-            value: user.slackId,
-            label: user.name,
-            avatar: user.avatar
-        }));
-        const slackUserSelectedOption = slackUserSelectOptions.filter((opt) => (
-            slackUser && opt.value === slackUser
+        const slackUserSelectedOption = slackUserValues.filter((opt) => (
+            selectedSlackUser && opt.value === selectedSlackUser.value
         )).shift();
         // rendu
         return (
             <ThemeContext.Consumer>
                 {(themeValue) => (
                     <Dialog
+                        className="dayoff-form-dialog"
                         icon="form"
                         onClose={() => handleParentState({
                             formDialog: false,
@@ -285,26 +315,86 @@ class DayoffForm extends Component {
                     >
                         <div className={Classes.DIALOG_BODY}>
                             <div className="dayoff-form-body">
+                                {isEdit ? null : (
+                                    <div className="dayoff-form-body-row">
+                                        {/* creation mode (single user / multiple users) */}
+                                        <FormGroup
+                                            className="dayoff-form-body-col-small"
+                                            label={Lang.text('dayoff.field.bulk')}
+                                            inline
+                                        >
+                                            <Switch
+                                                checked={bulkMode}
+                                                onChange={() => {
+                                                    this.setState({
+                                                        bulkMode: !bulkMode
+                                                    });
+                                                }}
+                                            />
+                                        </FormGroup>
+                                    </div>
+                                )}
                                 <div className="dayoff-form-body-row">
                                     { /* utilisateur */ }
                                     <FormGroup
-                                        className="dayoff-form-body-col dayoff-form-body-col-half"
-                                        label={Lang.text('dayoff.field.slackUser')}
+                                        className="dayoff-form-body-col dayoff-form-body-col-user"
+                                        contentClassName="flex row center-y"
+                                        label={Lang.text(`dayoff.field.slackUser${bulkMode ? 's' : ''}`)}
                                     >
                                         <Select
-                                            className={emptySlackUserError ? 'error' : ''}
+                                            className={`grow ${
+                                                ((
+                                                    bulkMode && emptySelectedSlackUsersError
+                                                ) || (
+                                                    !bulkMode && emptySelectedSlackUserError
+                                                )) ? 'error' : ''
+                                            }`}
                                             classNamePrefix="react-select"
                                             placeholder={Lang.text('dayoff.field.slackUser')}
                                             noOptionsMessage={() => Lang.text('filter.noResult')}
                                             styles={getSelectStyles(themeValue)}
-                                            onChange={(val) => this.setState({
-                                                slackUser: val.value
-                                            })}
-                                            components={{ Option: AvatarOption }}
-                                            options={slackUserSelectOptions}
-                                            value={slackUserSelectedOption || null}
+                                            onChange={(val) => {
+                                                if (bulkMode) {
+                                                    this.setState({
+                                                        selectedSlackUsers: val
+                                                    });
+                                                } else {
+                                                    this.setState({
+                                                        selectedSlackUser: val
+                                                    });
+                                                }
+                                            }}
+                                            isMulti={bulkMode}
+                                            closeMenuOnSelect={!bulkMode}
+                                            hideSelectedOptions={!bulkMode}
+                                            components={{
+                                                Option: AvatarOption,
+                                                ...(bulkMode ? {
+                                                    ValueContainer: SelectMultiUserCompactValue
+                                                } : {})
+                                            }}
+                                            options={slackUserValues}
+                                            value={bulkMode ? selectedSlackUsers : (
+                                                slackUserSelectedOption ?? null
+                                            )}
                                             isDisabled={isEdit}
                                         />
+                                        {bulkMode ? (
+                                            <Tooltip2
+                                                content={Lang.text('select.selectAll')}
+                                                placement="bottom"
+                                            >
+                                                <Button
+                                                    className="dayoff-form-select-all-button ml-5"
+                                                    icon="tick"
+                                                    onClick={() => {
+                                                        this.setState({
+                                                            selectedSlackUsers: slackUserValues
+                                                        });
+                                                    }}
+                                                />
+                                            </Tooltip2>
+                                        ) : null}
                                     </FormGroup>
                                     { /* type d'absence */ }
                                     <FormGroup
@@ -333,7 +423,9 @@ class DayoffForm extends Component {
                                         label={Lang.text('dayoff.field.start')}
                                     >
                                         <DateInput
-                                            className={emptyStartError || endBeforeStartError ? 'error' : ''}
+                                            inputProps={{
+                                                className: emptyStartError || endBeforeStartError ? 'error' : ''
+                                            }}
                                             {...dateProps()}
                                             onChange={(val) => this.setState({
                                                 start: val !== null ? DayJS(val).format('YYYY-MM-DD') : null
@@ -374,7 +466,9 @@ class DayoffForm extends Component {
                                         helperText={Lang.text('dayoff.dialog.form.endEmpty')}
                                     >
                                         <DateInput
-                                            className={endBeforeStartError ? 'error' : ''}
+                                            inputProps={{
+                                                className: endBeforeStartError ? 'error' : ''
+                                            }}
                                             {...dateProps()}
                                             onChange={(val) => this.setState({
                                                 end: val !== null ? DayJS(val).format('YYYY-MM-DD') : null

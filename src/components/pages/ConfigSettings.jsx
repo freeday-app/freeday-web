@@ -259,7 +259,7 @@ class ConfigSettings extends Component {
                                             type="text"
                                             placeholder={Lang.text('settings.form.brandingName')}
                                             leftIcon="annotation"
-                                            onChange={(e) => this.onChange('brandingName', e.target.value)}
+                                            onChange={(e) => this.onChange('brandingName', e.target.value || null)}
                                             value={brandingName || ''}
                                             maxLength={50}
                                         />

@@ -134,7 +134,13 @@ const GlobalHelper = {
     },
 
     // triggers tooltip on element and checks its content
-    async assertTooltip(page, selector, expectedContent, expectedEmoji = null) {
+    async assertTooltip(
+        page,
+        selector,
+        expectedContent,
+        expectedEmoji = null,
+        isWithinDialog = false
+    ) {
         await page.hover(selector);
         await page.waitForSelector('.bp4-tooltip2');
         const tooltipText = await page.textContent('.bp4-tooltip2');
@@ -142,7 +148,11 @@ const GlobalHelper = {
         if (expectedEmoji) {
             await GlobalHelper.containsEmoji(page, '.bp4-tooltip2', expectedEmoji);
         }
-        await GlobalHelper.blankClick(page);
+        if (isWithinDialog) {
+            await GlobalHelper.blankClickDialog(page);
+        } else {
+            await GlobalHelper.blankClick(page);
+        }
         await page.waitForSelector('.bp4-tooltip2', {
             state: 'detached'
         });

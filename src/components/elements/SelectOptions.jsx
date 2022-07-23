@@ -6,8 +6,20 @@ import Emoji from './Emoji';
 
 const { Option } = components;
 
+const OptionSelectedIcon = () => (
+    <div className="select-selected-icon">
+        <Icon icon="tick" />
+    </div>
+);
+
 export const AvatarOption = (props) => {
-    const { data: { label, avatar } } = props;
+    const {
+        data: {
+            label,
+            avatar
+        },
+        isSelected
+    } = props;
     return (
         <Option className="select-option" {...props}>
             {avatar ? (
@@ -15,32 +27,48 @@ export const AvatarOption = (props) => {
                     <img src={avatar} alt="avatar" />
                 </div>
             ) : null}
-            <span className="select-text">{label}</span>
+            <div className="select-text">{label}</div>
+            {isSelected ? <OptionSelectedIcon /> : null}
         </Option>
     );
 };
 
 export const EmojiOption = (props) => {
-    const { data: { label, emoji } } = props;
+    const {
+        data: {
+            label,
+            emoji
+        },
+        isSelected
+    } = props;
     return (
         <Option className="select-option" {...props}>
             {emoji ? (
                 <Emoji className="select-emoji" emoji={emoji} size={20} />
             ) : null}
-            <span className="select-text">{label}</span>
+            <div className="select-text">{label}</div>
+            {isSelected ? <OptionSelectedIcon /> : null}
         </Option>
     );
 };
 
 export const IconOption = (props) => {
-    const { data: { label, icon, iconClass } } = props;
+    const {
+        data: {
+            label,
+            icon,
+            iconClass
+        },
+        isSelected
+    } = props;
     const iconClassName = `select-icon ${iconClass ?? ''}`;
     return (
         <Option className="select-option" {...props}>
             {icon ? (
                 <Icon className={iconClassName} icon={icon} />
             ) : null}
-            <span className="select-text">{label}</span>
+            <div className="select-text">{label}</div>
+            {isSelected ? <OptionSelectedIcon /> : null}
         </Option>
     );
 };

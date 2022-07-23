@@ -51,7 +51,9 @@
 			}
 		},
 		"field": {
+			"bulk": "création pour plusieurs utilisateurs",
 			"slackUser": "utilisateur Slack",
+			"slackUsers": "utilisateurs Slack",
 			"user": "utilisateur",
 			"type": "type",
 			"start": "début",
@@ -283,5 +285,10 @@
 	"footer": {
 		"text": "Énergisé par %s",
 		"brand": "Coddity®"
+	},
+	"select": {
+		"userSelected": "%s utilisateur sélectionné",
+		"usersSelected": "%s utilisateurs sélectionnés",
+		"selectAll": "tout sélectionner"
 	}
 }
