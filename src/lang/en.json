@@ -31,6 +31,9 @@
 		"button": {
 			"create": "create a day off"
 		},
+		"statistics":{
+			"average": "Average days-off taken"
+		},
 		"dialog": {
 			"form": {
 				"title": "day off creation",

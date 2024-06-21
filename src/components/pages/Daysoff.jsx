@@ -7,6 +7,8 @@ import Loading from '../elements/Loading';
 import Filter from '../elements/Filter';
 import DayoffList from '../elements/dayoff/DayoffList';
 import SideButtons from '../elements/dayoff/SideButtons';
+import Statistics from '../elements/dayoff/Statistics';
+
 
 import DayoffPage from '../../utils/dayoffPage';
 import Tools from '../../utils/tools';
@@ -160,28 +162,21 @@ class Daysoff extends Component {
         return (
             <div id="content" className="content">
                 <div id="dayoff" className="content-col dayoff">
-                    <div id="dayoff-top" className="content-layout-top dayoff-top">
-                        <Filter
-                            language={language}
-                            fields={['start', 'end', 'slackUser', 'type', 'status', 'reset']}
-                            data={filter}
-                            slackUsers={slackUsers}
-                            dayoffTypes={dayoffTypes}
-                            onChange={this.handleFilter}
-                            onReset={this.resetFilter}
-                            prefix="dayoff"
-                            inline
-                        />
-                    </div>
-                    <div id="dayoff-main" className="content-layout-main dayoff-main">
-                        <div className="content-layout-main-scroll expand">
+                <div className="content-layout-main-scroll expand">
                             <DayoffList
                                 daysoff={parsedDaysoff}
                                 onEdit={this.handleFormOpen}
                                 onRefresh={this.refresh}
                             />
+                            {/* j'ai ajouté des statistiques &
+                            Affichage des stats au choix  */}
+                            <Statistics
+                                daysoff={parsedDaysoff}
+                                onEdit={this.handleFormOpen}
+                                onRefresh={this.refresh}
+                            />
                         </div>
-                    </div>
+                        
                     <div id="dayoff-bottom" className="content-layout-top dayoff-bottom">
                         <SideButtons
                             handleParentState={this.updateState}
