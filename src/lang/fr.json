@@ -31,6 +31,9 @@
 		"button": {
 			"create": "créer une absence"
 		},
+		"statistics":{
+			"average": "Moyenne des jours d'absences"
+		},
 		"dialog": {
 			"form": {
 				"title": "création d'une absence",
