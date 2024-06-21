@@ -22,6 +22,7 @@ class SideButtons extends Component {
             Lang.text('dayoff.field.start'),
             Lang.text('dayoff.field.end'),
             Lang.text('dayoff.field.count'),
+            Lang.text('dayoff.field.comment'),
             Lang.text('dayoff.field.status')
         ]];
         parsedDaysoff.forEach((dayoff) => {
@@ -31,6 +32,7 @@ class SideButtons extends Component {
                 dayoff.start,
                 dayoff.end,
                 dayoff.count,
+                dayoff.comment,
                 status(dayoff)
             ]);
         });
