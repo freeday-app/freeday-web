@@ -87,7 +87,9 @@
 			"notifyUser": "the Freeday bot could not send a notification to the Slack user"
 		}
 	},
-	"schedule": {},
+	"schedule": {
+		"workDays": "work days"
+	},
 	"summary": {
 		"column": {
 			"daysoff": "days off",
