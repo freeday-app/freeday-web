@@ -81,8 +81,7 @@ const DayoffDate = {
     },
 
     // renvoie liste des dates fériés année ciblée
-    
-    async getHolidays(year, format = false){
+    async getHolidays(year, format = false) {
         const holidayList = await API.call(
             {
                 method: 'GET',
@@ -90,7 +89,7 @@ const DayoffDate = {
             }
         );
 
-        if (format){
+        if (format) {
             return holidayList.map((holiday) => DayJS(holiday).format(format));
         }
         return holidayList.map((holiday) => holiday.toDate());
