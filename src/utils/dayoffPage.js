@@ -1,6 +1,6 @@
 import { Intent } from '@blueprintjs/core';
-import QS from 'query-string';
 import DayJS from 'dayjs';
+import QS from 'query-string';
 
 import API from './api';
 import Lang from './language';

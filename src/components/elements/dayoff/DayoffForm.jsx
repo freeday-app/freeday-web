@@ -1,23 +1,23 @@
-import React, { Component } from 'react';
 import {
     Button,
     Classes,
     Dialog,
     FormGroup,
+    InputGroup,
     Intent,
-    Switch,
-    InputGroup
+    Switch
 } from '@blueprintjs/core';
-import { Tooltip2 } from '@blueprintjs/popover2';
 import { DateInput } from '@blueprintjs/datetime';
-import Select from 'react-select';
+import { Tooltip2 } from '@blueprintjs/popover2';
 import DayJS from 'dayjs';
+import React, { Component } from 'react';
+import Select from 'react-select';
 
+import dateProps from '../../../utils/dateProps';
 import Lang from '../../../utils/language';
 import getSelectStyles from '../../../utils/selectStyles';
-import dateProps from '../../../utils/dateProps';
-import { AvatarOption, EmojiOption } from '../SelectOptions';
 import SelectMultiUserCompactValue from '../SelectMultiUserCompactValue';
+import { AvatarOption, EmojiOption } from '../SelectOptions';
 import ThemeContext from '../ThemeContext';
 
 import '../../../css/elements/dayoffForm.css';
@@ -47,6 +47,7 @@ class DayoffForm extends Component {
             end: null,
             endPeriod: null,
             comment: null,
+            status: 'pending',
             cancelReason: null,
             emptyStartError: false,
             emptyTypeError: false,
@@ -80,6 +81,7 @@ class DayoffForm extends Component {
                         end: DayJS(dayoff.end).format('YYYY-MM-DD'),
                         endPeriod: dayoff.endPeriod,
                         comment: dayoff.comment,
+                        status: dayoff.status,
                         cancelReason: dayoff.cancelReason
                     });
                 } catch (err) {
@@ -107,19 +109,24 @@ class DayoffForm extends Component {
             type,
             start,
             selectedSlackUser,
-            selectedSlackUsers
+            selectedSlackUsers,
+            status
         } = this.state;
         const {
             filter,
             handleParentState
         } = this.props;
         const isEdit = !!dayoff;
+        const confirmed = false;
+        const canceled = false;
         try {
             const formState = this.state;
             // parse données formulaire
             const dayoffData = {
                 type,
-                start
+                start,
+                confirmed,
+                canceled
             };
             ['startPeriod', 'end', 'endPeriod', 'comment'].forEach((field) => {
                 if (formState[field]) {
@@ -133,6 +140,16 @@ class DayoffForm extends Component {
                     dayoffData.slackUserId = selectedSlackUser.value;
                 }
             }
+            // maj du statut
+            if (status==='confirmed'){
+                dayoffData.confirmed = true;
+                dayoffData.canceled = false;
+            }
+            else if (status==='canceled'){
+                dayoffData.confirmed = false;
+                dayoffData.canceled = true;
+            }
+
             if (dayoff && dayoff.canceled) {
                 dayoffData.cancelReason = cancelReason;
             }
@@ -272,7 +289,8 @@ class DayoffForm extends Component {
             endPeriod,
             comment,
             cancelReason,
-            loading
+            loading,
+            status
         } = this.state;
         const {
             dayoffTypes,
@@ -290,6 +308,26 @@ class DayoffForm extends Component {
         const dayoffTypeSelectedOption = dayoffTypeSelectOptions.filter((opt) => (
             type && opt.value === type
         )).shift();
+
+        // données pour select statut
+        const dayoffStatusSelectOptions = [
+            {
+                value: 'confirmed',
+                label: Lang.text('dayoff.status.confirmed')
+            },
+            {
+                value: 'canceled',
+                label: Lang.text('dayoff.status.canceled')
+            },
+            {
+                value: 'pending',
+                label: Lang.text('dayoff.status.pending')
+            }
+        ];
+        const dayoffStatusSelectedOption = dayoffStatusSelectOptions.filter((opt) => (
+            status && opt.value === status
+        )).shift();
+        
         // données pour select user slack
         const slackUserSelectedOption = slackUserValues.filter((opt) => (
             selectedSlackUser && opt.value === selectedSlackUser.value
@@ -515,6 +553,25 @@ class DayoffForm extends Component {
                                         })}
                                         value={comment || ''}
                                     />
+                                </FormGroup>
+                            </div>
+                            <div className="dayoff-form-body-row">
+                                {/* statut */}
+                                <FormGroup
+                                    className='dayoff-form-body-col dayoff-form-body-col-half'
+                                    label={Lang.text('dayoff.field.status')}
+                                >
+                                        <Select
+                                            className={emptyTypeError ? 'error' : ''}
+                                            classNamePrefix="react-select"
+                                            placeholder={Lang.text('dayoff.field.status.pending')}
+                                            styles={getSelectStyles(themeValue)}
+                                            onChange={(val) => this.setState({
+                                                status: val.value
+                                            })}
+                                            options={dayoffStatusSelectOptions}
+                                            value={dayoffStatusSelectedOption || null}
+                                        />
                                 </FormGroup>
                             </div>
                             { dayoff && dayoff.canceled && (
