@@ -1,32 +1,32 @@
-import React, { useState } from 'react';
 import {
-    Link,
-    useNavigate,
-    useLocation
-} from 'react-router-dom';
-import {
+    Icon,
+    Intent,
     Menu,
-    MenuItem,
     MenuDivider,
+    MenuItem,
     Navbar,
     NavbarDivider,
     NavbarGroup,
     NavbarHeading,
     Position,
-    Intent,
-    Tabs,
     Tab,
-    Icon
+    Tabs
 } from '@blueprintjs/core';
 import { Popover2 } from '@blueprintjs/popover2';
+import React, { useState } from 'react';
+import {
+    Link,
+    useLocation,
+    useNavigate
+} from 'react-router-dom';
 
 import API from '../utils/api';
-import Toaster from '../utils/toaster';
 import Lang from '../utils/language';
+import Toaster from '../utils/toaster';
 import Tools from '../utils/tools';
-import SupportDialog from './elements/SupportDialog';
 import ConfigurationContext from './elements/ConfigurationContext';
 import Emoji from './elements/Emoji';
+import SupportDialog from './elements/SupportDialog';
 
 import '../css/header.css';
 
@@ -212,6 +212,7 @@ const Header = ({ onLanguage, onTheme }) => {
     // gets selected tab id from current url
     const getCurrentSelectedTab = () => {
         const navData = {
+            '/dashboard': 'dashboard',
             '/daysoff': 'daysoff',
             '/schedule': 'schedule',
             '/summary': 'summary',
@@ -258,6 +259,11 @@ const Header = ({ onLanguage, onTheme }) => {
                                 selectedTabId={getCurrentSelectedTab()}
                             >
                                 {/* pages tabs */}
+                                <Tab
+                                    id="dashboard"
+                                    className="nav-tab"
+                                    title={tabLink('dashboard', 'dashboard')}
+                                />
                                 <Tab
                                     id="daysoff"
                                     className="nav-tab"

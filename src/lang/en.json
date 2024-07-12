@@ -157,6 +157,12 @@
 			"username": "username already taken"
 		}
 	},
+	"dashboard": {
+		"metrics": {
+			"missing": "absences",
+			"present": "presences"
+		}
+	},
 	"dayoffType": {
 		"create": "create a dayoff type",
 		"new": "new dayoff type",
@@ -224,6 +230,7 @@
 		"daysoff": "days off",
 		"schedule": "schedule",
 		"summary": "summary",
+		"dashboard": "dashboard",
 		"types": "dayoff types",
 		"settings": "general settings",
 		"admins": "administrators",

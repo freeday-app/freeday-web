@@ -26,6 +26,12 @@
 		"clear": "effacer",
 		"start": "commencer"
 	},
+	"dashboard": {
+		"metrics": {
+			"missing": "absences",
+			"present": "présences"
+		}
+	},
 	"dayoff": {
 		"noData": "aucune absence",
 		"button": {
@@ -224,6 +230,7 @@
 		"daysoff": "absences",
 		"schedule": "planning",
 		"summary": "récapitulatif",
+		"dashboard": "tableau de bord",
 		"types": "types d'absence",
 		"settings": "paramètres généraux",
 		"admins": "administrateurs",

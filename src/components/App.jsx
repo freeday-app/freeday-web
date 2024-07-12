@@ -1,26 +1,26 @@
+import DayJS from 'dayjs';
+import AdvancedFormat from 'dayjs/plugin/advancedFormat';
+import CustomParseFormat from 'dayjs/plugin/customParseFormat';
 import React, { Component } from 'react';
 import {
     BrowserRouter,
     Navigate,
-    Routes,
-    Route
+    Route,
+    Routes
 } from 'react-router-dom';
-import DayJS from 'dayjs';
-import AdvancedFormat from 'dayjs/plugin/advancedFormat';
-import CustomParseFormat from 'dayjs/plugin/customParseFormat';
 
-import Header from './Header';
-import Footer from './Footer';
-import Login from './pages/Login';
-import Daysoff from './pages/Daysoff';
-import Schedule from './pages/Schedule';
-import Summary from './pages/Summary';
-import Config from './pages/Config';
-import Welcome from './pages/Welcome';
-import NotFound from './pages/NotFound';
+import ConfigurationContext from './elements/ConfigurationContext';
 import Loading from './elements/Loading';
 import ThemeContext from './elements/ThemeContext';
-import ConfigurationContext from './elements/ConfigurationContext';
+import Footer from './Footer';
+import Header from './Header';
+import Config from './pages/Config';
+import Daysoff from './pages/Daysoff';
+import Login from './pages/Login';
+import NotFound from './pages/NotFound';
+import Schedule from './pages/Schedule';
+import Summary from './pages/Summary';
+import Welcome from './pages/Welcome';
 
 import API from '../utils/api';
 import Configuration from '../utils/configuration';
@@ -28,9 +28,10 @@ import Lang from '../utils/language';
 import Tools from '../utils/tools';
 
 import '../css/main.css';
-import '../css/utilities.css';
 import '../css/themes/dark.css';
 import '../css/themes/light.css';
+import '../css/utilities.css';
+import Dashboard from './pages/Dashboard';
 
 // Loading DayJS plugins
 DayJS.extend(AdvancedFormat);
@@ -199,7 +200,16 @@ class App extends Component {
                                 />
                                 { /* pages */ }
                                 <Route
-                                    path="/daysoff"
+                                    path="/dashboard"
+                                    element={(
+                                        <RequireAuth>
+                                            {this.getHeader()}
+                                            <Dashboard />
+                                        </RequireAuth>
+                                    )}
+                                />
+                                <Route
+                                    path="/daysoff"s
                                     element={(
                                         <RequireAuth>
                                             {this.getHeader()}
