@@ -13,7 +13,6 @@
     justify-content: space-between;
     align-items: center;
     padding: 10px 20px;
-    background-color: #3A3A3A;
     border-bottom: 2px solid #565656;
 }
 
@@ -33,9 +32,8 @@
 
 /* Card styles */
 .card {
-    background-color: #424242;
     border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     padding: 20px;
     width: 30%;
     text-align: center;
