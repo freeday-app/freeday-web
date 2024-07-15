@@ -2,17 +2,19 @@
 import DayJS from 'dayjs';
 import React, { Component } from 'react';
 
-import DashboardActionToTake from '../elements/dashboard/dashboardActionToTake';
-import DashboardActivityFeed from '../elements/dashboard/dashboardLastActions';
-import DashboardMetrics from '../elements/dashboard/dashboardMetrics';
 import Loading from '../elements/Loading';
 
 import DashboardUtils from '../../utils/dashboard';
 
 
 
+import '../../css/elements/dashboard.css';
 import '../../css/elements/filter.css';
 import '../../css/pages/dayoff.css';
+import Language from '../../utils/language';
+import DashboardActionToTake from '../elements/dashboard/dashboardActionToTake';
+import DashboardActivityFeed from '../elements/dashboard/dashboardLastActions';
+import DashboardMetrics from '../elements/dashboard/dashboardMetrics';
 
 class Dashboard extends Component {
     constructor(props) {
@@ -142,25 +144,24 @@ class Dashboard extends Component {
         }
         const parsedDaysoff = DashboardUtils.parseDaysoffForDisplay(daysoff);
         return (
-            <div id="content" className="content">
-                <div id="dashboard" className="content-col dashboard">
+            <div class="dashboard-container">
+                <div class="header">
+                    <div class="dashboard-title">{`${Language.text('nav.dashboard')} ~ ${DayJS().format('YYYY-MM-DD')}`}</div>
+                </div>
+                
+                <div class="elements-container">
                     
-                    <div id="dashboard-main" className="content-layout-main dashboard-main">
-                        <div className="content-layout-main-scroll expand">
-                            <DashboardMetrics
+                    <DashboardMetrics
                                 numberPresent={numberSlackUsers-numberDaysoff}
                                 numberDaysoff={numberDaysoff}
-                            />
-                        </div>
-                        <div id="dashboard-actions" className='content-layout-main dashboard-main'>
-                            <DashboardActionToTake action={numberActions}/>
-                        </div>
-                        <div id="dashboard-activity" className='content-layout-main dashboard-main'>
-                            <DashboardActivityFeed/>
-                        </div>
-                    </div>
+                    />
+
+                    <DashboardActionToTake action={numberActions}/>
+
+                    <DashboardActivityFeed />
                 </div>
             </div>
+
         );
     }
 }

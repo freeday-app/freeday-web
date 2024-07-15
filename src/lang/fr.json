@@ -28,10 +28,12 @@
 	},
 	"dashboard": {
 		"metrics": {
+			"title": "présences / absences",
 			"missing": "absences",
 			"present": "présences"
 		},
 		"actions":{
+			"title": "à faire",
 			"pending": " demande(s) en attente",
 			"none": "Pas d'actions requises"
 		},

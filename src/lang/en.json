@@ -159,10 +159,12 @@
 	},
 	"dashboard": {
 		"metrics": {
+			"title": "presences / absences",
 			"missing": "absences",
 			"present": "presences"
 		},
 		"actions":{
+			"title": "actions to take",
 			"pending": " pending days-off",
 			"none": "no actions to take"
 		},
