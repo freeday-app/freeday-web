@@ -30,6 +30,10 @@
 		"metrics": {
 			"missing": "absences",
 			"present": "présences"
+		},
+		"actions":{
+			"pending": " demande(s) en attente",
+			"none": "Pas d'actions requises"
 		}
 	},
 	"dayoff": {

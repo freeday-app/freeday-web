@@ -7,14 +7,10 @@ import Language from '../../../utils/language';
 
 const DashboardMetrics = (props) => {
     const {
-        daysoff,
         numberDaysoff,
         numberPresent,
-        onEdit,
-        onRefresh
     } = props;
-    console.log('dans metrics');
-    console.log(numberDaysoff);
+    
     return (
         <HTMLTable id="metrics-table" className="summary-table">
             <thead>

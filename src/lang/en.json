@@ -161,6 +161,10 @@
 		"metrics": {
 			"missing": "absences",
 			"present": "presences"
+		},
+		"actions":{
+			"pending": " pending days-off",
+			"none": "No actions to take"
 		}
 	},
 	"dayoffType": {

@@ -14,17 +14,21 @@ const DashboardUtils = {
     async init(component) {
         try {
             // données absences
-            const { filter } = component.state;
+            const { filter, filterActions } = component.state;
             const daysoff = await DashboardUtils.getDaysoff(filter);
+            const pendingDaysoff = await DashboardUtils.getDaysoff(filterActions);
+            console.log(pendingDaysoff);
             const slackUsers = await DashboardUtils.getSlackUsers();
             const numberDaysoff = Object.keys(daysoff).length;
             const numberSlackUsers = Object.keys(slackUsers).length;
-
+            const numberActions = Object.keys(pendingDaysoff).length;
             const answer = {
                 filter,
+                filterActions,
                 daysoff,
                 numberDaysoff,
-                numberSlackUsers
+                numberSlackUsers,
+                numberActions
             };
 
             // callback composant

@@ -1,17 +1,12 @@
-import {
-    Intent
-} from '@blueprintjs/core';
 
 import DayJS from 'dayjs';
 import React, { Component } from 'react';
 
+import DashboardActionToTake from '../elements/dashboard/dashboardActionToTake';
 import DashboardMetrics from '../elements/dashboard/dashboardMetrics';
 import Loading from '../elements/Loading';
 
 import DashboardUtils from '../../utils/dashboard';
-import Toaster from '../../utils/toaster';
-import Tools from '../../utils/tools';
-import Validator from '../../utils/validator';
 
 
 
@@ -23,12 +18,21 @@ class Dashboard extends Component {
         super(props);
         const filter = {
             start: DayJS().format('YYYY-MM-DD'),
-            end: DayJS().format('YYYY-MM-DD')
+            end: DayJS().format('YYYY-MM-DD'),
+            status: 'confirmed'
         };
+        const filterActions = {
+            start: DayJS().format('YYYY-MM-DD'),
+            status: 'pending'
+        }
+
         this.state = {
             loading: true,
             filter,
+            filterActions,
             numberDaysoff: 0,
+            numberSlackUsers: 0,
+            numberActions: 0,
             formDialog: false,
             dayoffId: null
         };
@@ -58,31 +62,6 @@ class Dashboard extends Component {
         this.setState({
             daysoff: daysoffById
         });
-    };
-
-    // gère changements filtre
-    handleFilter = async (type, name, value) => {
-        try {
-            const { filter } = this.state;
-            // update filtre
-            const filterData = DashboardUtils.updateFilter(filter, type, name, value);
-            this.setState({
-                filter: filterData
-            });
-            if (Validator.validateFilter(filterData)) {
-                this.saveFilter(filterData);
-                // update absences
-                Tools.spamControl(async () => {
-                    await this.refresh();
-                });
-            }
-        } catch (err) {
-            console.error(err);
-            Toaster.show({
-                message: err.message,
-                intent: Intent.DANGER
-            });
-        }
     };
 
     // renvoie données absences traitées pour récapitulatif
@@ -141,6 +120,7 @@ class Dashboard extends Component {
             numberDaysoff,
             slackUsers,
             numberSlackUsers,
+            numberActions,
             dayoffTypes,
             enabledDayoffTypes,
             filter,
@@ -170,6 +150,9 @@ class Dashboard extends Component {
                                 numberPresent={numberSlackUsers-numberDaysoff}
                                 numberDaysoff={numberDaysoff}
                             />
+                        </div>
+                        <div id="dashboard-actions" className='content-layout-main dashboard-main'>
+                            <DashboardActionToTake action={numberActions}/>
                         </div>
                     </div>
                 </div>
