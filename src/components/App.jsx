@@ -194,7 +194,7 @@ class App extends Component {
                                     path="/"
                                     element={(
                                         <RequireAuth>
-                                            <Navigate to="/daysoff" />
+                                            <Navigate to="/dashboard" />
                                         </RequireAuth>
                                     )}
                                 />

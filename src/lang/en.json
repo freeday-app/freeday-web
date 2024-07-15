@@ -169,7 +169,8 @@
 			"none": "no actions to take"
 		},
 		"activity": {
-			"title": "last activities"
+			"title": "last activities",
+			"modification": "created/modified a dayoff"
 		}
 	},
 	"dayoffType": {

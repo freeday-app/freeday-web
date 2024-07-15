@@ -38,7 +38,8 @@
 			"none": "Pas d'actions requises"
 		},
 		"activity": {
-			"title": "Activité récente"
+			"title": "Activité récente",
+			"modification": "a créé/modifié une absence"
 		}
 	},
 	"dayoff": {

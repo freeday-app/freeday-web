@@ -36,6 +36,7 @@ class Dashboard extends Component {
             numberDaysoff: 0,
             numberSlackUsers: 0,
             numberActions: 0,
+            activity: null,
             formDialog: false,
             dayoffId: null
         };
@@ -124,12 +125,12 @@ class Dashboard extends Component {
             slackUsers,
             numberSlackUsers,
             numberActions,
+            activity,
             dayoffTypes,
             enabledDayoffTypes,
             filter,
             dayoffId
         } = this.state;
-        console.log(numberDaysoff);
 
         const {
             language
@@ -158,7 +159,7 @@ class Dashboard extends Component {
 
                     <DashboardActionToTake action={numberActions}/>
 
-                    <DashboardActivityFeed />
+                    <DashboardActivityFeed activity={activity}/>
                 </div>
             </div>
 

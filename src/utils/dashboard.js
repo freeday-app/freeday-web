@@ -17,15 +17,16 @@ const DashboardUtils = {
             const { filter, filterActions } = component.state;
             const daysoff = await DashboardUtils.getDaysoff(filter);
             const pendingDaysoff = await DashboardUtils.getDaysoff(filterActions);
-            console.log(pendingDaysoff);
             const slackUsers = await DashboardUtils.getSlackUsers();
             const numberDaysoff = Object.keys(daysoff).length;
             const numberSlackUsers = Object.keys(slackUsers).length;
             const numberActions = Object.keys(pendingDaysoff).length;
+            const activity = await DashboardUtils.getLastActivity();
             const answer = {
                 filter,
                 filterActions,
                 daysoff,
+                activity,
                 numberDaysoff,
                 numberSlackUsers,
                 numberActions
@@ -117,7 +118,25 @@ const DashboardUtils = {
         });
     },
 
-    //
+    // recupere tous les days off pour les prochains jours et affiche le dernier ajout/modif
+    async getLastActivity() {
+        try {
+            const filter = {
+                start: DayJS().format('YYYY-MM-DD')
+            };
+            const daysoff = await DashboardUtils.getDaysoff(filter);
+            const daysoffArray = Object.entries(daysoff).map(
+                ([key, value]) => ({ id: key, ...value })
+            );
+            const activity = daysoffArray[daysoffArray.length - 1];
+            return activity;
+        } catch (err) {
+            console.error(err.message);
+            throw new Error(Lang.text('dayoff.error.list'));
+        }
+    },
+
+    // récupère les utilisateurs slack (pour le calcul de nb de presents)
     async getSlackUsers() {
         try {
             // récupère liste users slack
@@ -139,7 +158,6 @@ const DashboardUtils = {
             const daysoffById = {};
             if (Validator.validateFilter(processedFilter)) {
                 const URLArgs = DashboardUtils.getFilterURLArgs(processedFilter);
-                console.log(URLArgs);
                 const result = await API.call({
                     method: 'GET',
                     url: `/api/daysoff?page=all&order=asc&${URLArgs}`
