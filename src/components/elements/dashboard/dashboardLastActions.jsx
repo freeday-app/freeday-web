@@ -10,7 +10,6 @@ const DashboardActivityFeed = (props) => {
         activity
     } = props;
     const message = Language.text(('dashboard.activity.modification'),2);
-    console.log(activity);
     const user = activity.slackUser.name;
     const start = activity.start;
     const end = activity.end;
