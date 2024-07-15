@@ -11,8 +11,6 @@ const DashboardActivityFeed = (props) => {
     } = props;
     const message = Language.text(('dashboard.activity.modification'),2);
     const user = activity.slackUser.name;
-    const start = activity.start;
-    const end = activity.end;
     return (
         <div class="card">
             <div class="card-title">{Language.text('dashboard.activity.title')}</div>

@@ -122,14 +122,9 @@ class Dashboard extends Component {
             loading,
             daysoff,
             numberDaysoff,
-            slackUsers,
             numberSlackUsers,
             numberActions,
             activity,
-            dayoffTypes,
-            enabledDayoffTypes,
-            filter,
-            dayoffId
         } = this.state;
 
         const {
@@ -143,7 +138,6 @@ class Dashboard extends Component {
                 </div>
             );
         }
-        const parsedDaysoff = DashboardUtils.parseDaysoffForDisplay(daysoff);
         return (
             <div class="dashboard-container">
                 <div class="header">
