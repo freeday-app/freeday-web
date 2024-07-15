@@ -1,0 +1,109 @@
+/* Dashboard container */
+.dashboard-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+}
+
+/* Header */
+.header {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    border-bottom: 2px solid #565656;
+}
+
+/* Dashboard title */
+.dashboard-title {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+/* Elements container */
+.elements-container {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    margin-top: 20px;
+}
+
+/* Card styles */
+.card {
+    box-shadow: 0 2px 4px rgb(0 0 0 / 40%), 0 1px 2px rgb(0 0 0 / 55%);
+    border-radius: 8px;
+    padding: 20px;
+    width: 30%;
+    text-align: center;
+    margin: 10px;
+}
+
+.card-title {
+    font-size: 18px;
+    margin-bottom: 10px;
+    border-bottom: 2px solid #565656;
+    padding-bottom: 5px;
+}
+
+.card-content {
+    font-size: 16px;
+    margin-top: 10px;
+}
+
+/* Presence and Absence table */
+.presences-absences {
+    display: flex;
+    justify-content: space-around;
+}
+
+.presence, .absence {
+    flex: 1;
+}
+
+.presence {
+    color: #4CAF50;
+}
+
+.absence {
+    color: #F44336;
+}
+
+/* Pending days off and last activities */
+.pending-days-off, .last-activities {
+    margin-top: 20px;
+    font-size: 16px;
+}
+
+/* Footer styles */
+.footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+    padding: 10px 0;
+    color: #FFFFFF;
+    font-size: 12px;
+}
+
+#footer {
+    height: 20px;
+    margin: 0;
+    padding: 0;
+}
+
+#footer .footer-content {
+    font-size: 0.75rem;
+    font-style: italic;
+    height: 20px;
+    margin: 0;
+    padding: 0 10px;
+    text-align: right;
+    width: 100%;
+}
+
+#footer .footer-link {
+    color: inherit;
+    text-decoration: inherit;
+}

@@ -1,0 +1,22 @@
+services:
+  freeday:
+    image: freedayapp/freeday:latest
+    container_name: freeday
+    restart: always
+    env_file:
+      - .env
+    networks:
+      - freeday-network
+    ports:
+      - 8787:8787
+  mongo:
+    image: mongo
+    container_name: mongo
+    restart: always
+    command: mongod --quiet --logpath /dev/null
+    networks:
+      - freeday-network
+
+networks:
+  freeday-network:
+    name: freeday
