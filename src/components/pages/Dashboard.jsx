@@ -3,6 +3,7 @@ import DayJS from 'dayjs';
 import React, { Component } from 'react';
 
 import DashboardActionToTake from '../elements/dashboard/dashboardActionToTake';
+import DashboardActivityFeed from '../elements/dashboard/dashboardLastActions';
 import DashboardMetrics from '../elements/dashboard/dashboardMetrics';
 import Loading from '../elements/Loading';
 
@@ -153,6 +154,9 @@ class Dashboard extends Component {
                         </div>
                         <div id="dashboard-actions" className='content-layout-main dashboard-main'>
                             <DashboardActionToTake action={numberActions}/>
+                        </div>
+                        <div id="dashboard-activity" className='content-layout-main dashboard-main'>
+                            <DashboardActivityFeed/>
                         </div>
                     </div>
                 </div>

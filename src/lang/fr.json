@@ -34,6 +34,9 @@
 		"actions":{
 			"pending": " demande(s) en attente",
 			"none": "Pas d'actions requises"
+		},
+		"activity": {
+			"title": "Activité récente"
 		}
 	},
 	"dayoff": {

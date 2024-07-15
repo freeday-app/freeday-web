@@ -164,7 +164,10 @@
 		},
 		"actions":{
 			"pending": " pending days-off",
-			"none": "No actions to take"
+			"none": "no actions to take"
+		},
+		"activity": {
+			"title": "last activities"
 		}
 	},
 	"dayoffType": {
