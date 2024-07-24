@@ -34,7 +34,6 @@ class Scheduler extends Component {
             year
         } = this.props;
         const hList = await DayoffDate.getHolidays(year, 'YYYY-MM-DD');
-        console.log('aaa');
 
         this.setState({holidayList: hList});
     }
@@ -199,7 +198,6 @@ class Scheduler extends Component {
 
 
         const {holidayList} = this.state;
-        console.log(holidayList);
 
         const holidayObj = {};
         holidayList.forEach((date) => {
