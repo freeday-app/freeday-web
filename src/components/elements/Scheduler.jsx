@@ -1,7 +1,7 @@
-import React, { Component } from 'react';
 import { Position } from '@blueprintjs/core';
 import { Tooltip2 } from '@blueprintjs/popover2';
 import DayJS from 'dayjs';
+import React, { Component } from 'react';
 
 import DayoffDate from '../../utils/dayoffDate';
 import Lang from '../../utils/language';
@@ -14,6 +14,30 @@ import Configuration from '../../utils/configuration';
 
 class Scheduler extends Component {
     // parse et renvoie données ressources et events
+
+    constructor(props){
+        super(props);
+
+        const {
+            month,
+            year
+        } = this.props;
+
+        this.state = {
+            holidayList: []
+        };
+    }
+
+    async componentDidMount(){
+        const {
+            month,
+            year
+        } = this.props;
+        const hList = await DayoffDate.getHolidays(year, 'YYYY-MM-DD');
+
+        this.setState({holidayList: hList});
+    }
+
     getParsedData(dayList) {
         const {
             ressources,
@@ -172,7 +196,9 @@ class Scheduler extends Component {
         const dayList = DayoffDate.getDayList(startDate, endDate, 'YYYY-MM-DD');
         const monthList = DayoffDate.getDayListMonths(dayList);
 
-        const holidayList = DayoffDate.getHolidays(year, 'YYYY-MM-DD');
+
+        const {holidayList} = this.state;
+
         const holidayObj = {};
         holidayList.forEach((date) => {
             holidayObj[date] = true;
