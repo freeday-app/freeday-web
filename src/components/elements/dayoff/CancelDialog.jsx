@@ -58,10 +58,10 @@ class CancelDialog extends Component {
                 <div className={Classes.DIALOG_FOOTER}>
                     <div className={Classes.DIALOG_FOOTER_ACTIONS}>
                         <Button onClick={() => onClose('cancel')}>
-                            {Lang.text('button.cancel')}
+                            {Lang.text('button.back')}
                         </Button>
                         <Button
-                            intent={Intent.PRIMARY}
+                            intent={Intent.DANGER}
                             onClick={() => onConfirm(
                                 dayoffId,
                                 'cancel',
