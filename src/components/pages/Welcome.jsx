@@ -216,6 +216,9 @@ const Welcome = () => {
                         type="password"
                         onChange={handleUserChange}
                     />
+
+                    <div>{Lang.text("admin.form.securityRule")}</div>
+
                     <Button
                         type="submit"
                         icon="add"
