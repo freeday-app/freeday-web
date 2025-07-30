@@ -208,7 +208,7 @@ class Schedule extends Component {
                     <div id="schedule-top" className="content-layout-top schedule-top">
                         <Filter
                             language={language}
-                            fields={['month', 'year', 'slackUser', 'all', 'reset']}
+                            fields={['month', 'year', 'slackUser', 'status', 'all', 'reset']}
                             data={filter}
                             slackUsers={slackUsers}
                             dayoffTypes={dayoffTypes}
