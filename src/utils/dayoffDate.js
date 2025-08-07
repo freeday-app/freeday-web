@@ -1,5 +1,6 @@
 import DayJS from 'dayjs';
 
+import API from './api';
 import Lang from './language';
 
 const DayoffDate = {
@@ -80,46 +81,18 @@ const DayoffDate = {
     },
 
     // renvoie liste des dates fériés année ciblée
-    getHolidays(year, format = false) {
-        if (Array.isArray(year)) {
-            return year.map((y) => (
-                DayoffDate.getHolidays(y, format)
-            )).flat();
-        }
-
-        const holidays = [
-            DayJS(`${year}-1-1`, 'YYYY-M-D'), // jour de l'an
-            DayJS(`${year}-5-1`, 'YYYY-M-D'), // fête du travail
-            DayJS(`${year}-5-8`, 'YYYY-M-D'), // victoire des alliés
-            DayJS(`${year}-7-14`, 'YYYY-M-D'), // fête nationale
-            DayJS(`${year}-8-15`, 'YYYY-M-D'), // assomption
-            DayJS(`${year}-11-1`, 'YYYY-M-D'), // toussaint
-            DayJS(`${year}-11-11`, 'YYYY-M-D'), // armistice
-            DayJS(`${year}-12-25`, 'YYYY-M-D') // noël
-        ];
-        const easter = DayoffDate.getEaster(year);
-        holidays.push(easter.add(1, 'days')); // lundi de pâques
-        holidays.push(easter.add(39, 'days')); // ascension
-        // holidays.push(easter.add(50, 'days')); // lundi de pentecôte
+    async getHolidays(year, format = false) {
+        const holidayList = await API.call(
+            {
+                method: 'GET',
+                url: `/api/daysoff/holidays/${year}`
+            }
+        );
 
         if (format) {
-            return holidays.map((holiday) => holiday.format(format));
+            return holidayList.map((holiday) => DayJS(holiday).format(format));
         }
-        return holidays.map((holiday) => holiday.toDate());
-    },
-
-    // renvoie date pâques pour année ciblée
-    getEaster(year) {
-        const { floor } = Math;
-        const G = year % 19;
-        const C = floor(year / 100);
-        const H = (C - floor(C / 4) - floor((8 * C + 13) / 25) + 19 * G + 15) % 30;
-        const I = H - floor(H / 28) * (1 - floor(29 / (H + 1)) * floor((21 - G) / 11));
-        const J = (year + floor(year / 4) + I + 2 - C + floor(C / 4)) % 7;
-        const L = I - J;
-        const month = 3 + floor((L + 40) / 44);
-        const day = L + 28 - 31 * floor(month / 4);
-        return DayJS(`${year}-${month}-${day}`, 'YYYY-M-D');
+        return holidayList.map((holiday) => holiday.toDate());
     },
 
     // renvoie le nombre de jours travaillés sur une liste de jours
