@@ -185,6 +185,12 @@ class Scheduler extends Component {
             Configuration.data.workDays.includes(dayOfTheWeek)
         );
 
+        const workDaysCount = DayoffDate.getWorkDays(
+            monthDate.start,
+            monthDate.end,
+            dayList
+        );
+
         return (
             <div className="scheduler">
                 <table className="scheduler-table">
@@ -196,7 +202,7 @@ class Scheduler extends Component {
                             {
                                 monthList.map((m) => (
                                     <th className="scheduler-table-head-month" key={`month-${m.number}`} colSpan={m.count}>
-                                        {m.text}
+                                        {m.text} ({workDaysCount} {Lang.text("schedule.workDays")})
                                     </th>
                                 ))
                             }

@@ -87,7 +87,9 @@
 			"notifyUser": "le bot Freeday n'a pas pu notifier l'utilisateur Slack."
 		}
 	},
-	"schedule": {},
+	"schedule": {
+		"workDays": "jours de travail"
+	},
 	"summary": {
 		"column": {
 			"daysoff": "congés",
