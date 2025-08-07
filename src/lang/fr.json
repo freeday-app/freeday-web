@@ -26,6 +26,22 @@
 		"clear": "effacer",
 		"start": "commencer"
 	},
+	"dashboard": {
+		"metrics": {
+			"title": "présences / absences",
+			"missing": "absences",
+			"present": "présences"
+		},
+		"actions":{
+			"title": "à faire",
+			"pending": " demande(s) en attente",
+			"none": "Pas d'actions requises"
+		},
+		"activity": {
+			"title": "Activité récente",
+			"modification": "a créé/modifié une absence"
+		}
+	},
 	"dayoff": {
 		"noData": "aucune absence",
 		"button": {
@@ -224,6 +240,7 @@
 		"daysoff": "absences",
 		"schedule": "planning",
 		"summary": "récapitulatif",
+		"dashboard": "tableau de bord",
 		"types": "types d'absence",
 		"settings": "paramètres généraux",
 		"admins": "administrateurs",
