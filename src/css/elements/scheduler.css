@@ -1,6 +1,7 @@
 .scheduler {
     /* padding: 0 20px; */
     text-align: center;
+    print-color-adjust: exact;  
 }
 
 .scheduler-table {
