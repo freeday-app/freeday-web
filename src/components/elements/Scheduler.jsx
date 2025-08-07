@@ -115,8 +115,9 @@ class Scheduler extends Component {
                     >
                         <div
                             className={
-                                `scheduler-table-body-event clickable scheduler-table-${events.am.color}`
+                                `scheduler-table-body-event clickable scheduler-table`
                             }
+                            style={{backgroundImage: `linear-gradient(to right, ${events.am.color},${events.am.color})`}}
                             data-dayoffid={
                                 events.am.dayoffId
                             }
