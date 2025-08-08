@@ -1,5 +1,3 @@
-import Tools from './tools';
-
 class FetchError extends Error {
     constructor(json) {
         super(json.error);
@@ -11,20 +9,15 @@ class FetchError extends Error {
 const API = {
 
     isAuth: false,
-    token: null,
     userId: null,
 
-    setAuth(authData) {
-        this.token = authData.token;
-        this.userId = authData.userId;
-        Tools.setLocalStorageObject('auth', authData);
+    setAuth(result) {
+        this.userId = result?.userId;
         this.isAuth = true;
     },
 
     unsetAuth() {
-        this.token = null;
         this.userId = null;
-        Tools.removeLocalStorageObject('auth');
         this.isAuth = false;
     },
 
@@ -34,8 +27,6 @@ const API = {
         };
         if (opts.token) {
             headers.Authorization = `Bearer ${opts.token}`;
-        } else if (this.token !== null) {
-            headers.Authorization = `Bearer ${this.token}`;
         }
         const fetchOpts = { headers };
         if (opts.method) {
